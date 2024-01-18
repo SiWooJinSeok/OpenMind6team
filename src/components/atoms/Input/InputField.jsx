@@ -56,6 +56,7 @@ const Input = styled.input`
   font-style: normal;
   font-weight: 400;
   line-height: 22px;
+  border: none;
   &:focus {
     color: #818181;
     outline: none;

@@ -6,14 +6,14 @@ import { ArrowImg, ButtonBox } from './Share';
 
 const DisabledGoToAnswerButton = function ({ text, width }) {
   return (
-    <Wrapper width={width}>
+    <Button width={width} disabled>
       {text}
       <ArrowImg src={arrowRight} />
-    </Wrapper>
+    </Button>
   );
 };
 
-const Wrapper = styled(ButtonBox)`
+const Button = styled(ButtonBox)`
   border: none;
   background: #f5f1ee;
   color: #fff;

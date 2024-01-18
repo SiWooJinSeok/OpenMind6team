@@ -3,10 +3,14 @@ import styled from 'styled-components';
 import { ButtonBox } from './Share';
 
 const DisabledAskQuestionButton = function ({ text, width }) {
-  return <Wrapper width={width}>{text}</Wrapper>;
+  return (
+    <Button width={width} disabled>
+      {text}
+    </Button>
+  );
 };
 
-const Wrapper = styled(ButtonBox)`
+const Button = styled(ButtonBox)`
   border: none;
   background: #c7bbb5;
   color: #fff;

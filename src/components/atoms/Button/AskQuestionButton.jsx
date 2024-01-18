@@ -3,10 +3,10 @@ import styled from 'styled-components';
 import { ButtonBox } from './Share';
 
 const AskQuestionButton = function ({ text, width }) {
-  return <Wrapper width={width}>{text}</Wrapper>;
+  return <Button width={width}>{text}</Button>;
 };
 
-const Wrapper = styled(ButtonBox)`
+const Button = styled(ButtonBox)`
   background-color: #542f1a;
   color: #fff;
 

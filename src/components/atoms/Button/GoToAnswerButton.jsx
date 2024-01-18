@@ -6,14 +6,14 @@ import { ButtonBox, ArrowImg } from './Share';
 
 const GoToAnswerButton = function ({ text, width }) {
   return (
-    <Wrapper width={width}>
+    <Button width={width}>
       {text}
       <ArrowImg src={arrowRight} />
-    </Wrapper>
+    </Button>
   );
 };
 
-const Wrapper = styled(ButtonBox)`
+const Button = styled(ButtonBox)`
   border: 1px solid #542f1a;
   background: #f5f1ee;
   color: #542f1a;

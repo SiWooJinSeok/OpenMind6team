@@ -4,7 +4,7 @@ import facebookLogo from '../../../assets/img/facebookLogo.svg';
 import copyLinkLogo from '../../../assets/img/copyLinkLogo.svg';
 
 export default function ShareButton({ category }) {
-  const color = {
+  const BUTTON_COLOR = {
     copy: '#542F1A',
     kakao: '#FEE500',
     facebook: '#1877F2',
@@ -16,7 +16,7 @@ export default function ShareButton({ category }) {
   };
 
   return (
-    <Button color={color[category]}>
+    <Button color={BUTTON_COLOR[category]}>
       <Logo src={img[category]} />
     </Button>
   );

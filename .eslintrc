@@ -4,6 +4,7 @@
   "rules": {
     "prettier/prettier": ["error"],
     "react/react-in-jsx-scope": "off",
+    "react/jsx-props-no-spreading": "off",
     "react/prop-types": "off",
     "react/jsx-filename-extension": [
       "error",
@@ -17,7 +18,7 @@
           "function-declaration",
           "function-expression",
         ],
-        "unnamedComponents": ["arrow-function", "function-expression"],
+        "unnamedComponents": ["function-expression", "arrow-function"],
       },
     ],
   },

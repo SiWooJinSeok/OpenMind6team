@@ -1,22 +1,16 @@
 import styled from 'styled-components';
 
-import arrowRight from '../../../assets/img/arrow-right-white.svg';
+import { ButtonBox } from './Share';
 
-import { ArrowImg, ButtonBox } from './Share';
-
-const AskQuestionButton = function () {
-  return (
-    <Wrapper>
-      <ArrowImg src={arrowRight} />
-      질문 받기
-      <ArrowImg src={arrowRight} />
-    </Wrapper>
-  );
+const AskQuestionButton = function ({ text, width }) {
+  return <Wrapper width={width}>{text}</Wrapper>;
 };
 
 const Wrapper = styled(ButtonBox)`
   background-color: #542f1a;
   color: #fff;
+
+  width: ${(props) => (props.width ? props.width : 'auto')};
 
   &:hover {
     gap: 10px;

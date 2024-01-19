@@ -1,7 +1,7 @@
 import InputTextArea from './InputTextArea';
 
 export default {
-  title: 'InputTextArea',
+  title: 'Input/InputTextArea',
   component: InputTextArea,
 };
 

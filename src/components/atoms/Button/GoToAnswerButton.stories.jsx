@@ -1,7 +1,7 @@
 import GoToAnswerButton from './GoToAnswerButton';
 
 export default {
-  title: 'GoToAnswerButton',
+  title: 'Button/GoToAnswerButton',
   component: GoToAnswerButton,
 };
 

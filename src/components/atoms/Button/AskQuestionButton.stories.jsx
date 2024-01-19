@@ -1,7 +1,7 @@
 import AskQuestionButton from './AskQuestionButton';
 
 export default {
-  title: 'AskQuestionButton',
+  title: 'Button/AskQuestionButton',
   component: AskQuestionButton,
 };
 

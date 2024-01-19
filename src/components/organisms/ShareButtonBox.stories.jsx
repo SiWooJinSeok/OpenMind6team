@@ -1,7 +1,7 @@
 import ShareButtonBox from './ShareButtonBox';
 
 export default {
-  title: 'Box/ShareButton',
+  title: 'Organism/ShareButton',
   component: ShareButtonBox,
 };
 

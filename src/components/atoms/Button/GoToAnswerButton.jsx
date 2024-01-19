@@ -4,6 +4,12 @@ import arrowRight from '../../../assets/img/arrow-right-brown.svg';
 
 import { ButtonBox, ArrowImg } from './Share';
 
+/**
+ *
+ * @param {text : string | width : string + 'px'} param0
+ * @returns GoToAnswerButton Component
+ */
+
 export default function GoToAnswerButton({ text, width }) {
   return (
     <Button width={width}>

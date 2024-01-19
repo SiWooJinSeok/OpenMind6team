@@ -2,6 +2,12 @@ import styled from 'styled-components';
 
 import { ButtonBox } from './Share';
 
+/**
+ *
+ * @param {text : string | width : string + 'px'} param0
+ * @returns AskQuestionButton Component
+ */
+
 export default function AskQuestionButton({ text, width }) {
   return <Button width={width}>{text}</Button>;
 }

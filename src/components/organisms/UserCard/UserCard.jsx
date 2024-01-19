@@ -3,6 +3,11 @@ import styled from 'styled-components';
 import UserProfileImage from '../../atoms/UserProfileImage/UserProfileImage';
 import imageData from '../../../assets/imageData';
 
+/**
+ *
+ * @param {userName : string, questionCount : number} param0
+ * @returns UserCard
+ */
 export default function UserCard({ userName, questionCount }) {
   return (
     <Container>

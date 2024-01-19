@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import styled from 'styled-components';
 import MoreImg from '../../../assets/img/More.svg';
 import EditImg from '../../../assets/img/Edit.svg';
+import EditBlack from '../../../assets/img/EditBlack.svg';
+import EditBlue from '../../../assets/img/EditBlue.svg';
 
 export default function EditableDropdown() {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -11,30 +13,32 @@ export default function EditableDropdown() {
   };
 
   return (
-    <DropdownWrapper>
-      <DropdownButton
+    <Wrapper>
+      <Button
         onClick={handleDropdownToggle}
         style={{ backgroundImage: `url(${MoreImg})` }}
       />
-      {isDropdownOpen && (
+      {isDropdownOpen ? (
         <DropdownMenu>
-          <MenuItem>
-            <Image src={EditImg} alt="수정하기" /> 수정하기
-          </MenuItem>
-          <MenuItem>
-            <Image src={EditImg} alt="수정하기" /> 수정하기
-          </MenuItem>
+          <MenuItemButton>
+            <Image src={EditImg} alt="수정하기" />
+            수정하기
+          </MenuItemButton>
+          <MenuItemButton>
+            <Image src={EditImg} alt="삭제하기" />
+            삭제하기
+          </MenuItemButton>
         </DropdownMenu>
-      )}
-    </DropdownWrapper>
+      ) : null}
+    </Wrapper>
   );
 }
 
-const DropdownWrapper = styled.div`
+const Wrapper = styled.div`
   display: flex;
 `;
 
-const DropdownButton = styled.div`
+const Button = styled.button`
   cursor: pointer;
   width: 24px;
   height: 24px;
@@ -53,23 +57,34 @@ const DropdownMenu = styled.div`
   border-radius: 0.8rem;
 `;
 
-const MenuItem = styled.div`
+const Image = styled.img`
+  width: 1.4rem;
+  height: 1.4rem;
+`;
+const MenuItemButton = styled.button`
   cursor: pointer;
   display: flex;
   align-items: center;
   color: var(--Grayscale-50);
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   font-weight: 500;
   line-height: 1.8rem;
   gap: 0.8rem;
-  margin: 0.6rem 1rem;
+  margin: 0.6rem 0.5rem;
 
   &:hover {
-    color: #1877f2;
-  }
-`;
+    color: black;
 
-const Image = styled.img`
-  width: 1.4rem;
-  height: 1.4rem;
+    ${Image} {
+      content: url(${EditBlack});
+    }
+  }
+
+  &:active {
+    color: #1877f2;
+
+    ${Image} {
+      content: url(${EditBlue});
+    }
+  }
 `;

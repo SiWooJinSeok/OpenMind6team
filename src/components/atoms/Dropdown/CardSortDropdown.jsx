@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import styled from 'styled-components';
 
 export default function CardSortDropdown({ CardSort }) {
@@ -9,22 +9,22 @@ export default function CardSortDropdown({ CardSort }) {
   };
 
   return (
-    <DropdownWrapper>
+    <Wrapper>
       <DropdownHeader onClick={toggleDropdown} isOpen={isDropdownOpen}>
         {CardSort}
         <DropdownIcon isOpen={isDropdownOpen} />
       </DropdownHeader>
-      {isDropdownOpen && (
+      {isDropdownOpen ? (
         <DropdownContent>
-          <Option>최신순</Option>
-          <Option>이름순</Option>
+          <Button>최신순</Button>
+          <Button>이름순</Button>
         </DropdownContent>
-      )}
-    </DropdownWrapper>
+      ) : null}
+    </Wrapper>
   );
 }
 
-const DropdownWrapper = styled.div`
+const Wrapper = styled.div`
   display: inline-block;
 `;
 
@@ -58,15 +58,17 @@ const DropdownContent = styled.div`
   border: 1px solid var(--Grayscale-40);
   border-radius: 0.8rem;
   padding: 0.6rem 1.6rem;
-  font-size: 1.4rem;
-  font-weight: 500;
-  line-height: 1.8rem;
+
   margin-top: 0.5rem;
 `;
 
-const Option = styled.div`
+const Button = styled.button`
+  display: flex;
   padding: 0.5rem 0;
   cursor: pointer;
+  font-size: 1.4rem;
+  font-weight: 500;
+  line-height: 1.8rem;
 
   &:hover {
     color: #1877f2;

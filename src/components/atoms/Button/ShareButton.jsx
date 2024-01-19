@@ -3,6 +3,10 @@ import kakaoLogo from '../../../assets/img/kakaoLogo.svg';
 import facebookLogo from '../../../assets/img/facebookLogo.svg';
 import copyLinkLogo from '../../../assets/img/copyLinkLogo.svg';
 
+/** SNS 공유 버튼
+ * @param { string } category 'copy' or 'kakao' or 'facebook'
+ * @returns SNS Share Button
+ */
 export default function ShareButton({ category }) {
   const BUTTON_COLOR = {
     copy: '#542F1A',

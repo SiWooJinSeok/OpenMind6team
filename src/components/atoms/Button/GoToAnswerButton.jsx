@@ -4,34 +4,32 @@ import arrowRight from '../../../assets/img/arrow-right-brown.svg';
 
 import { ButtonBox, ArrowImg } from './Share';
 
-const GoToAnswerButton = function ({ text, width }) {
+export default function GoToAnswerButton({ text, width }) {
   return (
     <Button width={width}>
       {text}
       <ArrowImg src={arrowRight} />
     </Button>
   );
-};
+}
 
 const Button = styled(ButtonBox)`
-  border: 1px solid #542f1a;
-  background: #f5f1ee;
-  color: #542f1a;
+  border: 0.1rem solid var(--Brown-40);
+  background: var(--Brown-10);
+  color: var(--Brown-40);
 
   width: ${(props) => (props.width ? props.width : 'auto')};
 
   &:hover {
-    border-width: 2px;
+    border-width: 0.2rem;
   }
 
   &:active {
-    background: #e4d5c9;
+    background: var(--Brown-20);
   }
 
   @media (max-width: 767px) {
-    padding: 8px 12px;
-    gap: 4px;
+    padding: 0.8rem 1.2rem;
+    gap: 0.4rem;
   }
 `;
-
-export default GoToAnswerButton;

@@ -1,6 +1,10 @@
 import styled from 'styled-components';
 import ShareButton from '../atoms/Button/ShareButton';
 
+/**
+ *
+ * @returns copy, kakao, facebook Share Button을 묶은 Component
+ */
 export default function ShareButtonBox() {
   return (
     <Wrapper>

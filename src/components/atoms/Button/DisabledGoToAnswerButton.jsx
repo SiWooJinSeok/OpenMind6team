@@ -9,7 +9,6 @@ import { ArrowImg, ButtonBox } from './Share';
  * @param {text : string | width : string + 'px'} param0
  * @returns DisabledGoToAnswerButton Component
  */
-
 export default function DisabledGoToAnswerButton({ text, width }) {
   return (
     <Button width={width} disabled>

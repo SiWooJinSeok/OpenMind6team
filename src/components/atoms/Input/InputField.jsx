@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components';
 import imageData from '../../../assets/imageData';
 import RowFlexCenter from './Share';

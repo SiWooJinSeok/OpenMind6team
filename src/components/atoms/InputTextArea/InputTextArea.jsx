@@ -1,6 +1,12 @@
 import styled from 'styled-components';
 
-const InputTextArea = ({ width, height, placeholder, handler, value }) => {
+export default function InputTextArea({
+  width,
+  height,
+  placeholder,
+  handler,
+  value,
+}) {
   const handleTextChange = (e) => {
     handler(e.target.value);
   };
@@ -14,7 +20,7 @@ const InputTextArea = ({ width, height, placeholder, handler, value }) => {
       placeholder={placeholder}
     />
   );
-};
+}
 
 const Textarea = styled.textarea`
   display: flex;
@@ -31,4 +37,3 @@ const Textarea = styled.textarea`
     border: 1px solid #542f1a;
   }
 `;
-export default InputTextArea;

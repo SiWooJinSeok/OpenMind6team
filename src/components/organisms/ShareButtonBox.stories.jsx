@@ -5,6 +5,6 @@ export default {
   component: ShareButtonBox,
 };
 
-export const Default = () => {
+export function Default() {
   return <ShareButtonBox />;
-};
+}

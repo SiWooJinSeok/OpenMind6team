@@ -5,7 +5,7 @@ import imageData from '../../../assets/imageData';
 /**
  *
  * @param {type : string, imageSource : src} param0
- * @returns type => img
+ * @returns type => imgSize
  */
 export default function UserProfileImage({ type, imageSource }) {
   return <Img src={imageSource} type={type} />;

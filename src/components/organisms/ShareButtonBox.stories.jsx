@@ -1,10 +1,10 @@
 import ShareButtonBox from './ShareButtonBox';
 
 export default {
-  title: 'Box/ShareButton',
+  title: 'Organism/ShareButton',
   component: ShareButtonBox,
 };
 
-export const Default = () => {
+export function Default() {
   return <ShareButtonBox />;
-};
+}

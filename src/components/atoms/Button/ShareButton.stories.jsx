@@ -5,12 +5,12 @@ export default {
   component: ShareButton,
 };
 
-export const Kakao = () => {
+export function Kakao() {
   return <ShareButton category="kakao" />;
-};
-export const Facebook = () => {
+}
+export function Facebook() {
   return <ShareButton category="facebook" />;
-};
-export const CopyLink = () => {
+}
+export function CopyLink() {
   return <ShareButton category="copy" />;
-};
+}

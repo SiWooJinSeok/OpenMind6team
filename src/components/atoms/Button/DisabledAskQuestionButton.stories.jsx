@@ -1,7 +1,7 @@
 import DisabledAskQuestionButton from './DisabledAskQuestionButton';
 
 export default {
-  title: 'DisabledAskQuestionButton',
+  title: 'Button/DisabledAskQuestionButton',
   component: DisabledAskQuestionButton,
   parameters: {
     layout: 'centered',

@@ -3,10 +3,21 @@ import AskQuestionButton from './AskQuestionButton';
 export default {
   title: 'AskQuestionButton',
   component: AskQuestionButton,
+  parameters: {
+    layout: 'centered',
+  },
+  tags: ['autodocs'],
+  argTypes: {
+    text: { control: 'text' },
+    width: { control: 'text' },
+  },
 };
 
-export const Default = () => (
-  <AskQuestionButton text="질문 받기" width="auto" />
-);
+const Template = (args) => <AskQuestionButton {...args} />;
 
-export const Long = () => <AskQuestionButton text="질문 받기" width="1000px" />;
+export const Default = Template.bind({});
+
+Default.args = {
+  text: '질문하기',
+  width: '300px',
+};

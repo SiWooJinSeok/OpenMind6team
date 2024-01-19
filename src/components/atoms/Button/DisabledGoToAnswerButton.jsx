@@ -4,6 +4,11 @@ import arrowRight from '../../../assets/img/arrow-right-brown-disabled.svg';
 
 import { ArrowImg, ButtonBox } from './Share';
 
+/**
+ *
+ * @param {text : string | width : string + 'px'} param0
+ * @returns DisabledGoToAnswerButton Component
+ */
 export default function DisabledGoToAnswerButton({ text, width }) {
   return (
     <Button width={width} disabled>
@@ -15,14 +20,14 @@ export default function DisabledGoToAnswerButton({ text, width }) {
 
 const Button = styled(ButtonBox)`
   border: none;
-  background: #f5f1ee;
-  color: #fff;
-  border: 1px solid #c7bbb5;
+  background: var(--Brown-10);
+  color: var(--Brown-40);
+  border: 0.1rem solid #c7bbb5;
 
   width: ${(props) => (props.width ? props.width : 'auto')};
 
   @media (max-width: 767px) {
-    padding: 8px 12px;
-    gap: 4px;
+    padding: 0.8rem 1.2rem;
+    gap: 0.4rem;
   }
 `;

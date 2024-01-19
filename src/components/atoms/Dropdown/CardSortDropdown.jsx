@@ -1,13 +1,8 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 
-export default function CardSortDropdown() {
+export default function CardSortDropdown({ CardSort }) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-
-  const handleOptionChange = (option) => {
-    console.log(`선택된 옵션: ${option}`);
-    setIsDropdownOpen(false);
-  };
 
   const toggleDropdown = () => {
     setIsDropdownOpen(!isDropdownOpen);
@@ -16,13 +11,13 @@ export default function CardSortDropdown() {
   return (
     <DropdownWrapper>
       <DropdownHeader onClick={toggleDropdown} isOpen={isDropdownOpen}>
-        최신순
+        {CardSort}
         <DropdownIcon isOpen={isDropdownOpen} />
       </DropdownHeader>
       {isDropdownOpen && (
         <DropdownContent>
-          <Option onClick={() => handleOptionChange('최신순')}>최신순</Option>
-          <Option onClick={() => handleOptionChange('이름순')}>이름순</Option>
+          <Option>최신순</Option>
+          <Option>이름순</Option>
         </DropdownContent>
       )}
     </DropdownWrapper>

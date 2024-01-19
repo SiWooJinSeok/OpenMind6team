@@ -2,9 +2,9 @@ import styled from 'styled-components';
 
 import { ButtonBox } from './Share';
 
-const AskQuestionButton = function ({ text, width }) {
+export default function AskQuestionButton({ text, width }) {
   return <Button width={width}>{text}</Button>;
-};
+}
 
 const Button = styled(ButtonBox)`
   background-color: #542f1a;
@@ -27,5 +27,3 @@ const Button = styled(ButtonBox)`
     gap: 4px;
   }
 `;
-
-export default AskQuestionButton;

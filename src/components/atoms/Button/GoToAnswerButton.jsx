@@ -4,14 +4,14 @@ import arrowRight from '../../../assets/img/arrow-right-brown.svg';
 
 import { ButtonBox, ArrowImg } from './Share';
 
-const GoToAnswerButton = function ({ text, width }) {
+export default function GoToAnswerButton({ text, width }) {
   return (
     <Button width={width}>
       {text}
       <ArrowImg src={arrowRight} />
     </Button>
   );
-};
+}
 
 const Button = styled(ButtonBox)`
   border: 1px solid #542f1a;
@@ -33,5 +33,3 @@ const Button = styled(ButtonBox)`
     gap: 4px;
   }
 `;
-
-export default GoToAnswerButton;

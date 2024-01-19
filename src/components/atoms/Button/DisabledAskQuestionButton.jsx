@@ -2,13 +2,13 @@ import styled from 'styled-components';
 
 import { ButtonBox } from './Share';
 
-const DisabledAskQuestionButton = function ({ text, width }) {
+export default function DisabledAskQuestionButton({ text, width }) {
   return (
     <Button width={width} disabled>
       {text}
     </Button>
   );
-};
+}
 
 const Button = styled(ButtonBox)`
   border: none;
@@ -22,5 +22,3 @@ const Button = styled(ButtonBox)`
     gap: 4px;
   }
 `;
-
-export default DisabledAskQuestionButton;

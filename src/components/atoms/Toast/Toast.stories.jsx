@@ -1,4 +1,3 @@
-/** @type { import('@storybook/react').Preview } */
 import GlobalStyle from '../../../GlobalStyle';
 import Toast from './Toast';
 
@@ -15,6 +14,6 @@ export default {
   ],
 };
 
-export function Answered() {
+export function Default() {
   return <Toast />;
 }

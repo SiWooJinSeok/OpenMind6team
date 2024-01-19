@@ -1,4 +1,3 @@
-/** @type { import('@storybook/react').Preview } */
 import GlobalStyle from '../../../GlobalStyle';
 import Badge from './Badge';
 

@@ -1,11 +1,12 @@
 import GlobalStyle from './GlobalStyle';
+import CardSortDropdown from './components/atoms/Dropdown/CardSortDropdown';
 
 function App() {
   return (
     <>
       <GlobalStyle />
       <div>
-        <h2>Hello World</h2>
+        <CardSortDropdown />
       </div>
     </>
   );

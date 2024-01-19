@@ -1,0 +1,79 @@
+import React, { useState } from 'react';
+import styled from 'styled-components';
+
+export default function CardSortDropdown() {
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+
+  const handleOptionChange = (option) => {
+    console.log(`선택된 옵션: ${option}`);
+    setIsDropdownOpen(false);
+  };
+
+  const toggleDropdown = () => {
+    setIsDropdownOpen(!isDropdownOpen);
+  };
+
+  return (
+    <DropdownWrapper>
+      <DropdownHeader onClick={toggleDropdown} isOpen={isDropdownOpen}>
+        최신순
+        <DropdownIcon isOpen={isDropdownOpen} />
+      </DropdownHeader>
+      {isDropdownOpen && (
+        <DropdownContent>
+          <Option onClick={() => handleOptionChange('최신순')}>최신순</Option>
+          <Option onClick={() => handleOptionChange('이름순')}>이름순</Option>
+        </DropdownContent>
+      )}
+    </DropdownWrapper>
+  );
+}
+
+const DropdownWrapper = styled.div`
+  display: inline-block;
+`;
+
+const DropdownHeader = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 7.9rem;
+  height: 3.4rem;
+  padding: 0.8rem 1.2rem;
+  border: ${(props) =>
+    props.isOpen ? '0.1rem solid black' : '0.1rem solid #818181'};
+  border-radius: 0.8rem;
+  cursor: pointer;
+  font-size: 1.4rem;
+  font-weight: 500;
+  line-height: 1.8rem;
+  color: ${(props) => (props.isOpen ? 'black' : '#818181')};
+`;
+
+const DropdownIcon = styled.div`
+  width: 0.8rem;
+  height: 0.8rem;
+  border-left: 0.1rem solid black;
+  border-bottom: 0.1rem solid black;
+  transform: ${(props) => (props.isOpen ? 'rotate(135deg)' : 'rotate(-45deg)')};
+  transition: transform 0.3s ease-in-out;
+`;
+
+const DropdownContent = styled.div`
+  border: 1px solid var(--Grayscale-40);
+  border-radius: 0.8rem;
+  padding: 0.6rem 1.6rem;
+  font-size: 1.4rem;
+  font-weight: 500;
+  line-height: 1.8rem;
+  margin-top: 0.5rem;
+`;
+
+const Option = styled.div`
+  padding: 0.5rem 0;
+  cursor: pointer;
+
+  &:hover {
+    color: #1877f2;
+  }
+`;

@@ -27,8 +27,7 @@ const Textarea = styled.textarea`
   resize: none;
 
   &:focus {
-    outline: none;
-    border: 1px solid #542f1a;
+    outline: 1px solid #542f1a;
   }
 `;
 export default InputTextArea;

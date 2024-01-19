@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 /**
  *
@@ -6,13 +5,7 @@ import styled from 'styled-components';
  * @returns 답변완료 or 미답변 Badge
  */
 export default function Badge({ isAnswered }) {
-  const [badgeText, setBadgeText] = useState('미답변');
-
-  useEffect(() => {
-    if (isAnswered) {
-      setBadgeText('답변완료');
-    }
-  }, [isAnswered]);
+  const badgeText = isAnswered ? '답변완료' : '미답변';
   return (
     <Wrapper $isAnswered={isAnswered}>
       <Text $isAnswered={isAnswered}>{badgeText}</Text>

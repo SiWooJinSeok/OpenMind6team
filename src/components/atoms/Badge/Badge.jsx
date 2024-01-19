@@ -6,9 +6,12 @@ import styled from 'styled-components';
  */
 export default function Badge({ isAnswered }) {
   const badgeText = isAnswered ? '답변완료' : '미답변';
+  const color = isAnswered
+    ? 'var(--Brown-40, #542F1A)'
+    : 'var(--Grayscale-40, #818181)';
   return (
-    <Wrapper $isAnswered={isAnswered}>
-      <Text $isAnswered={isAnswered}>{badgeText}</Text>
+    <Wrapper color={color}>
+      <Text color={color}>{badgeText}</Text>
     </Wrapper>
   );
 }
@@ -19,18 +22,12 @@ const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   border-radius: 8px;
-  border: ${(props) =>
-    props.$isAnswered
-      ? '1px solid var(--Brown-40, #542F1A)'
-      : '1px solid var(--Grayscale-40, #818181)'};
+  border: 1px solid ${(props) => props.color};
   background: var(--Grayscale-10, #fff);
 `;
 
 const Text = styled.span`
-  color: ${(props) =>
-    props.$isAnswered
-      ? 'var(--Brown-40, #542F1A)'
-      : 'var(--Grayscale-40, #818181)'};
+  color: ${(props) => props.color};
   font-size: 1.4rem;
   font-weight: 500;
   line-height: 1.8rem;

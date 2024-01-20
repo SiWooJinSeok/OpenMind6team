@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 
-export default function CardSortDropdown({ CardSort }) {
+export default function CardSortDropdown({ CardSort = '최신순' }) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const toggleDropdown = () => {

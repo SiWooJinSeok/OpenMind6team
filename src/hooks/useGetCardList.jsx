@@ -21,7 +21,6 @@ const useGetCardList = (limit = 8, offset = 0, sort = 'name') => {
         'https://openmind-api.vercel.app',
         `/subjects/?limit=${limit}&offset=${offset}&sort=${sort}`,
       ).then((result) => {
-        console.log(result);
         return setUserCardListData(result);
       });
     } catch (err) {

@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import styled from 'styled-components';
 import QuestionListNavbar from '../organisms/QuestionListNavbar/QuestionListNavbar';
 import CardSortDropdown from '../atoms/Dropdown/CardSortDropdown';
@@ -14,10 +14,6 @@ export default function QuestionListPage() {
   const handleSortOptionSelect = (value) => {
     setSort(value);
   };
-
-  useEffect(() => {
-    console.log(sort);
-  }, [sort]);
 
   const { UserCardListData } = useGetCardList(limit, offset, sort);
 
@@ -49,6 +45,7 @@ const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  background: var(--Grayscale-20, #f9f9f9);
 `;
 
 const TitleWrapper = styled.div`

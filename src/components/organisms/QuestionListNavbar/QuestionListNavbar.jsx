@@ -7,27 +7,33 @@ import GoToAnswerButton from '../../atoms/Button/GoToAnswerButton';
 export default function QuestionListNavbar() {
   return (
     <Navbar>
-      <Wrapper>
-        <LogoBox>
-          <img src={imageData.openMindLogo} alt="로고 이미지" />
-        </LogoBox>
-        <GoToAnswerButton text="답변하러가기" />
-      </Wrapper>
+      <LogoBox>
+        <img src={imageData.openMindLogo} alt="로고 이미지" />
+      </LogoBox>
+      <GoToAnswerButton text="답변하러가기" />
     </Navbar>
   );
 }
 
 const Navbar = styled.nav`
-  display: flex;
-  justify-content: center;
-  margin: 40px 0;
-`;
-
-const Wrapper = styled.div`
+  width: 100%;
   max-width: 1200px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  margin: 40px 0;
+
+  @media (max-width: 1300px) {
+    max-width: none;
+    padding: 0 50px;
+  }
+
+  @media (max-width: 767px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 54px;
+  }
 `;
 
 const LogoBox = styled.div`

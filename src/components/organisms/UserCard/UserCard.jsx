@@ -27,7 +27,8 @@ UserCard.defualtprops = {
 };
 
 const Container = styled.div`
-  width: 22rem;
+  max-width: 22rem;
+  min-width: 186px;
   border-radius: 1.6rem;
   border: 1px solid var(--Grayscale-40);
   background: var(--Grayscale-10);

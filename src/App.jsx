@@ -1,11 +1,12 @@
 import GlobalStyle from './GlobalStyle';
+import QuestionListPage from './components/pages/QuestionListPage';
 
 function App() {
   return (
     <>
       <GlobalStyle />
       <div>
-        <h2>Hello World</h2>
+        <QuestionListPage />
       </div>
     </>
   );

@@ -7,10 +7,14 @@ import imageData from '../../../assets/imageData';
  * @param {userName : string, questionCount : number} param0
  * @returns UserCard
  */
-export default function UserCard({ userName, questionCount }) {
+export default function UserCard({
+  userName,
+  questionCount,
+  ProfileImageSource,
+}) {
   return (
     <Container>
-      <UserProfileImage type="userCard" />
+      <UserProfileImage type="userCard" imageSource={ProfileImageSource} />
       <UserName>{userName}</UserName>
       <MessageBox>
         <MessageIcon src={imageData.messageIcon} alt="메세지아이콘" />

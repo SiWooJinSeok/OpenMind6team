@@ -1,12 +1,14 @@
 import styled from 'styled-components';
 import QuestionListNavbar from '../organisms/QuestionListNavbar/QuestionListNavbar';
 import CardSortDropdown from '../atoms/Dropdown/CardSortDropdown';
-import UserCard from '../organisms/UserCard/UserCard';
 import PageNationButton from '../atoms/PageNation/PageNationButton';
+import UserCardList from '../organisms/UserCardList/UserCardList';
+import useGetCardList from '../../hooks/useGetCardList';
 
 export default function QuestionListPage() {
-  const arr = [0, 0, 0, 0, 0, 0, 0, 0];
   // const [totalPageCount, setTotalPageCount] = useState(5);
+
+  const { UserCardListData } = useGetCardList();
 
   return (
     <Wrapper>
@@ -15,11 +17,7 @@ export default function QuestionListPage() {
         <Title>누구에게 질문할까요?</Title>
         <CardSortDropdown CardSort="최신순" />
       </TitleWrapper>
-      <UserCardCollection>
-        {arr.map(() => {
-          return <UserCard userName="아초는 고양이" questionCount={9} />;
-        })}
-      </UserCardCollection>
+      <UserCardList UserCardListData={UserCardListData} />
       <PageNationButtonContainer>
         <PageNationButton arrowText="<" isSelected={false} />
         <PageNationButton pageCount={1} isSelected />
@@ -67,30 +65,6 @@ const Title = styled.h1`
     font-size: 24px;
     line-height: 30px; /* 125% */
     margin-bottom: 0;
-  }
-`;
-
-const UserCardCollection = styled.section`
-  width: 100%;
-  max-width: 940px;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 20px;
-  margin-top: 20px;
-  margin-bottom: 40px;
-  padding: 0 32px;
-
-  @media (max-width: 867px) {
-    grid-template-columns: repeat(3, 1fr);
-    width: auto;
-  }
-
-  @media (max-width: 767px) {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 16px;
-    margin-top: 16px;
-    margin-bottom: 31px;
   }
 `;
 

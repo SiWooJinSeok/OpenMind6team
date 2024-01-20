@@ -6,7 +6,7 @@ import GoToAnswerButton from '../../atoms/Button/GoToAnswerButton';
 
 export default function QuestionListNavbar() {
   return (
-    <Navbar>
+    <Navbar href="/">
       <LogoBox>
         <img src={imageData.openMindLogo} alt="로고 이미지" />
       </LogoBox>
@@ -36,7 +36,7 @@ const Navbar = styled.nav`
   }
 `;
 
-const LogoBox = styled.div`
+const LogoBox = styled.a`
   width: 146px;
   height: 57px;
 

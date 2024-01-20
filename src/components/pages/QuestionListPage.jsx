@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import QuestionListNavbar from '../organisms/QuestionListNavbar/QuestionListNavbar';
 import CardSortDropdown from '../atoms/Dropdown/CardSortDropdown';
@@ -6,16 +7,29 @@ import UserCardList from '../organisms/UserCardList/UserCardList';
 import useGetCardList from '../../hooks/useGetCardList';
 
 export default function QuestionListPage() {
-  // const [totalPageCount, setTotalPageCount] = useState(5);
+  const [limit, setLimit] = useState(8);
+  const [offset, setOffset] = useState(0);
+  const [sort, setSort] = useState('time');
 
-  const { UserCardListData } = useGetCardList();
+  const handleSortOptionSelect = (value) => {
+    setSort(value);
+  };
+
+  useEffect(() => {
+    console.log(sort);
+  }, [sort]);
+
+  const { UserCardListData } = useGetCardList(limit, offset, sort);
 
   return (
     <Wrapper>
       <QuestionListNavbar />
       <TitleWrapper>
         <Title>누구에게 질문할까요?</Title>
-        <CardSortDropdown CardSort="최신순" />
+        <CardSortDropdown
+          CardSort={sort}
+          onSortSelect={handleSortOptionSelect}
+        />
       </TitleWrapper>
       <UserCardList UserCardListData={UserCardListData} />
       <PageNationButtonContainer>

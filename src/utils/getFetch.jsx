@@ -1,7 +1,12 @@
-// https://openmind-api.vercel.app/3-6/subjects/?limit=8&offset=0&sort=name
-
 import axios from 'axios';
 
+/**
+ *
+ * @param {* string, 'https://openmind-api.vercel.app/''} host
+ * @param {* string} path
+ * @param {* string, '/3-6'} team
+ * @returns
+ */
 const getFetch = async (host, path, team = '/3-6') => {
   try {
     const res = await axios({

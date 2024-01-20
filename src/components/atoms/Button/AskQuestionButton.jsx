@@ -14,7 +14,7 @@ export default function AskQuestionButton({ text, width }) {
 
 const Button = styled(ButtonBox)`
   background-color: var(--Brown-40);
-  color: var(--Grayscale-60);
+  color: var(--Grayscale-10);
 
   width: ${(props) => (props.width ? props.width : 'auto')};
 

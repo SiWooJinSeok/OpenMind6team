@@ -51,6 +51,7 @@ const GlobalStyle = createGlobalStyle`
     input {
     outline: none;
     border: none;
+    padding: 0;
     }
 
     li {

@@ -13,6 +13,7 @@ const useGetCardList = (limit = 8, offset = 0, sort = 'name') => {
   const [UserCardListData, setUserCardListData] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [totalPage, setTotalPage] = useState(0);
 
   useEffect(() => {
     try {
@@ -21,6 +22,7 @@ const useGetCardList = (limit = 8, offset = 0, sort = 'name') => {
         'https://openmind-api.vercel.app',
         `/subjects/?limit=${limit}&offset=${offset}&sort=${sort}`,
       ).then((result) => {
+        setTotalPage(Math.ceil(result.count / limit));
         return setUserCardListData(result);
       });
     } catch (err) {
@@ -30,7 +32,7 @@ const useGetCardList = (limit = 8, offset = 0, sort = 'name') => {
     }
   }, [offset, sort, limit]);
 
-  return { UserCardListData, isLoading, error };
+  return { UserCardListData, totalPage, isLoading, error };
 };
 
 export default useGetCardList;

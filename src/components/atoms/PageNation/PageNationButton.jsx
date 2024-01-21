@@ -1,12 +1,22 @@
 import styled from 'styled-components';
 
-export default function PageNationButton({ arrowText, pageCount, isSelected }) {
+export default function PageNationButton({
+  arrowText,
+  pageCount,
+  isSelected,
+  onClick,
+}) {
   const DefaultFontColor = isSelected
     ? 'var(--Brown-40, #542F1A)'
     : 'var(--Grayscale-40, #818181)';
 
   return (
-    <PageButton DefaultFontColor={DefaultFontColor}>
+    <PageButton
+      DefaultFontColor={DefaultFontColor}
+      onClick={() => {
+        onClick(pageCount);
+      }}
+    >
       {pageCount}
       {arrowText}
     </PageButton>

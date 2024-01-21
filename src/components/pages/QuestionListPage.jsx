@@ -2,20 +2,50 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import QuestionListNavbar from '../organisms/QuestionListNavbar/QuestionListNavbar';
 import CardSortDropdown from '../atoms/Dropdown/CardSortDropdown';
-import PageNationButton from '../atoms/PageNation/PageNationButton';
 import UserCardList from '../organisms/UserCardList/UserCardList';
 import useGetCardList from '../../hooks/useGetCardList';
+import PageNation from '../organisms/QuestionPageNation/PageNation';
 
 export default function QuestionListPage() {
-  const [limit, setLimit] = useState(8);
-  const [offset, setOffset] = useState(0);
+  const [currentPage, setCurrentPage] = useState(1);
+  const limit = 8;
+  const offset = (currentPage - 1) * limit;
+
   const [sort, setSort] = useState('time');
+
+  const {
+    UserCardListData,
+    totalPage,
+    isLoading: isLoadingUserCardListData,
+  } = useGetCardList(limit, offset, sort);
 
   const handleSortOptionSelect = (value) => {
     setSort(value);
   };
 
-  const { UserCardListData } = useGetCardList(limit, offset, sort);
+  const handleLeftArrowClick = () => {
+    if (currentPage === 1) {
+      return;
+    }
+    setCurrentPage((prev) => {
+      return prev - 1;
+    });
+  };
+
+  const handleRightArrowClick = () => {
+    if (currentPage === totalPage) {
+      return;
+    }
+    setCurrentPage((prev) => {
+      return prev + 1;
+    });
+  };
+
+  const handlePageClick = (value) => {
+    setCurrentPage(() => {
+      return value;
+    });
+  };
 
   return (
     <Wrapper>
@@ -28,15 +58,14 @@ export default function QuestionListPage() {
         />
       </TitleWrapper>
       <UserCardList UserCardListData={UserCardListData} />
-      <PageNationButtonContainer>
-        <PageNationButton arrowText="<" isSelected={false} />
-        <PageNationButton pageCount={1} isSelected />
-        <PageNationButton pageCount={2} isSelected={false} />
-        <PageNationButton pageCount={3} isSelected={false} />
-        <PageNationButton pageCount={4} isSelected={false} />
-        <PageNationButton pageCount={5} isSelected={false} />
-        <PageNationButton arrowText=">" isSelected={false} />
-      </PageNationButtonContainer>
+      <PageNation
+        totalPage={totalPage}
+        isLoadingUserCardListData={isLoadingUserCardListData}
+        onLeftArrowClick={handleLeftArrowClick}
+        onPageClick={handlePageClick}
+        onRightArrowClick={handleRightArrowClick}
+        currentPage={currentPage}
+      />
     </Wrapper>
   );
 }
@@ -77,8 +106,4 @@ const Title = styled.h1`
     line-height: 30px; /* 125% */
     margin-bottom: 0;
   }
-`;
-
-const PageNationButtonContainer = styled.div`
-  display: flex;
 `;

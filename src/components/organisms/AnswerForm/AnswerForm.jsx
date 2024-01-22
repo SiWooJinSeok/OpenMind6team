@@ -1,17 +1,17 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import styled from 'styled-components';
 import InputTextArea from '../../atoms/InputTextArea/InputTextArea';
 
 /**
  *
- * @param {answer : state, setAnswer : setState, onClick: setState(typeChange)} param0
+ * @param {inputValue : state, setInputValue : setState, onClick: setState(typeChange)} param0
  * @returns AnswerEdit
  */
 // TODO(노진석) : 나중에 변경 될 수 있음.
-export default function AnswerForm({ answer, setAnswer, onClick }) {
+export default function AnswerForm({ inputValue, setInputValue, onClick }) {
   const [isAnswer, setIsAnswer] = useState(true);
   const handleAnswer = (value) => {
-    setAnswer(value);
+    setInputValue(value);
     if (value === '') {
       setIsAnswer(true);
       return;
@@ -22,7 +22,7 @@ export default function AnswerForm({ answer, setAnswer, onClick }) {
   return (
     <Container>
       <InputTextArea
-        value={answer}
+        value={inputValue}
         width="100%"
         height="154px"
         handler={handleAnswer}

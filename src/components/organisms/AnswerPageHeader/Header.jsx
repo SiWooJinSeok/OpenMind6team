@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components';
 import ShareButtonBox from '../ShareButtonBox';
 import UserProfileImage from '../../atoms/UserProfileImage/UserProfileImage';

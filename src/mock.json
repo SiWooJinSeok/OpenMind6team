@@ -34,5 +34,19 @@
     "like": 0,
     "dislike": 15,
     "createdAt": "2023-10-30T09:27:59.497667Z"
+  },
+  {
+    "id": 49,
+    "subjectId": 23,
+    "content": "가장 좋아하는 동물이 궁금해요!",
+    "like": 4,
+    "dislike": 0,
+    "createdAt": "2023-10-29T09:27:59.497667Z",
+    "answer": {
+      "id": 20,
+      "content": "강아지를 좋아합니다",
+      "isRejected": true,
+      "createdAt": "2023-11-01T00:43:56.863795Z"
+    }
   }
 ]

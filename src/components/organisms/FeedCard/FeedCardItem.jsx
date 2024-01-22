@@ -42,8 +42,6 @@ export default function FeedCardItem({ question }) {
 const FeedCardItemWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  width: 684px;
   padding: 32px;
   gap: 32px 0;
   border-radius: 16px;

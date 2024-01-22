@@ -1,13 +1,12 @@
+import { Outlet } from 'react-router-dom';
 import GlobalStyle from './GlobalStyle';
 
 function App() {
   return (
-    <>
+    <div>
       <GlobalStyle />
-      <div>
-        <h2>Hello World</h2>
-      </div>
-    </>
+      <Outlet />
+    </div>
   );
 }
 

@@ -1,10 +1,9 @@
 import styled from 'styled-components';
-
-import Header from '../components/organisms/AnswerPageHeader/Header';
-import DeleteButton from '../components/atoms/Button/DeleteButton';
-import FeedCard from '../components/organisms/FeedCard/FeedCard';
-import imageData from '../assets/imageData';
-// TODO(노진석) :
+import Header from '../organisms/AnswerPageHeader/Header';
+import DeleteButton from '../atoms/Button/DeleteButton';
+import FeedCard from '../organisms/FeedCard/FeedCard';
+import imageData from '../../assets/imageData';
+// TODO(노진석) : 나중에 로직 만들 때 수정
 export default function AnswerPage() {
   const questionCount = 3;
   const mockData = [

@@ -1,5 +1,5 @@
 import GlobalStyle from './GlobalStyle';
-import FeedCard from './components/organisms/FeedCard/FeedCard';
+import QuestionPage from './components/pages/QuestionPage';
 import questions from './mock.json';
 
 function App() {
@@ -7,7 +7,7 @@ function App() {
     <>
       <GlobalStyle />
       <div>
-        <FeedCard questions={questions} />
+        <QuestionPage questions={questions} />
       </div>
     </>
   );

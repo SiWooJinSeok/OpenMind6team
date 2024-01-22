@@ -1,21 +1,33 @@
 import styled from 'styled-components';
 import UserCard from '../UserCard/UserCard';
 
-export default function UserCardList({ UserCardListData }) {
-  const { results: cardCollection } = UserCardListData;
+/**
+ *
+ * @param {UserCardListData : object | isLoadingUserCardListData : boolean} param0
+ * @returns 유저 카드 리스트 그리드
+ */
+
+export default function UserCardList({
+  UserCardListData,
+  isLoadingUserCardListData,
+}) {
+  const { results: cardList } = UserCardListData;
 
   return (
     <Container>
-      {cardCollection?.map((card) => {
-        return (
-          <UserCard
-            key={card.id}
-            userName={card.name}
-            questionCount={card.questionCount}
-            ProfileImageSource={card.imageSource}
-          />
-        );
-      })}
+      {isLoadingUserCardListData
+        ? null
+        : cardList?.map((card) => {
+            return (
+              <UserCard
+                key={card.id}
+                id={card.id}
+                userName={card.name}
+                questionCount={card.questionCount}
+                ProfileImageSource={card.imageSource}
+              />
+            );
+          })}
     </Container>
   );
 }

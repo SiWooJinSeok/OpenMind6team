@@ -1,13 +1,12 @@
+import { Outlet } from 'react-router-dom';
+
 import GlobalStyle from './GlobalStyle';
-import QuestionListPage from './components/pages/QuestionListPage';
 
 function App() {
   return (
     <>
       <GlobalStyle />
-      <div>
-        <QuestionListPage />
-      </div>
+      <Outlet />
     </>
   );
 }

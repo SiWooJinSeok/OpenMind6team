@@ -1,8 +1,13 @@
 import styled from 'styled-components';
 
+/**
+ *
+ * @param {arrowText : string | page : number | isSelected : boolean | onClick : eventHandlerFunction} param0
+ * @returns 페이지네이션 숫자 버튼
+ */
 export default function PageNationButton({
   arrowText,
-  pageCount,
+  page,
   isSelected,
   onClick,
 }) {
@@ -14,10 +19,10 @@ export default function PageNationButton({
     <PageButton
       DefaultFontColor={DefaultFontColor}
       onClick={() => {
-        onClick(pageCount);
+        onClick(page);
       }}
     >
-      {pageCount}
+      {page}
       {arrowText}
     </PageButton>
   );

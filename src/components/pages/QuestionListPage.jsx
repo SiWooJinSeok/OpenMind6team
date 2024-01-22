@@ -4,7 +4,10 @@ import QuestionListNavbar from '../organisms/QuestionListNavbar/QuestionListNavb
 import CardSortDropdown from '../atoms/Dropdown/CardSortDropdown';
 import UserCardList from '../organisms/UserCardList/UserCardList';
 import useGetCardList from '../../hooks/useGetCardList';
-import PageNation from '../organisms/QuestionPageNation/PageNation';
+import PageNationNumbers from '../organisms/QuestionPageNationNumbers/PageNationNumbers';
+import PageNationButton from '../atoms/PageNation/PageNationButton';
+
+// OPINION : 페이지 네이션 관련 함수가 너무 많아서 hook을 기깔나게 하나 만들면 좋을 것 같습니다.
 
 export default function QuestionListPage() {
   const [currentPage, setCurrentPage] = useState(1);
@@ -19,7 +22,7 @@ export default function QuestionListPage() {
     isLoading: isLoadingUserCardListData,
   } = useGetCardList(limit, offset, sort);
 
-  const handleSortOptionSelect = (value) => {
+  const handleSortButtonClick = (value) => {
     setSort(value);
   };
 
@@ -54,23 +57,37 @@ export default function QuestionListPage() {
         <Title>누구에게 질문할까요?</Title>
         <CardSortDropdown
           CardSort={sort}
-          onSortSelect={handleSortOptionSelect}
+          onSortButtonClick={handleSortButtonClick}
         />
       </TitleWrapper>
-      <UserCardList UserCardListData={UserCardListData} />
-      <PageNation
-        totalPage={totalPage}
+      <UserCardList
+        UserCardListData={UserCardListData}
         isLoadingUserCardListData={isLoadingUserCardListData}
-        onLeftArrowClick={handleLeftArrowClick}
-        onPageClick={handlePageClick}
-        onRightArrowClick={handleRightArrowClick}
-        currentPage={currentPage}
       />
+      <PageNationButtonContainer>
+        <PageNationButton
+          arrowText="<"
+          isSelected={false}
+          onClick={handleLeftArrowClick}
+        />
+        <PageNationNumbers
+          totalPage={totalPage}
+          isLoadingUserCardListData={isLoadingUserCardListData}
+          onPageClick={handlePageClick}
+          currentPage={currentPage}
+        />
+        <PageNationButton
+          arrowText=">"
+          isSelected={false}
+          onClick={handleRightArrowClick}
+        />
+      </PageNationButtonContainer>
     </Wrapper>
   );
 }
 
 const Wrapper = styled.div`
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -106,4 +123,8 @@ const Title = styled.h1`
     line-height: 30px; /* 125% */
     margin-bottom: 0;
   }
+`;
+
+const PageNationButtonContainer = styled.div`
+  display: flex;
 `;

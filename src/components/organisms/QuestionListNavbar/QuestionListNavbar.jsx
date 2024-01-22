@@ -1,13 +1,13 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import imageData from '../../../assets/imageData';
 import GoToAnswerButton from '../../atoms/Button/GoToAnswerButton';
 
-// TODO LogoBox를 Link 태그로 바꿔야함
-
+// TODO : 답변하러가기 navigate 함수 붙여줘야 합니다
 export default function QuestionListNavbar() {
   return (
-    <Navbar href="/">
-      <LogoBox>
+    <Navbar>
+      <LogoBox to="/">
         <img src={imageData.openMindLogo} alt="로고 이미지" />
       </LogoBox>
       <GoToAnswerButton text="답변하러가기" />
@@ -36,7 +36,7 @@ const Navbar = styled.nav`
   }
 `;
 
-const LogoBox = styled.a`
+const LogoBox = styled(Link)`
   width: 146px;
   height: 57px;
 

@@ -1,9 +1,14 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 
+/**
+ *
+ * @param {CardSort : string | onSortButtonClick : eventHandlerFunction} param0
+ * @returns
+ */
 export default function CardSortDropdown({
   CardSort = '최신순',
-  onSortSelect,
+  onSortButtonClick,
 }) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
@@ -19,8 +24,8 @@ export default function CardSortDropdown({
       </DropdownHeader>
       {isDropdownOpen ? (
         <DropdownContent>
-          <Button onClick={() => onSortSelect('time')}>최신순</Button>
-          <Button onClick={() => onSortSelect('name')}>이름순</Button>
+          <Button onClick={() => onSortButtonClick('time')}>최신순</Button>
+          <Button onClick={() => onSortButtonClick('name')}>이름순</Button>
         </DropdownContent>
       ) : null}
     </Wrapper>
@@ -61,8 +66,13 @@ const DropdownContent = styled.div`
   border: 1px solid var(--Grayscale-40);
   border-radius: 0.8rem;
   padding: 0.6rem 1.6rem;
-
+  background: var(--Grayscale-10, #fff);
+  box-shadow: 0px 4px 4px 0px rgba(140, 140, 140, 0.25);
   margin-top: 0.5rem;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
 `;
 
 const Button = styled.button`

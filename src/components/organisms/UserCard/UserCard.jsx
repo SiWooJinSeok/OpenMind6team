@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import UserProfileImage from '../../atoms/UserProfileImage/UserProfileImage';
 import imageData from '../../../assets/imageData';
@@ -8,12 +9,13 @@ import imageData from '../../../assets/imageData';
  * @returns UserCard
  */
 export default function UserCard({
+  id,
   userName,
   questionCount,
   ProfileImageSource,
 }) {
   return (
-    <Container>
+    <Container to={`/post/${id}`}>
       <UserProfileImage type="userCard" imageSource={ProfileImageSource} />
       <UserName>{userName}</UserName>
       <MessageBox>
@@ -30,7 +32,7 @@ UserCard.defualtprops = {
   questionCount: 0,
 };
 
-const Container = styled.div`
+const Container = styled(Link)`
   max-width: 22rem;
   min-width: 186px;
   border-radius: 1.6rem;

@@ -34,6 +34,14 @@ const FeedCardWrapper = styled.div`
   width: 716px;
   height: 1138px;
   overflow: auto;
+
+  @media (max-width: 1200px) {
+    width: 704px;
+  }
+
+  @media (max-width: 768px) {
+    width: 95%;
+  }
 `;
 
 const QuestionsCount = styled.div`
@@ -45,9 +53,18 @@ const QuestionsCount = styled.div`
   color: var(--Brown-40);
   font-size: 2rem;
 
+  @media (max-width: 768px) {
+    font-size: 1.8rem;
+  }
+
   img {
     width: 24px;
     height: 24px;
+
+    @media (max-width: 768px) {
+      width: 22px;
+      height: 22px;
+    }
   }
 `;
 

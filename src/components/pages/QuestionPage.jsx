@@ -13,15 +13,16 @@ export default function QuestionPage({ questions }) {
       </ProfileContainer>
       <MainSection>
         <FeedCard questions={questions} />
+        <ButtonSection>
+          <FloatingButton>질문 작성하기</FloatingButton>
+        </ButtonSection>
       </MainSection>
-      <ButtonSection>
-        <FloatingButton>질문 작성하기</FloatingButton>
-      </ButtonSection>
     </QuestionPageWrapper>
   );
 }
 
 const QuestionPageWrapper = styled.div`
+  width: 100%;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -32,24 +33,35 @@ const QuestionPageWrapper = styled.div`
 const BannerImg = styled.img`
   width: 1200px;
   height: 234px;
+
+  @media (max-width: 768px) {
+    width: 906px;
+    height: 177px;
+  }
 `;
 
 const ProfileContainer = styled.div`
   position: absolute;
   top: 50px;
+
+  @media (max-width: 768px) {
+    top: 40px;
+  }
 `;
 
 const MainSection = styled.div`
-  width: 100%;
+  width: 1200px;
   display: flex;
-  justify-content: center;
-  background-color: var(--Grayscale-20);
+  flex-direction: column;
+  align-items: center;
   margin-top: 189px;
-  margin-bottom: 136px;
+
+  @media (max-width: 1200px) {
+    width: 100%;
+    margin-top: 176px;
+  }
 `;
 
 const ButtonSection = styled.div`
-  position: relative;
-  top: -24px;
-  left: 472px;
+  margin: 58px 24px 24px auto;
 `;

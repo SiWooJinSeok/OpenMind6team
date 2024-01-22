@@ -21,7 +21,7 @@ export default function FeedCardItem({ question }) {
       </QuestionSection>
       {question.answer && (
         <AnswerSection>
-          <UserProfileImage />
+          <UserProfileImage type="feedCard" />
           <AnswerDetail>
             <div>
               <span>답변유저아이디</span>
@@ -42,8 +42,8 @@ export default function FeedCardItem({ question }) {
 const FeedCardItemWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 32px;
-  gap: 32px 0;
+  padding: 24px;
+  gap: 24px 0;
   border-radius: 16px;
   box-shadow: 0px 4px 4px 0px rgba(140, 140, 140, 0.25);
   background-color: var(--Grayscale-10);
@@ -68,6 +68,11 @@ const QuestionSection = styled.section`
     font-size: 1.8rem;
     font-weight: 400;
     line-height: 24px;
+
+    @media (max-width: 768px) {
+      font-size: 1.6rem;
+      line-height: 22px;
+    }
   }
 `;
 
@@ -87,14 +92,19 @@ const AnswerDetail = styled.div`
     font-size: 1.8rem;
     font-weight: 400;
     line-height: 24px;
+
+    @media (max-width: 768px) {
+      font-size: 1.4rem;
+      line-height: 18px;
+    }
   }
 
   span:last-child {
     color: var(--Grayscale-40);
-    font-size: 1.4rem
+    font-size: 1.4rem;
     font-weight: 500;
     line-height: 18px;
-    margin-left:8px
+    margin-left: 8px;
   }
 
   p {

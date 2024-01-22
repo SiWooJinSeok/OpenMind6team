@@ -8,7 +8,13 @@ import InputTextArea from '../../atoms/InputTextArea/InputTextArea';
  * @returns AnswerEdit
  */
 // TODO(노진석) : 나중에 변경 될 수 있음.
-export default function AnswerForm({ answer, setAnswer, onClick }) {
+export default function AnswerForm({
+  answer,
+  setAnswer,
+  onClick,
+  placeholder = '답변을 입력해주세요',
+  buttonText = '답변완료',
+}) {
   const [isAnswer, setIsAnswer] = useState(true);
   const handleAnswer = (value) => {
     setAnswer(value);
@@ -26,10 +32,10 @@ export default function AnswerForm({ answer, setAnswer, onClick }) {
         width="100%"
         height="154px"
         handler={handleAnswer}
-        placeholder="답변을 입력해주세요"
+        placeholder={placeholder}
       />
       <Button disabled={isAnswer} type="button" onClick={onClick}>
-        답변완료
+        {buttonText}
       </Button>
     </Container>
   );

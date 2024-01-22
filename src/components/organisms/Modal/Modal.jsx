@@ -1,9 +1,12 @@
+import { useState } from 'react';
 import styled from 'styled-components';
-import AnswerForm from '../AnswerForm/AnswerForm';
 import imageData from '../../../assets/imageData';
 import UserProfileImage from '../../atoms/UserProfileImage/UserProfileImage';
+import AnswerForm from '../AnswerForm/AnswerForm';
 
 export default function Modal({ owner }) {
+  const [inputQuestion, setInputQuestion] = useState('');
+  // TODO[이시열] : AnswerForm에 onClick prop 전달
   return (
     <Wrapper>
       <Container>
@@ -21,8 +24,11 @@ export default function Modal({ owner }) {
             <Recipient>{owner.name}</Recipient>
           </RecipientBox>
           <AnswerForm
+            inputValue={inputQuestion}
+            setInputValue={setInputQuestion}
             placeholder="질문을 입력해주세요"
             buttonText="질문 보내기"
+            inputAreaHeight="180px"
           />
         </QuestionBox>
       </Container>

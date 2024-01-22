@@ -4,20 +4,21 @@ import InputTextArea from '../../atoms/InputTextArea/InputTextArea';
 
 /**
  *
- * @param {answer : state, setAnswer : setState, onClick: setState(typeChange)} param0
+ * @param {inputValue : state, setInputValue : setState, onClick: setState(typeChange)} param0
  * @returns AnswerEdit
  */
 // TODO(노진석) : 나중에 변경 될 수 있음.
 export default function AnswerForm({
-  answer,
-  setAnswer,
+  inputValue,
+  setInputValue,
   onClick,
   placeholder = '답변을 입력해주세요',
   buttonText = '답변완료',
+  inputAreaHeight = '154px',
 }) {
   const [isAnswer, setIsAnswer] = useState(true);
   const handleAnswer = (value) => {
-    setAnswer(value);
+    setInputValue(value);
     if (value === '') {
       setIsAnswer(true);
       return;
@@ -28,9 +29,9 @@ export default function AnswerForm({
   return (
     <Container>
       <InputTextArea
-        value={answer}
+        value={inputValue}
         width="100%"
-        height="154px"
+        height={inputAreaHeight}
         handler={handleAnswer}
         placeholder={placeholder}
       />
@@ -54,4 +55,5 @@ const Button = styled.button`
   background: ${(props) =>
     props.disabled ? 'var(--Brown-30)' : 'var(--Brown-40)'};
   color: #fff;
+  font-size: 1.6rem;
 `;

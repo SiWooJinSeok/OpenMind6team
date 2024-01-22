@@ -2,6 +2,7 @@
   "extends": ["airbnb", "plugin:prettier/recommended"],
   "plugins": ["react", "jsx-a11y", "import"],
   "rules": {
+    "react/destructuring-assignment": "off",
     "prettier/prettier": ["error"],
     "react/react-in-jsx-scope": "off",
     "react/jsx-props-no-spreading": "off",

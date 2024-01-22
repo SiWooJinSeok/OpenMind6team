@@ -1,11 +1,13 @@
 import GlobalStyle from './GlobalStyle';
+import FeedCard from './components/organisms/FeedCard/FeedCard';
+import questions from './mock.json';
 
 function App() {
   return (
     <>
       <GlobalStyle />
       <div>
-        <h2>Hello World</h2>
+        <FeedCard questions={questions} />
       </div>
     </>
   );

@@ -57,7 +57,6 @@ const CreatedAtSpan = styled.span`
 const Wrapper = styled.div`
   display: flex;
   gap: 12px;
-  padding: 32px;
   width: 100%;
   max-width: 684px;
 `;

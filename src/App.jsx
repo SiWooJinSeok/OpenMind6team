@@ -1,12 +1,11 @@
 import GlobalStyle from './GlobalStyle';
-import AnswerPage from './pages/AnswerPage';
 
 function App() {
   return (
     <>
       <GlobalStyle />
       <div>
-        <AnswerPage />
+        <h2>Hello World</h2>
       </div>
     </>
   );

@@ -15,15 +15,15 @@ const router = createBrowserRouter([
         element: <MainPage />,
       },
       {
-        path: '/list',
+        path: 'list',
         element: <QuestionListPage />,
       },
       {
-        path: '/post/:id/answer',
+        path: 'post/:id/answer',
         element: <AnswerPage />,
       },
       {
-        path: '/post/:id',
+        path: 'post/:id',
         element: <QuestionPage />,
       },
     ],

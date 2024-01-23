@@ -3,7 +3,8 @@ import imageData from '../../../assets/imageData';
 
 /**
  *
- * @param {type : string, imageSource : src} param0
+ * @param {string} imageSource : 이미지 src에 들어갈 이미지
+ * @param {string} type : 'userCard' or 'feedCard' or 'profile'
  * @returns type => imgSize
  */
 export default function UserProfileImage({ type, imageSource }) {

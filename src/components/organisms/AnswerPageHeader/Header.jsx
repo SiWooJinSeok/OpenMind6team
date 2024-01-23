@@ -3,6 +3,11 @@ import UserProfileImage from '../../atoms/UserProfileImage/UserProfileImage';
 import imageData from '../../../assets/imageData';
 import ShareButtonBox from '../ShareButtonBox/ShareButtonBox';
 
+/**
+ *
+ * @param {object} owner : 질문 받는 주인
+ * @returns
+ */
 export default function Header({ owner }) {
   return (
     <>

@@ -9,8 +9,8 @@ import { getCurrentType } from './getAnswerType';
 
 /**
  *
- * @param {questionData : { content, like, dislike, answer: {} }} param0
- * @returns feedCard()
+ * @param {object} questionData : content, like, dislike, answer : {}
+ * @returns FeedCard (Answer, NoAnswer, Edit)
  */
 
 // TODO(노진석) : 기능 구현하기

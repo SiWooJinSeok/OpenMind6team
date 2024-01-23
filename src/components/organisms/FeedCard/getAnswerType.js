@@ -7,7 +7,7 @@ const getAnswerType = ({ type, handleType, answer, setAnswer }) => {
       return (
         <AnswerForm
           onClick={handleType}
-          answer={answer}
+          inputValue={answer}
           setInputValue={setAnswer}
         />
       );

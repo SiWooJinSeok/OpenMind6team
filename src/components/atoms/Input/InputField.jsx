@@ -30,8 +30,7 @@ InputField.defaultProps = {
 };
 
 const Box = styled(RowFlexCenter)`
-  max-width: 336px;
-  width: 100%;
+  width: 336px;
   gap: 4px;
   border-radius: 8px;
   border: 1px solid #818181;
@@ -40,8 +39,8 @@ const Box = styled(RowFlexCenter)`
   &:focus-within {
     border: 1px solid #542f1a;
   }
-  @media screen and (max-width: 756px) {
-    max-width: 257px;
+  @media screen and (max-width: 767px) {
+    width: 257px;
   }
 `;
 const Input = styled.input`

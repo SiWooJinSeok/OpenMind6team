@@ -1,5 +1,6 @@
 import { Outlet } from 'react-router-dom';
 import GlobalStyle from './GlobalStyle';
+import MainPage from './components/pages/MainPage';
 
 function App() {
   return (
@@ -7,6 +8,8 @@ function App() {
       <GlobalStyle />
       <Outlet />
     </div>
+      <MainPage />
+    </>
   );
 }
 

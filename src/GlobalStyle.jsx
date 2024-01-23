@@ -1,6 +1,8 @@
 import { createGlobalStyle } from 'styled-components';
+import reset from 'styled-reset';
 
 const GlobalStyle = createGlobalStyle`
+    ${reset};
     :root{
         --Grayscale-10: #ffffff;
         --Grayscale-20 : #F9F9F9;
@@ -51,6 +53,7 @@ const GlobalStyle = createGlobalStyle`
     input {
     outline: none;
     border: none;
+    padding: 0;
     }
 
     li {

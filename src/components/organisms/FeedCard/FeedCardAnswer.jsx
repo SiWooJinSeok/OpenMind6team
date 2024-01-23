@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import styled from 'styled-components';
 import UserProfileImage from '../../atoms/UserProfileImage/UserProfileImage';
 import getAnswerType from './getAnswerType';
@@ -57,7 +57,6 @@ const CreatedAtSpan = styled.span`
 const Wrapper = styled.div`
   display: flex;
   gap: 12px;
-  padding: 32px;
   width: 100%;
   max-width: 684px;
 `;

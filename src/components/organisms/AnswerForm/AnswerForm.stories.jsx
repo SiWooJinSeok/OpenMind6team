@@ -8,8 +8,8 @@ export default {
   },
   tags: ['autodocs'],
   argTypes: {
-    answer: { control: 'text', defaultValue: '초기값' },
-    setAnswer: { action: 'setState' },
+    inputValue: { control: 'text', defaultValue: '초기값' },
+    setInputValue: { action: 'setState' },
   },
 };
 
@@ -18,5 +18,5 @@ const Template = (args) => <AnswerForm {...args} />;
 export const Default = Template.bind({});
 
 Default.args = {
-  answer: '초기값',
+  inputValue: '초기값',
 };

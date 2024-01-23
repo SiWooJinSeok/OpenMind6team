@@ -4,6 +4,8 @@ import messageIcon from './img/icon-messages.svg';
 import box from './img/box.svg';
 import logo from './img/logo.svg';
 import openMindLogo from './img/openmind-logo.svg';
+import nextArrow from './img/next_arrow.png';
+import arrowRight from './img/icon-arrow-right.svg';
 
 const imageData = {
   PersonIcon,
@@ -12,6 +14,8 @@ const imageData = {
   box,
   logo,
   openMindLogo,
+  nextArrow,
+  arrowRight,
 };
 
 export default imageData;

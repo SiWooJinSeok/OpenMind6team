@@ -5,9 +5,10 @@ import boxImg from '../../../assets/img/box.svg';
 
 export default function FeedCard({ questions }) {
   const numberOfQuestions = questions.length;
+  const hasQuestions = numberOfQuestions > 0;
 
   return (
-    <FeedCardWrapper>
+    <FeedCardWrapper hasQuestions={hasQuestions}>
       <QuestionsCount>
         <img src={MessagesImg} alt="메세지 이미지" />
         {numberOfQuestions > 0
@@ -18,7 +19,7 @@ export default function FeedCard({ questions }) {
         <QuestionsList>
           {questions.map((question) => {
             return (
-              <li>
+              <li key={questions.id}>
                 <FeedCardItem question={question} />
               </li>
             );

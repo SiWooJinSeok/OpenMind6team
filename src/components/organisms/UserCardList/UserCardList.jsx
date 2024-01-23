@@ -98,7 +98,7 @@ const NextPageButton = styled.button`
 
     div {
       align-items: flex-end;
-      transform: translateX(80%);
+      transform: translateX(50%);
     }
 
     p {

@@ -6,6 +6,9 @@ import logo from './img/logo.svg';
 import openMindLogo from './img/openmind-logo.svg';
 import nextArrow from './img/next_arrow.png';
 import arrowRight from './img/icon-arrow-right.svg';
+import bgImg from './img/v-872-batch-5-nunny-041.png';
+import mainPageImage from './img/mainPageImage.jfif';
+import closeIcon from './img/icon-close.svg';
 
 const imageData = {
   PersonIcon,
@@ -16,6 +19,9 @@ const imageData = {
   openMindLogo,
   nextArrow,
   arrowRight,
+  bgImg,
+  mainPageImage,
+  closeIcon,
 };
 
 export default imageData;

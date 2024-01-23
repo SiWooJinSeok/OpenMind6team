@@ -38,6 +38,10 @@ const TYPE = {
       height: 104px;
     }
   `,
+  questionModal: css`
+    width: 28px;
+    height: 28px;
+  `,
 };
 
 const Img = styled.img`

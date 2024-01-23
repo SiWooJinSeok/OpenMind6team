@@ -1,15 +1,16 @@
 import axios from 'axios';
 
-/**
+/** API 호출 로직
  *
  * @param {string} host default: 'openmind-api.vercel.app'
  * @param {string} path 'subjects' or 'answers' or 'questions'
  * @param {string} method 'GET' or 'POST' or 'DELETE'
- * @param {object} postData POST 요청일때 body로 보낼거
+ * @param {object} postData POST 요청일때 body로 보낼 객체
  * @param {string} team default: '3-6'
  * @returns 응답받은 Promise 객체
  */
-const getFetch = async (host, path, method, postData, team = '3-6') => {
+const getFetch = async (host, path, method, postData = {}, team = '3-6') => {
+  // TODO[이시열]: DELETE 로직
   try {
     const config = {
       method,
@@ -30,9 +31,9 @@ const getFetch = async (host, path, method, postData, team = '3-6') => {
       return result;
     }
 
-    throw Error('불러오기 실패');
-  } catch (err) {
-    return console.error(err);
+    throw new Error('불러오기 실패');
+  } catch (error) {
+    return console.error(error);
   }
 };
 

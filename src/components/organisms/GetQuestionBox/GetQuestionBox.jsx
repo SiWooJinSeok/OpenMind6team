@@ -1,28 +1,26 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import getFetch from '../../../utils/getFetch';
 import AskQuestionButton from '../../atoms/Button/AskQuestionButton';
 import InputField from '../../atoms/Input/InputField';
+import createSubject from '../../../utils/createSubject';
 
-const HOST = 'openmind-api.vercel.app';
-/**
+/** 이름 입력후 질문 받기 버튼 클릭 시 API 호출 후 로컬 스토리지에 subjectId 저장.
+ *  /post/{subjectId}/answer 로 페이지 이동.
  *
  * @returns 이름 입력, 질문 받기 버튼을 포함한 UI
  */
 export default function GetQuestionBox() {
-  const navigate = useNavigate();
   const [inputName, setInputName] = useState('');
+  const navigate = useNavigate();
 
   const handleInputName = (value) => {
     setInputName(value);
   };
 
   const handleButtonClick = async () => {
-    const subjectName = { name: inputName };
-    const data = await getFetch(HOST, 'subjects', 'post', subjectName);
-    localStorage.setItem('subjectId', data.id);
-    navigate(`/post/${data.id}/answer`);
+    const { id } = await createSubject(inputName);
+    navigate(`/post/${id}/answer`);
   };
 
   return (

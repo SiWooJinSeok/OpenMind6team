@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import FeedCard from '../organisms/FeedCard/FeedCard';
+import FeedCard from '../organisms/QuestionsFeedCard/QuestionsFeedCard';
 import bannerImg from '../../assets/img/v-872-batch-5-nunny-041.png';
 import UserProfileHeader from '../organisms/UserProfileHeader/UserProfileHeader';
 import FloatingButton from '../atoms/Button/FloatingButton';
@@ -37,7 +37,6 @@ const BannerImg = styled.img`
   @media (max-width: 768px) {
     width: 906px;
     height: 177px;
-  }
 `;
 
 const ProfileContainer = styled.div`
@@ -55,6 +54,7 @@ const MainSection = styled.div`
   flex-direction: column;
   align-items: center;
   margin-top: 189px;
+  background-color: var(--Grayscale-20);
 
   @media (max-width: 1200px) {
     width: 100%;

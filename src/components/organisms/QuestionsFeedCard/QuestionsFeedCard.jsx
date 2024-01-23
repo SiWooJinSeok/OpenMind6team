@@ -1,6 +1,7 @@
 import styled from 'styled-components';
-import FeedCardItem from './FeedCardItem';
+import FeedCardItem from './QuestionsFeedCardItem';
 import MessagesImg from '../../../assets/img/Messages_Brown.svg';
+import boxImg from '../../../assets/img/box.svg';
 
 export default function FeedCard({ questions }) {
   const numberOfQuestions = questions.length;
@@ -9,17 +10,23 @@ export default function FeedCard({ questions }) {
     <FeedCardWrapper>
       <QuestionsCount>
         <img src={MessagesImg} alt="메세지 이미지" />
-        {numberOfQuestions}개의 질문이 있습니다
+        {numberOfQuestions > 0
+          ? `${numberOfQuestions}개의 질문이 있습니다`
+          : '아직 질문이 없습니다.'}
       </QuestionsCount>
-      <QuestionsList>
-        {questions.map((question) => {
-          return (
-            <li>
-              <FeedCardItem question={question} />
-            </li>
-          );
-        })}
-      </QuestionsList>
+      {numberOfQuestions > 0 ? (
+        <QuestionsList>
+          {questions.map((question) => {
+            return (
+              <li>
+                <FeedCardItem question={question} />
+              </li>
+            );
+          })}
+        </QuestionsList>
+      ) : (
+        <BoxImg src={boxImg} alt="박스이미지" />
+      )}
     </FeedCardWrapper>
   );
 }
@@ -27,12 +34,13 @@ export default function FeedCard({ questions }) {
 const FeedCardWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: center;
   padding: 16px;
   border: 1px solid var(--Brown-30);
   border-radius: 16px;
   background-color: var(--Brown-10);
   width: 716px;
-  height: 1138px;
+  height: ${(props) => (props.hasQuestions ? '1138px' : '330px')};
   overflow: auto;
 
   @media (max-width: 1200px) {
@@ -73,4 +81,10 @@ const QuestionsList = styled.ul`
   flex-direction: column;
   padding-inline-start: 0;
   gap: 20px;
+`;
+
+const BoxImg = styled.img`
+  width: 170px;
+  height: 174px;
+  margin-top: 45px;
 `;

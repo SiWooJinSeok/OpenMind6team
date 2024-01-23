@@ -28,6 +28,7 @@ const GlobalStyle = createGlobalStyle`
         font-family: Pretendard;
         font-style: normal;
         line-height: normal;
+        background-color:var(--Grayscale-20);
     }
     h1 {
         font-size: 40px;

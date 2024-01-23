@@ -8,7 +8,14 @@ import InputTextArea from '../../atoms/InputTextArea/InputTextArea';
  * @returns AnswerEdit
  */
 // TODO(노진석) : 나중에 변경 될 수 있음.
-export default function AnswerForm({ inputValue, setInputValue, onClick }) {
+export default function AnswerForm({
+  inputValue,
+  setInputValue,
+  onClick,
+  placeholder = '답변을 입력해주세요',
+  buttonText = '답변완료',
+  inputAreaHeight = '154px',
+}) {
   const [isAnswer, setIsAnswer] = useState(true);
   const handleAnswer = (value) => {
     setInputValue(value);
@@ -24,12 +31,12 @@ export default function AnswerForm({ inputValue, setInputValue, onClick }) {
       <InputTextArea
         value={inputValue}
         width="100%"
-        height="154px"
+        height={inputAreaHeight}
         handler={handleAnswer}
-        placeholder="답변을 입력해주세요"
+        placeholder={placeholder}
       />
       <Button disabled={isAnswer} type="button" onClick={onClick}>
-        답변완료
+        {buttonText}
       </Button>
     </Container>
   );
@@ -48,4 +55,5 @@ const Button = styled.button`
   background: ${(props) =>
     props.disabled ? 'var(--Brown-30)' : 'var(--Brown-40)'};
   color: #fff;
+  font-size: 1.6rem;
 `;

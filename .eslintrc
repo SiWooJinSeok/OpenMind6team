@@ -6,6 +6,7 @@
     "react/react-in-jsx-scope": "off",
     "react/jsx-props-no-spreading": "off",
     "react/prop-types": "off",
+    "no-console": ["error", { "allow": ["warn", "error", "info"] }],
     "react/jsx-filename-extension": [
       "error",
       { "extensions": [".jsx", ".js"] },

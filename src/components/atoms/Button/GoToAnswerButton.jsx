@@ -10,9 +10,9 @@ import { ButtonBox, ArrowImg } from './Share';
  * @returns GoToAnswerButton Component
  */
 
-export default function GoToAnswerButton({ text, width }) {
+export default function GoToAnswerButton({ className, text, width }) {
   return (
-    <Button width={width}>
+    <Button className={className} width={width}>
       {text}
       <ArrowImg src={arrowRight} />
     </Button>

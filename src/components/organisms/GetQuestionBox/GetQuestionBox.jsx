@@ -1,24 +1,37 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import AskQuestionButton from '../../atoms/Button/AskQuestionButton';
 import InputField from '../../atoms/Input/InputField';
+import createSubject from '../../../utils/createSubject';
 
-/**
+/** 이름 입력후 질문 받기 버튼 클릭 시 API 호출 후 로컬 스토리지에 subjectId 저장.
+ *  /post/{subjectId}/answer 로 페이지 이동.
  *
  * @returns 이름 입력, 질문 받기 버튼을 포함한 UI
  */
 export default function GetQuestionBox() {
-  // TODO(이시열) : InputField 에 들어갈 handler - 이름 입력 후 질문 받기 버튼을 누르면 api 호출 구현
   const [inputName, setInputName] = useState('');
+  const navigate = useNavigate();
+
   const handleInputName = (value) => {
     setInputName(value);
+  };
+
+  const handleButtonClick = async () => {
+    const { id } = await createSubject(inputName);
+    navigate(`/post/${id}/answer`);
   };
 
   return (
     <Wrapper>
       <Container>
         <InputField value={inputName} handler={handleInputName} />
-        <AskQuestionButton text="질문 받기" width="100%" />
+        <AskQuestionButton
+          text="질문 받기"
+          width="100%"
+          handleButtonClick={handleButtonClick}
+        />
       </Container>
     </Wrapper>
   );

@@ -1,3 +1,4 @@
+
 import styled from 'styled-components';
 import FeedCard from '../organisms/QuestionsFeedCard/QuestionsFeedCard';
 import bannerImg from '../../assets/img/v-872-batch-5-nunny-041.png';
@@ -65,3 +66,4 @@ const MainSection = styled.div`
 const ButtonSection = styled.div`
   margin: 58px 24px 24px auto;
 `;
+

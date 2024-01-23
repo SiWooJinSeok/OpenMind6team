@@ -22,6 +22,15 @@ const getAnswerType = ({ type, handleType, answer, setAnswer }) => {
       return null;
   }
 };
+export const getCurrentType = (content, isRejected) => {
+  if (isRejected) {
+    return 'NoAnswer';
+  }
+  if (content === '') {
+    return 'Edit';
+  }
+  return 'Answer';
+};
 
 export default getAnswerType;
 const NoAnswer = styled.span`

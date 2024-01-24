@@ -6,13 +6,13 @@ import { ButtonBox, ArrowImg } from './Share';
 
 /**
  *
- * @param {text : string | width : string + 'px'} param0
+ * @param {text : string | width : string + 'px' |  onClick : event handler} param0
  * @returns GoToAnswerButton Component
  */
 
-export default function GoToAnswerButton({ className, text, width }) {
+export default function GoToAnswerButton({ className, text, width, onClick }) {
   return (
-    <Button className={className} width={width}>
+    <Button className={className} width={width} onClick={onClick}>
       {text}
       <ArrowImg src={arrowRight} />
     </Button>

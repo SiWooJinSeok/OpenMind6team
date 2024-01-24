@@ -7,7 +7,7 @@ import requestApi from '../utils/requestApi';
  * @param {object} postData
  * @returns data, isLoading, errorMessage
  */
-const useFetch = (path, method, postData = {}) => {
+const useRequestApi = (path, method, postData = {}) => {
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const [data, setData] = useState(null);
@@ -20,11 +20,11 @@ const useFetch = (path, method, postData = {}) => {
     } catch (error) {
       setErrorMessage(error.message);
     } finally {
-      setIsLoading(true);
+      setIsLoading(false);
     }
   }, [path]);
 
   return { data, isLoading, errorMessage };
 };
 
-export default useFetch;
+export default useRequestApi;

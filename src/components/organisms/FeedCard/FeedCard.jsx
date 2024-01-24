@@ -1,30 +1,66 @@
+import { useState } from 'react';
 import styled from 'styled-components';
 import Badge from '../../atoms/Badge/Badge';
 import EditableDropdown from '../../atoms/Dropdown/EditableDropdown';
 import FeedCardAnswer from './FeedCardAnswer';
 import ThumbsUp from '../../atoms/Reaction/ThumbsUp';
 import ThumbsDown from '../../atoms/Reaction/ThumbsDown';
+import { getCurrentType } from './getAnswerType';
+
+/**
+ *
+ * @param {object} questionData : content, like, dislike, answer : {}
+ * @returns FeedCard (Answer, NoAnswer, Edit)
+ */
+
 // TODO(노진석) : 기능 구현하기
-export default function FeedCard() {
+export default function FeedCard({ questionData }) {
+  const { content, like, dislike, answer } = questionData;
+  const [currentType, setCurrentType] = useState(
+    getCurrentType(answer.content, answer.isRejected),
+  );
+  const isAnswered = currentType !== 'Edit';
+
   return (
     <Wrapper>
       <StateBox>
-        <Badge />
+        <Badge isAnswered={isAnswered} />
         <EditableDropdown />
       </StateBox>
       <QuestionBox>
         질문 · 2주전
-        <QuestionContent>좋아하는 동물은?</QuestionContent>
+        <QuestionContent>{content}</QuestionContent>
       </QuestionBox>
-      <FeedCardAnswer currentType="NoAnswer" />
+      <FeedCardAnswer
+        item={{ content: answer.content }}
+        currentType={currentType}
+        setCurrentType={setCurrentType}
+      />
       <Hr />
       <ReactionBox>
-        <ThumbsUp />
-        <ThumbsDown />
+        <ThumbsUp count={like} />
+        <ThumbsDown count={dislike} />
       </ReactionBox>
     </Wrapper>
   );
 }
+
+FeedCard.defaultProps = {
+  questionData: {
+    id: 41,
+    subjectId: 23,
+    content: '가장 좋아하는 동물이 궁금해요!',
+    like: 9,
+    dislike: 2,
+    createdAt: '2023-10-31T09:27:59.497667Z',
+    answer: {
+      id: 22,
+      content: '',
+      isRejected: false,
+      createdAt: '2023-11-01T00:43:56.863795Z',
+    },
+  },
+};
 
 const Wrapper = styled.div`
   border-radius: 16px;

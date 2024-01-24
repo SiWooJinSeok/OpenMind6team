@@ -24,6 +24,9 @@ const Wrapper = styled.div`
   border-radius: 8px;
   border: 1px solid ${(props) => props.color};
   background: var(--Grayscale-10, #fff);
+
+  width: 76px;
+  height: 26px;
 `;
 
 const Text = styled.span`

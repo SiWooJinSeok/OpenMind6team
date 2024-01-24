@@ -15,16 +15,17 @@ export default function EditableDropdown() {
   return (
     <Wrapper>
       <Button
+        type="button"
         onClick={handleDropdownToggle}
         style={{ backgroundImage: `url(${MoreImg})` }}
       />
       {isDropdownOpen ? (
         <DropdownMenu>
-          <MenuItemButton>
+          <MenuItemButton type="button">
             <Image src={EditImg} alt="수정하기" />
             수정하기
           </MenuItemButton>
-          <MenuItemButton>
+          <MenuItemButton type="button">
             <Image src={EditImg} alt="삭제하기" />
             삭제하기
           </MenuItemButton>
@@ -35,6 +36,7 @@ export default function EditableDropdown() {
 }
 
 const Wrapper = styled.div`
+  position: relative;
   display: flex;
 `;
 
@@ -46,6 +48,9 @@ const Button = styled.button`
 `;
 
 const DropdownMenu = styled.div`
+  background-color: var(--Grayscale-10);
+  position: absolute;
+  top: 20px;
   display: flex;
   flex-direction: column;
   justify-content: center;

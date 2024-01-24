@@ -3,8 +3,9 @@ import styled from 'styled-components';
 import InputTextArea from '../../atoms/InputTextArea/InputTextArea';
 
 /**
- *
- * @param {inputValue : state, setInputValue : setState, onClick: setState(typeChange)} param0
+ * @param {string} inputValue : value state값
+ * @param {callback} setInputValue : setState - string
+ * @param {callback} onClick : setState -string
  * @returns AnswerEdit
  */
 // TODO(노진석) : 나중에 변경 될 수 있음.

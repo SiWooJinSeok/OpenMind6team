@@ -8,7 +8,7 @@ const API_BASE_HOST = 'openmind-api.vercel.app/3-6';
  * @param {object} postData POST 요청일때 body로 보낼 객체
  * @returns 응답받은 Promise 객체
  */
-const getFetch = async (path, method, postData = {}) => {
+const requestApi = async (path, method, postData = {}) => {
   const config = {
     method,
     url: `https://${API_BASE_HOST}/${path}/`,
@@ -29,4 +29,4 @@ const getFetch = async (path, method, postData = {}) => {
   }
 };
 
-export default getFetch;
+export default requestApi;

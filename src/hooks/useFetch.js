@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import getFetch from '../utils/getFetch';
+import requestApi from '../utils/requestApi';
 /** path, method, data 를 받아서 응답 받은 data, isLoading, errorMessage state를 반환
  *
  * @param {string} path
@@ -15,7 +15,7 @@ const useFetch = (path, method, postData = {}) => {
   useEffect(async () => {
     setIsLoading(true);
     try {
-      const result = await getFetch(path, method, postData);
+      const result = await requestApi(path, method, postData);
       setData(result);
     } catch (error) {
       setErrorMessage(error.message);

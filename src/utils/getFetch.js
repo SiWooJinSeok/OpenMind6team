@@ -1,42 +1,31 @@
 import axios from 'axios';
-import { useState } from 'react';
 
+const API_BASE_HOST = 'openmind-api.vercel.app/3-6';
 /** API 호출 로직
  *
- * @param {string} host default: 'openmind-api.vercel.app'
  * @param {string} path 'subjects' or 'answers' or 'questions'
- * @param {string} method 'GET' or 'POST' or 'DELETE'
+ * @param {string} method 'get' or 'post' or 'delete'
  * @param {object} postData POST 요청일때 body로 보낼 객체
- * @param {string} team default: '3-6'
  * @returns 응답받은 Promise 객체
  */
-const getFetch = async (host, path, method, postData = {}, team = '3-6') => {
-  const [error, setError] = useState(null);
-  // TODO[이시열]: DELETE 로직
-  try {
-    const config = {
-      method,
-      url: `https://${host}/${team}/${path}/`,
+const getFetch = async (path, method, postData = {}) => {
+  const config = {
+    method,
+    url: `https://${API_BASE_HOST}/${path}/`,
+  };
+
+  if (method === 'post' || method === 'delete') {
+    config.headers = {
+      'Content-Type': 'application/json',
     };
-
-    if (method === 'post') {
-      config.headers = {
-        'Content-Type': 'application/json',
-      };
-      config.data = postData;
-    }
-
+    config.data = postData;
+  }
+  try {
     const response = await axios(config);
-
-    if (response.status === 200 || response.status === 201) {
-      const result = await response.data;
-      return result;
-    }
-
-    throw new Error('불러오기 실패');
-  } catch (err) {
-    setError(err);
-    return error;
+    const result = await response.data;
+    return result;
+  } catch (error) {
+    throw new Error('데이터를 가져오는데 실패했습니다.');
   }
 };
 

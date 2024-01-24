@@ -1,91 +1,81 @@
 import styled from 'styled-components';
-import FeedCardItem from './QuestionsFeedCardItem';
-import MessagesImg from '../../../assets/img/Messages_Brown.svg';
-import boxImg from '../../../assets/img/box.svg';
-
-export default function FeedCard({ questions }) {
-  const numberOfQuestions = questions.length;
-  const hasQuestions = numberOfQuestions > 0;
-
+import getElapsedTime from '../../../utils/getElapsedTime';
+import Badge from '../../atoms/Badge/Badge';
+import ThumbsDown from '../../atoms/Reaction/ThumbsDown';
+import ThumbsUp from '../../atoms/Reaction/ThumbsUp';
+import QuestionPageUserAnswer from './QuestionPageUserAnswer';
+// (송상훈)
+export default function FeedCardItem({ questionData }) {
+  const { content, like, dislike, answer, createdAt } = questionData;
+  const elapsedTimeQuestion = getElapsedTime(createdAt);
   return (
-    <FeedCardWrapper hasQuestions={hasQuestions}>
-      <QuestionsCount>
-        <img src={MessagesImg} alt="메세지 이미지" />
-        {numberOfQuestions > 0
-          ? `${numberOfQuestions}개의 질문이 있습니다`
-          : '아직 질문이 없습니다.'}
-      </QuestionsCount>
-      {numberOfQuestions > 0 ? (
-        <QuestionsList>
-          {questions.map((question) => {
-            return (
-              <li key={questions.id}>
-                <FeedCardItem question={question} />
-              </li>
-            );
-          })}
-        </QuestionsList>
-      ) : (
-        <BoxImg src={boxImg} alt="박스이미지" />
+    <Wrapper>
+      <Badge isAnswered={!!answer} />
+      <QuestionBox>
+        <span>질문•{elapsedTimeQuestion}</span>
+        <p>{content}</p>
+      </QuestionBox>
+      {answer && (
+        <QuestionPageUserAnswer createdAt={createdAt} answer={answer} />
       )}
-    </FeedCardWrapper>
+      <ThumbsSection>
+        <ThumbsUp count={like} />
+        <ThumbsDown count={dislike} />
+      </ThumbsSection>
+    </Wrapper>
   );
 }
-
-const FeedCardWrapper = styled.div`
+FeedCardItem.defaultProps = {
+  questionData: {
+    id: 41,
+    subjectId: 23,
+    content: '가장 좋아하는 동물이 궁금해요!',
+    like: 9,
+    dislike: 2,
+    createdAt: '2023-10-31T09:27:59.497667Z',
+    answer: {
+      id: 22,
+      content: '',
+      isRejected: false,
+      createdAt: '2023-11-01T00:43:56.863795Z',
+    },
+  },
+};
+const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding: 16px;
-  border: 1px solid var(--Brown-30);
+  padding: 24px;
+  gap: 24px 0;
   border-radius: 16px;
-  background-color: var(--Brown-10);
-  width: 716px;
-  height: ${(props) => (props.hasQuestions ? '1138px' : '330px')};
-  overflow: auto;
-
-  @media (max-width: 1200px) {
-    width: 704px;
-  }
-
-  @media (max-width: 768px) {
-    width: 95%;
-  }
+  box-shadow: 0px 4px 4px 0px rgba(140, 140, 140, 0.25);
+  background-color: var(--Grayscale-10);
 `;
-
-const QuestionsCount = styled.div`
+const QuestionBox = styled.section`
   display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 16px;
-  gap: 8px;
-  color: var(--Brown-40);
-  font-size: 2rem;
-
-  @media (max-width: 768px) {
-    font-size: 1.8rem;
+  flex-direction: column;
+  gap: 4px;
+  span {
+    color: var(--Grayscale-40);
+    font-size: 1.4rem;
+    font-weight: 500;
+    line-height: 18px;
   }
-
-  img {
-    width: 24px;
-    height: 24px;
-
+  p {
+    color: var(--Grayscale-60);
+    font-family: Actor;
+    font-size: 1.8rem;
+    font-weight: 400;
+    line-height: 24px;
     @media (max-width: 768px) {
-      width: 22px;
-      height: 22px;
+      font-size: 1.6rem;
+      line-height: 22px;
     }
   }
 `;
-
-const QuestionsList = styled.ul`
+const ThumbsSection = styled.section`
   display: flex;
-  flex-direction: column;
-  padding-inline-start: 0;
-  gap: 20px;
-`;
-
-const BoxImg = styled.img`
-  width: 170px;
-  height: 174px;
-  margin-top: 45px;
+  width: 100%;
+  border-top: 1px solid var(--Grayscale-30);
+  padding-top: 24px;
+  gap: 32px;
 `;

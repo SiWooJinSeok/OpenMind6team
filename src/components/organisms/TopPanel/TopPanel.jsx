@@ -8,7 +8,7 @@ import ShareButtonBox from '../ShareButtonBox/ShareButtonBox';
  * @param {object} owner : 질문 받는 주인
  * @returns
  */
-export default function Header({ owner }) {
+export default function TopPanel({ owner }) {
   return (
     <>
       <Background bg={imageData.bgImg} />
@@ -24,7 +24,7 @@ export default function Header({ owner }) {
   );
 }
 
-Header.defaultProps = {
+TopPanel.defaultProps = {
   owner: { name: '아초는고양이', imageSource: imageData.defaultProfile },
 };
 

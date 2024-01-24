@@ -2,7 +2,7 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import Badge from '../../atoms/Badge/Badge';
 import EditableDropdown from '../../atoms/Dropdown/EditableDropdown';
-import FeedCardAnswer from './FeedCardAnswer';
+import UserAnswerCard from './AnswerPageUserAnswer';
 import ThumbsUp from '../../atoms/Reaction/ThumbsUp';
 import ThumbsDown from '../../atoms/Reaction/ThumbsDown';
 import { getCurrentType } from './getAnswerType';
@@ -14,7 +14,7 @@ import { getCurrentType } from './getAnswerType';
  */
 
 // TODO(노진석) : 기능 구현하기
-export default function FeedCard({ questionData }) {
+export default function AnswerFeedCard({ questionData }) {
   const { content, like, dislike, answer } = questionData;
   const [currentType, setCurrentType] = useState(
     getCurrentType(answer.content, answer.isRejected),
@@ -31,7 +31,7 @@ export default function FeedCard({ questionData }) {
         질문 · 2주전
         <QuestionContent>{content}</QuestionContent>
       </QuestionBox>
-      <FeedCardAnswer
+      <UserAnswerCard
         item={{ content: answer.content }}
         currentType={currentType}
         setCurrentType={setCurrentType}
@@ -45,7 +45,7 @@ export default function FeedCard({ questionData }) {
   );
 }
 
-FeedCard.defaultProps = {
+AnswerFeedCard.defaultProps = {
   questionData: {
     id: 41,
     subjectId: 23,

@@ -3,8 +3,9 @@ import FeedCard from '../organisms/QuestionsFeedCard/QuestionsFeedCard';
 import bannerImg from '../../assets/img/v-872-batch-5-nunny-041.png';
 import UserProfileHeader from '../organisms/UserProfileHeader/UserProfileHeader';
 import FloatingButton from '../atoms/Button/FloatingButton';
+import questions from '../../mock.json';
 
-export default function QuestionPage({ questions }) {
+export default function QuestionPage() {
   return (
     <QuestionPageWrapper>
       <BannerImg src={bannerImg} alt="배너이미지" />
@@ -37,6 +38,7 @@ const BannerImg = styled.img`
   @media (max-width: 768px) {
     width: 906px;
     height: 177px;
+  }
 `;
 
 const ProfileContainer = styled.div`

@@ -1,4 +1,10 @@
 {
+  "parser": "@babel/eslint-parser",
+  "parserOptions": {
+    "ecmaVersion": 2020,
+    "sourceType": "module",
+    "requireConfigFile": false,
+  },
   "extends": ["airbnb", "plugin:prettier/recommended"],
   "plugins": ["react", "jsx-a11y", "import"],
   "rules": {

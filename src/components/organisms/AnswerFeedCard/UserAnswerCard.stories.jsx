@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import FeedCardAnswer from './FeedCardAnswer';
+import UserAnswerCard from './UserAnswerCard';
 
 export default {
   title: 'FeedCard/FeedCardAnswer',
-  component: FeedCardAnswer,
+  component: UserAnswerCard,
   parameters: {
     layout: 'centered',
   },
@@ -19,7 +19,7 @@ const Template = (args) => {
   const [currentType, setCurrentType] = useState('Edit');
 
   return (
-    <FeedCardAnswer
+    <UserAnswerCard
       currentType={currentType}
       setCurrentType={setCurrentType}
       {...args}

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import Header from '../organisms/AnswerPageHeader/Header';
+import TopPanel from '../organisms/TopPanel/TopPanel';
 import DeleteButton from '../atoms/Button/DeleteButton';
-import FeedCard from '../organisms/FeedCard/FeedCard';
+import AnswerFeedCard from '../organisms/AnswerFeedCard/AnswerFeedCard';
 import imageData from '../../assets/imageData';
 import EmptyBox from '../atoms/EmptyBox/EmptyBox';
 // TODO(노진석) : 나중에 로직 만들 때 수정
@@ -21,7 +21,7 @@ export default function AnswerPage() {
 
   return (
     <>
-      <Header />
+      <TopPanel />
       <Wrapper>
         <Container>
           <DeleteButtonBox>
@@ -35,7 +35,7 @@ export default function AnswerPage() {
                 : '아직 질문이 없습니다'}
             </Message>
             {questionCount > 0 ? (
-              mockData.map((it) => <FeedCard key={it.id} />)
+              mockData.map((it) => <AnswerFeedCard key={it.id} />)
             ) : (
               <EmptyBox />
             )}

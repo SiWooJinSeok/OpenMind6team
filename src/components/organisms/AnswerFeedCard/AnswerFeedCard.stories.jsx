@@ -1,4 +1,4 @@
-import FeedCard from './FeedCard';
+import FeedCard from './AnswerFeedCard';
 
 export default {
   title: 'FeedCard/FeedCard',

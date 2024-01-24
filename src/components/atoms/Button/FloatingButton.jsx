@@ -25,10 +25,11 @@ const Button = styled.button`
   font-weight: 400;
   line-height: 25px;
   cursor: pointer;
+
   @media (max-width: 767px) {
     & {
       position: fixed;
-      bottom: 100px;
+      bottom: 50px;
       right: 50%;
       transform: translateX(50%);
     }

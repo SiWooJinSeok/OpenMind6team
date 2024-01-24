@@ -2,7 +2,7 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import Badge from '../../atoms/Badge/Badge';
 import EditableDropdown from '../../atoms/Dropdown/EditableDropdown';
-import FeedCardAnswer from './FeedCardAnswer';
+import FeedCardAnswer from './AnswerPageUserAnswer';
 import ThumbsUp from '../../atoms/Reaction/ThumbsUp';
 import ThumbsDown from '../../atoms/Reaction/ThumbsDown';
 import { getCurrentType } from './getAnswerType';

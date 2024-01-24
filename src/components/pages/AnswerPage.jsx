@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import Header from '../organisms/AnswerPageHeader/Header';
+import TopPanel from '../organisms/TopPanel/TopPanel';
 import DeleteButton from '../atoms/Button/DeleteButton';
-import FeedCard from '../organisms/FeedCard/FeedCard';
+import FeedCard from '../organisms/AnswerFeedCard/AnswerFeedCard';
 import imageData from '../../assets/imageData';
 import EmptyBox from '../atoms/EmptyBox/EmptyBox';
 // TODO(노진석) : 나중에 로직 만들 때 수정
@@ -21,7 +21,7 @@ export default function AnswerPage() {
 
   return (
     <>
-      <Header />
+      <TopPanel />
       <Wrapper>
         <Container>
           <DeleteButtonBox>
@@ -61,6 +61,7 @@ const MessageIcon = styled.img`
   margin-right: 8px;
   width: 24px;
   height: 24px;
+
   @media screen and (max-width: 768px) {
     width: 22px;
     height: 22px;
@@ -75,6 +76,7 @@ const Message = styled.span`
   font-size: 20px;
   font-weight: 400;
   line-height: 25px;
+
   @media screen and (max-width: 768px) {
     font-size: 1.8rem;
     line-height: 24px;

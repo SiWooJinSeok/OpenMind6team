@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import styled from 'styled-components';
 import QuestionListNavbar from '../organisms/QuestionListNavbar/QuestionListNavbar';
 import CardSortDropdown from '../atoms/Dropdown/CardSortDropdown';
@@ -6,50 +5,19 @@ import UserCardList from '../organisms/UserCardList/UserCardList';
 import useGetCardList from '../../hooks/useGetCardList';
 import PageNationNumbers from '../organisms/QuestionPageNationNumbers/PageNationNumbers';
 import PageNationButton from '../atoms/PageNation/PageNationButton';
-import { SORT_TIME } from '../../constants/constants';
-
-// OPINION : 페이지 네이션 관련 함수가 너무 많아서 hook을 기깔나게 하나 만들면 좋을 것 같습니다.
 
 export default function QuestionListPage() {
-  const [currentPage, setCurrentPage] = useState(1);
-  const limit = 8;
-  const offset = (currentPage - 1) * limit;
-
-  const [sort, setSort] = useState(SORT_TIME);
-
   const {
-    UserCardListData,
+    currentPage,
+    sort,
     totalPage,
+    UserCardListData,
+    handleLeftArrowClick,
+    handleRightArrowClick,
+    handleSortButtonClick,
+    handlePageClick,
     isLoading: isLoadingUserCardListData,
-  } = useGetCardList(limit, offset, sort);
-
-  const handleSortButtonClick = (value) => {
-    setSort(value);
-  };
-
-  const handleLeftArrowClick = () => {
-    if (currentPage === 1) {
-      return;
-    }
-    setCurrentPage((prev) => {
-      return prev - 1;
-    });
-  };
-
-  const handleRightArrowClick = () => {
-    if (currentPage === totalPage) {
-      return;
-    }
-    setCurrentPage((prev) => {
-      return prev + 1;
-    });
-  };
-
-  const handlePageClick = (value) => {
-    setCurrentPage(() => {
-      return value;
-    });
-  };
+  } = useGetCardList();
 
   return (
     <Wrapper>

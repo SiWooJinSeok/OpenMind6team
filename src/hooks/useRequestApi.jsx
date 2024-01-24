@@ -12,16 +12,18 @@ const useRequestApi = (path, method, postData = {}) => {
   const [errorMessage, setErrorMessage] = useState('');
   const [data, setData] = useState(null);
 
-  useEffect(async () => {
-    setIsLoading(true);
-    try {
-      const result = await requestApi(path, method, postData);
-      setData(result);
-    } catch (error) {
-      setErrorMessage(error.message);
-    } finally {
-      setIsLoading(false);
-    }
+  useEffect(() => {
+    (async () => {
+      setIsLoading(true);
+      try {
+        const result = await requestApi(path, method, postData);
+        setData(result);
+      } catch (error) {
+        setErrorMessage(error.message);
+      } finally {
+        setIsLoading(false);
+      }
+    })();
   }, [path]);
 
   return { data, isLoading, errorMessage };

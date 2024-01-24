@@ -21,21 +21,25 @@ const AnswerSection = styled.section`
   display: flex;
   gap: 12px;
 `;
+
 const AnswerDetail = styled.div`
   display: flex;
   flex-direction: column;
   gap: 4px;
+
   span:first-child {
     color: var(--Grayscale-60);
     font-family: Actor;
     font-size: 1.8rem;
     font-weight: 400;
     line-height: 24px;
+
     @media (max-width: 768px) {
       font-size: 1.4rem;
       line-height: 18px;
     }
   }
+
   span:last-child {
     color: var(--Grayscale-40);
     font-size: 1.4rem;
@@ -43,6 +47,7 @@ const AnswerDetail = styled.div`
     line-height: 18px;
     margin-left: 8px;
   }
+
   p {
     color: var(--Grayscale-60);
     font-size: 1.6rem;

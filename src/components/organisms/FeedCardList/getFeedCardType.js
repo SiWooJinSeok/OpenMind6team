@@ -1,4 +1,5 @@
 import AnswerFeedCard from '../AnswerFeedCard/AnswerFeedCard';
+import QuestionFeedCard from '../QuestionsFeedCard/QuestionsFeedCard';
 
 const getFeedCardType = (type = 'answer') => {
   const mockData = [
@@ -15,8 +16,7 @@ const getFeedCardType = (type = 'answer') => {
   if (type === 'answer') {
     return mockData.map((it) => <AnswerFeedCard key={it.id} />);
   }
-
-  return null;
+  return mockData.map((it) => <QuestionFeedCard key={it.id} />);
 };
 
 export default getFeedCardType;

@@ -59,6 +59,7 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 12px;
+  z-index: 2;
   @media screen and (max-width: 768px) {
     margin-top: 40px;
   }
@@ -71,7 +72,7 @@ const Background = styled.div`
   background-position: center;
   background-repeat: no-repeat;
   mix-blend-mode: hard-light;
-  z-index: -1;
+  z-index: 1;
   width: 100%;
   height: 234px;
   @media screen and (max-width: 768px) {

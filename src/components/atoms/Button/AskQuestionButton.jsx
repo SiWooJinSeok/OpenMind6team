@@ -8,8 +8,17 @@ import { ButtonBox } from './Share';
  * @returns AskQuestionButton Component
  */
 
-export default function AskQuestionButton({ text, width }) {
-  return <Button width={width}>{text}</Button>;
+export default function AskQuestionButton({ text, width, handleButtonClick }) {
+  const onClick = (event) => {
+    event.preventDefault();
+    handleButtonClick();
+  };
+
+  return (
+    <Button width={width} onClick={onClick}>
+      {text}
+    </Button>
+  );
 }
 
 const Button = styled(ButtonBox)`

@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import getElapsedTime from '../../../util/getElapsedTime';
+import getElapsedTime from '../../../utils/getElapsedTime';
 import Badge from '../../atoms/Badge/Badge';
 import ThumbsDown from '../../atoms/Reaction/ThumbsDown';
 import ThumbsUp from '../../atoms/Reaction/ThumbsUp';

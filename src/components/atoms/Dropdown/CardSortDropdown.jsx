@@ -1,5 +1,11 @@
 import { useState } from 'react';
 import styled from 'styled-components';
+import {
+  SORT_TIME,
+  SORT_NAME,
+  SORT_TIME_KOREAN,
+  SORT_NAME_KOREAN,
+} from '../../../constants/constants';
 
 /**
  *
@@ -7,7 +13,7 @@ import styled from 'styled-components';
  * @returns
  */
 export default function CardSortDropdown({
-  CardSort = '최신순',
+  CardSort = SORT_TIME,
   onSortButtonClick,
 }) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -19,13 +25,17 @@ export default function CardSortDropdown({
   return (
     <Wrapper>
       <DropdownHeader onClick={toggleDropdown} isOpen={isDropdownOpen}>
-        {CardSort === 'time' ? '최신순' : '이름순'}
+        {CardSort === SORT_TIME ? SORT_TIME_KOREAN : SORT_NAME_KOREAN}
         <DropdownIcon isOpen={isDropdownOpen} />
       </DropdownHeader>
       {isDropdownOpen ? (
         <DropdownContent>
-          <Button onClick={() => onSortButtonClick('time')}>최신순</Button>
-          <Button onClick={() => onSortButtonClick('name')}>이름순</Button>
+          <Button onClick={() => onSortButtonClick(SORT_TIME)}>
+            {SORT_TIME_KOREAN}
+          </Button>
+          <Button onClick={() => onSortButtonClick(SORT_NAME)}>
+            {SORT_NAME_KOREAN}
+          </Button>
         </DropdownContent>
       ) : null}
     </Wrapper>

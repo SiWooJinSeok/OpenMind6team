@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import Logo from '../../../assets/img/logo.svg';
 import UserProfileImage from '../../atoms/UserProfileImage/UserProfileImage';
-import ShareButtonBox from '../ShareButtonBox';
+import ShareButtonBox from '../ShareButtonBox/ShareButtonBox';
 
 export default function UserProfileHeader() {
   return (

@@ -19,8 +19,8 @@ const useGetCardList = (limit = 8, offset = 0, sort = 'name') => {
     try {
       setIsLoading(true);
       getFetch(
-        'https://openmind-api.vercel.app',
-        `/subjects/?limit=${limit}&offset=${offset}&sort=${sort}`,
+        'openmind-api.vercel.app',
+        `subjects/?limit=${limit}&offset=${offset}&sort=${sort}`,
       ).then((result) => {
         setTotalPage(Math.ceil(result.count / limit));
         return setUserCardListData(result);

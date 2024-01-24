@@ -59,4 +59,3 @@ const MainPageImage = styled.img`
   width: 100%;
   top: 205px;
 `;
-

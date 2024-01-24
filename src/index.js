@@ -1,4 +1,3 @@
-
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { RouterProvider } from 'react-router-dom';
@@ -10,4 +9,3 @@ root.render(
     <RouterProvider router={router} />
   </React.StrictMode>,
 );
-

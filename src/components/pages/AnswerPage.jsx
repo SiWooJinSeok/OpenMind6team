@@ -1,4 +1,3 @@
-
 import styled from 'styled-components';
 import Header from '../organisms/AnswerPageHeader/Header';
 import DeleteButton from '../atoms/Button/DeleteButton';

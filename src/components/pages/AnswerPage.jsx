@@ -1,4 +1,3 @@
-
 import styled from 'styled-components';
 import Header from '../organisms/AnswerPageHeader/Header';
 import DeleteButton from '../atoms/Button/DeleteButton';
@@ -88,4 +87,3 @@ const Wrapper = styled.div`
 const DeleteButtonBox = styled.div`
   margin-left: auto;
 `;
-

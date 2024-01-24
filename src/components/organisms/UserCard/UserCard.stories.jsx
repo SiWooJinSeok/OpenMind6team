@@ -19,5 +19,5 @@ export const Default = Template.bind({});
 
 Default.args = {
   userName: '아초는고양이',
-  questionCount: 0,
+  questionCount: 9,
 };

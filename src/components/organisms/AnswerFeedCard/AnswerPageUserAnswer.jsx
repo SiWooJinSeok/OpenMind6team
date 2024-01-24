@@ -11,7 +11,7 @@ import getAnswerType from './getAnswerType';
  * @returns currentType ? Edit : Answer
  */
 // TODO(노진석): 나중에 추가 로직만들면서 변경 될 가능성 있음!
-export default function UserAnswerCard({
+export default function AnswerPageUserAnswer({
   item,
   owner,
   currentType,
@@ -44,7 +44,7 @@ export default function UserAnswerCard({
   );
 }
 
-UserAnswerCard.defaultProps = {
+AnswerPageUserAnswer.defaultProps = {
   item: { content: '' },
   owner: { name: '아초는고양이' },
   currentType: 'Edit',

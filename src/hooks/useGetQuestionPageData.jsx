@@ -4,7 +4,7 @@ import { SORT_TIME } from '../constants/constants';
 
 /**
  *
- * @returns
+ * @returns data, isLoading, error, totalPage, currentPage, handleLeftArrowClick, handleRightArrowClick, handleSortButtonClick, handlePageClick
  */
 
 const useGetCardList = () => {

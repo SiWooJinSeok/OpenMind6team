@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import getFetch from '../utils/getFetch';
+import requestApi from '../utils/requestApi';
 
 /**
  *
@@ -18,7 +18,7 @@ const useGetCardList = (limit = 8, offset = 0, sort = 'name') => {
   useEffect(() => {
     try {
       setIsLoading(true);
-      getFetch(
+      requestApi(
         'openmind-api.vercel.app',
         `subjects/?limit=${limit}&offset=${offset}&sort=${sort}`,
       ).then((result) => {

@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { useState } from 'react';
 
 /** API 호출 로직
  *
@@ -10,6 +11,7 @@ import axios from 'axios';
  * @returns 응답받은 Promise 객체
  */
 const getFetch = async (host, path, method, postData = {}, team = '3-6') => {
+  const [error, setError] = useState(null);
   // TODO[이시열]: DELETE 로직
   try {
     const config = {
@@ -32,8 +34,9 @@ const getFetch = async (host, path, method, postData = {}, team = '3-6') => {
     }
 
     throw new Error('불러오기 실패');
-  } catch (error) {
-    return console.error(error);
+  } catch (err) {
+    setError(err);
+    return error;
   }
 };
 

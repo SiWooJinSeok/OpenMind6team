@@ -1,15 +1,15 @@
-import FeedCard from './AnswerFeedCard';
+import AnswerFeedCard from './AnswerFeedCard';
 
 export default {
   title: 'FeedCard/FeedCard',
-  component: FeedCard,
+  component: AnswerFeedCard,
   parameters: {
     layout: 'centered',
   },
   tags: ['autodocs'],
 };
 
-const Template = (args) => <FeedCard {...args} />;
+const Template = (args) => <AnswerFeedCard {...args} />;
 
 export const Default = Template.bind({});
 

@@ -5,4 +5,4 @@ export default {
   component: TopPanel,
 };
 
-export const Sample = () => <topPanel />;
+export const Sample = () => <TopPanel />;

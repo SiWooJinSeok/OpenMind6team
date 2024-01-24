@@ -3,7 +3,12 @@ import UserProfileImage from '../../atoms/UserProfileImage/UserProfileImage';
 import imageData from '../../../assets/imageData';
 import ShareButtonBox from '../ShareButtonBox/ShareButtonBox';
 
-export default function Header({ owner }) {
+/**
+ *
+ * @param {object} owner : 질문 받는 주인
+ * @returns
+ */
+export default function TopPanel({ owner }) {
   return (
     <>
       <Background bg={imageData.bgImg} />
@@ -19,7 +24,7 @@ export default function Header({ owner }) {
   );
 }
 
-Header.defaultProps = {
+TopPanel.defaultProps = {
   owner: { name: '아초는고양이', imageSource: imageData.defaultProfile },
 };
 

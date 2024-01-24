@@ -1,18 +1,21 @@
 import styled from 'styled-components';
 import UserCard from '../UserCard/UserCard';
+import QuestionListNextPageButton from '../QuestionListNextPageButton/QuestionListNextPageButton';
 
 /**
  *
- * @param {UserCardListData : object | isLoadingUserCardListData : boolean} param0
+ * @param {UserCardListData : object | isLoadingUserCardListData : boolean } param0
  * @returns 유저 카드 리스트 그리드
  */
 
 export default function UserCardList({
   UserCardListData,
   isLoadingUserCardListData,
+  onNextPageButtonClick,
+  currentPage,
+  totalPage,
 }) {
   const { results: cardList } = UserCardListData;
-
   return (
     <Container>
       {isLoadingUserCardListData
@@ -28,6 +31,11 @@ export default function UserCardList({
               />
             );
           })}
+      {currentPage === totalPage ? null : (
+        <QuestionListNextPageButton
+          onNextPageButtonClick={onNextPageButtonClick}
+        />
+      )}
     </Container>
   );
 }

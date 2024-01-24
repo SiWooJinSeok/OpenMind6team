@@ -4,7 +4,6 @@ import getElapsedTime from '../../../utils/getElapsedTime';
 
 export default function FeedCardAnswer({ answer, createdAt }) {
   const elapsedTimeAnswer = getElapsedTime(createdAt);
-
   return (
     <AnswerSection>
       <UserProfileImage type="feedCard" />

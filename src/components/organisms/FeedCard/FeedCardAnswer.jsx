@@ -4,8 +4,10 @@ import UserProfileImage from '../../atoms/UserProfileImage/UserProfileImage';
 import getAnswerType from './getAnswerType';
 
 /**
- *
- * @param {item : {id, content},  owner : {name}, currentType : state(string), setCurrentType : setString  } param0
+ * @param {object} item : id, content
+ * @param {object} owner : name
+ * @param {state} currentType : 'Edit' or 'Answer' or 'NoAnswer'
+ * @param {callback} setCurrentType : setState
  * @returns currentType ? Edit : Answer
  */
 // TODO(노진석): 나중에 추가 로직만들면서 변경 될 가능성 있음!

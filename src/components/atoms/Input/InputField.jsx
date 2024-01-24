@@ -3,7 +3,10 @@ import imageData from '../../../assets/imageData';
 import RowFlexCenter from './Share';
 /**
  *
- * @param {placeholder : string, type : string, value : state, handler : setState } param0
+ * @param {string} placeholder : input placeholder
+ * @param {string} type : input type
+ * @param {string} value : state
+ * @param {callback} handler : setState
  * @returns InputField item
  */
 

@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import imageData from '../../../assets/imageData';
 import UserProfileImage from '../../atoms/UserProfileImage/UserProfileImage';
 import AnswerForm from '../AnswerForm/AnswerForm';
+import useResizeModal from './useResizeModal.hook';
 
 /**
  * 모달 컴포넌트
@@ -14,6 +15,9 @@ import AnswerForm from '../AnswerForm/AnswerForm';
 export default function Modal({ subject, toggleModal }) {
   const [inputQuestion, setInputQuestion] = useState('');
   // TODO[이시열] : AnswerForm에 질문보내기 api 요청 handler 전달, QuestionPage에서 질문 대상 객체 전달받기
+
+  const height = useResizeModal();
+
   const handleWrapperClick = (event) => {
     if (event.target === event.currentTarget) {
       toggleModal();
@@ -40,7 +44,7 @@ export default function Modal({ subject, toggleModal }) {
             setInputValue={setInputQuestion}
             placeholder="질문을 입력해주세요"
             buttonText="질문 보내기"
-            inputAreaHeight="180px"
+            inputAreaHeight={height}
           />
         </QuestionBox>
       </Container>
@@ -71,6 +75,11 @@ const Container = styled.div`
   width: 612px;
   height: 454px;
   padding: 40px 40px 70px;
+  @media (max-width: 767px) {
+    width: 327px;
+    height: 568px;
+    padding: 24px;
+  }
 `;
 const ModalHeader = styled.div`
   display: flex;
@@ -78,6 +87,9 @@ const ModalHeader = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-bottom: 40px;
+  @media (max-width: 767px) {
+    width: 279px;
+  }
 `;
 const ModalHeaderBox = styled.div`
   display: flex;
@@ -94,7 +106,7 @@ const HeaderText = styled.h3``;
 const QuestionBox = styled.form`
   display: flex;
   flex-direction: column;
-  width: 532px;
+  width: 100%;
 `;
 const RecipientBox = styled.div`
   display: flex;

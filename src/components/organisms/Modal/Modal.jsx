@@ -4,18 +4,23 @@ import imageData from '../../../assets/imageData';
 import UserProfileImage from '../../atoms/UserProfileImage/UserProfileImage';
 import AnswerForm from '../AnswerForm/AnswerForm';
 
-export default function Modal({ owner }) {
+export default function Modal({ owner, toggleModal }) {
   const [inputQuestion, setInputQuestion] = useState('');
-  // TODO[이시열] : AnswerForm에 onClick prop 전달
+  // TODO[이시열] : AnswerForm에 api 요청 onClick prop 전달
+  const handleWrapperClick = (event) => {
+    if (event.target === event.currentTarget) {
+      toggleModal();
+    }
+  };
   return (
-    <Wrapper>
+    <Wrapper onClick={handleWrapperClick}>
       <Container>
         <ModalHeader>
           <ModalHeaderBox>
             <Icon src={imageData.messageIcon} />
             <HeaderText>질문을 작성하세요</HeaderText>
           </ModalHeaderBox>
-          <Icon src={imageData.closeIcon} />
+          <Icon src={imageData.closeIcon} onClick={toggleModal} />
         </ModalHeader>
         <QuestionBox>
           <RecipientBox>
@@ -46,6 +51,7 @@ const Wrapper = styled.div`
   position: fixed;
   inset: 0;
   background: var(--Dim, rgba(0, 0, 0, 0.56));
+  z-index: 2;
 `;
 const Container = styled.div`
   display: flex;
@@ -75,6 +81,7 @@ const ModalHeaderBox = styled.div`
 const Icon = styled.img`
   width: 28px;
   height: 28px;
+  cursor: pointer;
 `;
 const HeaderText = styled.h3``;
 const QuestionBox = styled.form`

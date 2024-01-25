@@ -7,7 +7,7 @@ import copyLinkLogo from '../../../assets/img/copyLinkLogo.svg';
  * @param { string } category 'copy' or 'kakao' or 'facebook'
  * @returns SNS Share Button
  */
-export default function ShareButton({ category }) {
+export default function ShareButton({ category, onClick }) {
   const BUTTON_COLOR = {
     copy: '#542F1A',
     kakao: '#FEE500',
@@ -20,7 +20,7 @@ export default function ShareButton({ category }) {
   };
 
   return (
-    <Button color={BUTTON_COLOR[category]}>
+    <Button onClick={onClick} color={BUTTON_COLOR[category]}>
       <Logo src={img[category]} />
     </Button>
   );

@@ -11,7 +11,7 @@ const API_BASE_HOST = 'openmind-api.vercel.app/3-6';
 const requestApi = async (path, method, postData = {}) => {
   const config = {
     method,
-    url: `https://${API_BASE_HOST}/${path}/`,
+    url: `https://${API_BASE_HOST}/${path}`,
   };
 
   if (method === 'post' || method === 'delete') {

@@ -30,10 +30,20 @@ export default function CardSortDropdown({
       </DropdownHeader>
       {isDropdownOpen ? (
         <DropdownContent>
-          <Button onClick={() => onSortButtonClick(SORT_TIME)}>
+          <Button
+            onClick={() => {
+              onSortButtonClick(SORT_TIME);
+              setIsDropdownOpen(false);
+            }}
+          >
             {SORT_TIME_KOREAN}
           </Button>
-          <Button onClick={() => onSortButtonClick(SORT_NAME)}>
+          <Button
+            onClick={() => {
+              onSortButtonClick(SORT_NAME);
+              setIsDropdownOpen(false);
+            }}
+          >
             {SORT_NAME_KOREAN}
           </Button>
         </DropdownContent>

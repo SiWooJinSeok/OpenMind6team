@@ -3,8 +3,7 @@ import getFeedCardType from './getFeedCardType';
 import EmptyBox from '../../atoms/EmptyBox/EmptyBox';
 import imageData from '../../../assets/imageData';
 
-export default function FeedCardList({ type }) {
-  const questionCount = 3;
+export default function FeedCardList({ type, questionCount }) {
   return (
     <Container>
       <MessageBox>

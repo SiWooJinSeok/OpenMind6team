@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import AskQuestionButton from '../../atoms/Button/AskQuestionButton';
-import InputField from '../../atoms/Input/InputField';
+import InputField from '../../atoms/InputField/InputField';
 import createSubject from '../../../utils/createSubject';
 
 /** 이름 입력후 질문 받기 버튼 클릭 시 API 호출 후 로컬 스토리지에 subjectId 저장.

@@ -14,7 +14,7 @@ export const ThumbsButton = styled.button`
 `;
 
 export const ThumbsText = styled.span`
-  color: ${(props) => props.textColor};
+  color: ${(props) => props.$textColor};
 `;
 
 export const ThumbsIcon = styled.img`

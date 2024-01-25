@@ -14,8 +14,8 @@ export default function ThumbsUp({ isLiked = true, count = 0 }) {
 
   return (
     <ThumbsButton>
-      <ThumbsIcon src={thumbImg} isLiked={isLiked} alt="좋아요 버튼 이미지" />
-      <ThumbsText textColor={textColor}>
+      <ThumbsIcon src={thumbImg} $isLiked={isLiked} alt="좋아요 버튼 이미지" />
+      <ThumbsText $textColor={textColor}>
         좋아요 {count !== 0 ? count : null}
       </ThumbsText>
     </ThumbsButton>

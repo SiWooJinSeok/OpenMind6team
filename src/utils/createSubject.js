@@ -7,7 +7,7 @@ import requestApi from './requestApi';
  */
 const createSubject = async (inputName) => {
   const subjectName = { name: inputName };
-  const data = await requestApi('subjects', 'post', subjectName);
+  const data = await requestApi('subjects/', 'post', subjectName);
 
   localStorage.setItem('subjectId', data.id);
 

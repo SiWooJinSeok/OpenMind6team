@@ -4,9 +4,16 @@ import imageData from '../../../assets/imageData';
 import UserProfileImage from '../../atoms/UserProfileImage/UserProfileImage';
 import AnswerForm from '../AnswerForm/AnswerForm';
 
-export default function Modal({ owner, toggleModal }) {
+/**
+ * 모달 컴포넌트
+ * @param {Object} props - 질문 대상자와 토글 함수
+ * @param {object} props.subject - 질문을 할 대상자에 대한 정보
+ * @param {function} props.toggleModal - 모달을 토글하는 함수
+ * @returns 모달 컴포넌트를 반환
+ */
+export default function Modal({ subject, toggleModal }) {
   const [inputQuestion, setInputQuestion] = useState('');
-  // TODO[이시열] : AnswerForm에 api 요청 onClick prop 전달
+  // TODO[이시열] : AnswerForm에 질문보내기 api 요청 handler 전달, QuestionPage에서 질문 대상 객체 전달받기
   const handleWrapperClick = (event) => {
     if (event.target === event.currentTarget) {
       toggleModal();
@@ -26,7 +33,7 @@ export default function Modal({ owner, toggleModal }) {
           <RecipientBox>
             <Text>To.</Text>
             <UserProfileImage type="questionModal" />
-            <Recipient>{owner.name}</Recipient>
+            <Recipient>{subject.name}</Recipient>
           </RecipientBox>
           <AnswerForm
             inputValue={inputQuestion}
@@ -41,7 +48,7 @@ export default function Modal({ owner, toggleModal }) {
   );
 }
 Modal.defaultProps = {
-  owner: { name: '아초는고양이' },
+  subject: { name: '아초는고양이' },
 };
 
 const Wrapper = styled.div`

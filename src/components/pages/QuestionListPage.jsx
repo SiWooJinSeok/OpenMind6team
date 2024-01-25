@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import QuestionListNavbar from '../organisms/QuestionListNavbar/QuestionListNavbar';
 import CardSortDropdown from '../atoms/Dropdown/CardSortDropdown';
 import UserCardList from '../organisms/UserCardList/UserCardList';
-import useGetCardList from '../../hooks/useGetCardList';
+import useGetQuestionPageData from '../../hooks/useGetQuestionPageData';
 import PageNationNumbers from '../organisms/QuestionPageNationNumbers/PageNationNumbers';
 import PageNationButton from '../atoms/PageNation/PageNationButton';
 
@@ -17,7 +17,7 @@ export default function QuestionListPage() {
     handleSortButtonClick,
     handlePageClick,
     isLoading: isLoadingUserCardListData,
-  } = useGetCardList();
+  } = useGetQuestionPageData();
 
   return (
     <Wrapper>

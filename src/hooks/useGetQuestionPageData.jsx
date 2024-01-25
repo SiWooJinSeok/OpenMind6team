@@ -7,7 +7,7 @@ import { SORT_TIME } from '../constants/constants';
  * @returns data, isLoading, error, totalPage, currentPage, handleLeftArrowClick, handleRightArrowClick, handleSortButtonClick, handlePageClick
  */
 
-const useGetCardList = () => {
+const useGetQuestionPageData = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const limit = 8;
   const offset = (currentPage - 1) * limit;
@@ -78,4 +78,4 @@ const useGetCardList = () => {
   };
 };
 
-export default useGetCardList;
+export default useGetQuestionPageData;

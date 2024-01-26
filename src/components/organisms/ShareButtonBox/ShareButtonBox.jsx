@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import ShareButton from '../../atoms/Button/ShareButton';
+import ShareButton from '../../atoms/Button/ShareButton/ShareButton';
 
 /**
  *

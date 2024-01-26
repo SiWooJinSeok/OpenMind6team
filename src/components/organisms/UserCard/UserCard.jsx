@@ -51,6 +51,9 @@ const Container = styled(Link)`
 `;
 
 const UserName = styled.span`
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
   color: var(--Grayscale-60);
   font-size: 2rem;
   font-weight: 400;

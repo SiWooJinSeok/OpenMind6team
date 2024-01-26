@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import imageData from '../../../assets/imageData';
-import GoToAnswerButton from '../../atoms/Button/GoToAnswerButton';
+import GoToAnswerButton from '../../atoms/Button/GoToAnswerButton/GoToAnswerButton';
 import useGoToAnswerButtonClick from './useGoToAnswerButtonClick.hook';
 
 /**

@@ -9,6 +9,8 @@ import arrowRight from './img/icon-arrow-right.svg';
 import bgImg from './img/v-872-batch-5-nunny-041.png';
 import mainPageImage from './img/mainPageImage.jfif';
 import closeIcon from './img/icon-close.svg';
+import arrowRightBrownDisabled from './img/arrow-right-brown-disabled.svg';
+import arrowRightBrown from './img/arrow-right-brown.svg';
 
 const imageData = {
   PersonIcon,
@@ -22,6 +24,8 @@ const imageData = {
   bgImg,
   mainPageImage,
   closeIcon,
+  arrowRightBrownDisabled,
+  arrowRightBrown,
 };
 
 export default imageData;

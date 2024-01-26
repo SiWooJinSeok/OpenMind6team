@@ -1,3 +1,4 @@
+import { action } from '@storybook/addon-actions';
 import PageNationButton from './PageNationButton';
 
 export default {
@@ -8,16 +9,20 @@ export default {
   },
   tags: ['autodocs'],
   argTypes: {
-    pageCount: { control: 'number' },
+    page: { control: 'number' },
     isSelected: { console: 'boolean' },
+    onClick: { action: 'clicked' },
   },
 };
 
-const Template = (args) => <PageNationButton {...args} />;
+const Template = (args) => (
+  <PageNationButton {...args} onClick={() => console.log(args.page)} />
+);
 
 export const Default = Template.bind({});
 
 Default.args = {
-  pageCount: 1,
+  page: 1,
   isSelected: false,
+  onClick: action('button-click'),
 };

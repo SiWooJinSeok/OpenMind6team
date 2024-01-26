@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { useEffect, useState } from 'react';
 import TopPanel from '../organisms/TopPanel/TopPanel';
 import FeedCardList from '../organisms/FeedCardList/FeedCardList';
-import FloatingButton from '../atoms/Button/FloatingButton';
+import FloatingButton from '../atoms/Button/FloatingButton/FloatingButton';
 import Modal from '../organisms/Modal/Modal';
 
 export default function QuestionPage() {

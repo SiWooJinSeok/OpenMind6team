@@ -11,6 +11,9 @@ const useSubjectData = (path) => {
     setIsLoading(true);
     try {
       const result = await requestApi(path, 'get');
+      if (!result) {
+        return;
+      }
       setData(result);
     } catch (error) {
       setErrorMessage(error.message);

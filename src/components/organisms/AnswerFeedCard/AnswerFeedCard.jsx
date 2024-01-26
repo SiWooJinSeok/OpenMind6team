@@ -6,6 +6,7 @@ import UserAnswerCard from './AnswerPageUserAnswer';
 import ThumbsUp from '../../atoms/Reaction/ThumbsUp';
 import ThumbsDown from '../../atoms/Reaction/ThumbsDown';
 import { getCurrentType } from './getAnswerType';
+import getElapsedTime from '../../../utils/getElapsedTime';
 
 /**
  *
@@ -14,14 +15,15 @@ import { getCurrentType } from './getAnswerType';
  */
 
 // TODO(노진석) : 기능 구현하기
-export default function AnswerFeedCard({ questionData }) {
-  const { content, like, dislike, answer } = questionData;
+export default function AnswerFeedCard({ questionsData, name, imageSource }) {
+  const { content, like, dislike, createdAt, answer } = questionsData;
   const liked = like > 0;
   const disLiked = dislike > 0;
   const [currentType, setCurrentType] = useState(
-    getCurrentType(answer.content, answer.isRejected),
+    getCurrentType(answer ? content : '', answer?.isRejected),
   );
   const isAnswered = currentType !== 'Edit';
+  const elapsedTimeQuestion = getElapsedTime(createdAt);
 
   return (
     <Wrapper>
@@ -30,13 +32,15 @@ export default function AnswerFeedCard({ questionData }) {
         <EditableDropdown />
       </StateBox>
       <QuestionBox>
-        질문 · 2주전
+        질문 · {elapsedTimeQuestion}
         <QuestionContent>{content}</QuestionContent>
       </QuestionBox>
       <UserAnswerCard
-        item={{ content: answer.content }}
+        item={answer}
         currentType={currentType}
         setCurrentType={setCurrentType}
+        name={name}
+        imageSource={imageSource}
       />
       <Hr />
       <ReactionBox>

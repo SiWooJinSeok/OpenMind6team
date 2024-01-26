@@ -17,7 +17,7 @@ export default function PageNationButton({
 
   return (
     <PageButton
-      DefaultFontColor={DefaultFontColor}
+      $DefaultFontColor={DefaultFontColor}
       onClick={() => {
         onClick(page);
       }}

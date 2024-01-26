@@ -1,9 +1,8 @@
 import styled from 'styled-components';
 
-import arrowRight from '../../../assets/img/arrow-right-brown.svg';
+import { ButtonBox, ArrowImg } from '../Shared';
 
-import { ButtonBox, ArrowImg } from './Share';
-
+import imageData from '../../../../assets/imageData';
 /**
  *
  * @param {text : string | width : string + 'px' |  onClick : event handler} param0
@@ -14,7 +13,7 @@ export default function GoToAnswerButton({ className, text, width, onClick }) {
   return (
     <Button className={className} width={width} onClick={onClick}>
       {text}
-      <ArrowImg src={arrowRight} />
+      <ArrowImg src={imageData.arrowRightBrown} />
     </Button>
   );
 }

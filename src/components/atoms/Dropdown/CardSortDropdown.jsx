@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import styled from 'styled-components';
 import {
   SORT_TIME,
@@ -6,6 +5,7 @@ import {
   SORT_TIME_KOREAN,
   SORT_NAME_KOREAN,
 } from '../../../constants/constants';
+import useCardSortDropdown from './useCardSortDropdown.hook';
 
 /**
  *
@@ -16,11 +16,8 @@ export default function CardSortDropdown({
   CardSort = SORT_TIME,
   onSortButtonClick,
 }) {
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-
-  const toggleDropdown = () => {
-    setIsDropdownOpen(!isDropdownOpen);
-  };
+  const { isDropdownOpen, setIsDropdownOpen, toggleDropdown } =
+    useCardSortDropdown();
 
   return (
     <Wrapper>

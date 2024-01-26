@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import Header from '../organisms/AnswerPageHeader/Header';
-import DeleteButton from '../atoms/Button/DeleteButton';
+import DeleteButton from '../atoms/Button/DeleteButton/DeleteButton';
 import FeedCard from '../organisms/FeedCard/FeedCard';
 import imageData from '../../assets/imageData';
 import EmptyBox from '../atoms/EmptyBox/EmptyBox';

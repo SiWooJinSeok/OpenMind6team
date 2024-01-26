@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import FeedCard from '../organisms/QuestionsFeedCard/QuestionsFeedCard';
 import bannerImg from '../../assets/img/v-872-batch-5-nunny-041.png';
 import UserProfileHeader from '../organisms/UserProfileHeader/UserProfileHeader';
-import FloatingButton from '../atoms/Button/FloatingButton';
+import FloatingButton from '../atoms/Button/FloatingButton/FloatingButton';
 import questions from '../../mock.json';
 
 export default function QuestionPage() {

@@ -20,6 +20,7 @@ const useGetQuestionPageData = () => {
 
   const handleSortButtonClick = (value) => {
     setSort(value);
+    setCurrentPage(1);
   };
 
   const handleLeftArrowClick = () => {

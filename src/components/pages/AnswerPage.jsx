@@ -1,10 +1,12 @@
 import styled from 'styled-components';
 import { useNavigate, useParams } from 'react-router-dom';
-import TopPanel from '../organisms/TopPanel/TopPanel';
-import DeleteButton from '../atoms/Button/DeleteButton';
-import FeedCardList from '../organisms/FeedCardList/FeedCardList';
+
+import DeleteButton from '../atoms/Button/DeleteButton/DeleteButton';
+
 import useSubjectData from '../../hooks/useSubjectData';
 import requestApi from '../../utils/requestApi';
+import TopPanel from '../organisms/TopPanel/TopPanel';
+import FeedCardList from '../organisms/FeedCardList/FeedCardList';
 
 // TODO(노진석) : 나중에 로직 만들 때 수정
 export default function AnswerPage() {
@@ -25,7 +27,7 @@ export default function AnswerPage() {
 
   return (
     <>
-      <TopPanel owner={owner} />
+      <TopPanel name={owner.name} imageSource={owner.imageSource} />
       <Wrapper>
         <Container>
           <DeleteButtonBox>

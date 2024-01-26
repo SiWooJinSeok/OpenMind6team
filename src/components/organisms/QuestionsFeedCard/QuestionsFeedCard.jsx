@@ -5,9 +5,17 @@ import ThumbsDown from '../../atoms/Reaction/ThumbsDown';
 import ThumbsUp from '../../atoms/Reaction/ThumbsUp';
 import QuestionPageUserAnswer from './QuestionPageUserAnswer';
 
-// (송상훈)
-export default function FeedCardItem({ questionData }) {
-  const { content, like, dislike, answer, createdAt } = questionData;
+/**
+ * (송상훈)
+ * QuestionsFeedCard 컴포넌트는 질문 피드 카드를 나타내는 컴포넌트입니다.
+ * @param {Object} props.question - 질문 객체
+ * @param {string} props.name - 답변자 이름(드릴링)
+ * @param {string} props.imageSource - 답변자 프로필 이미지 소스(드릴링)
+ * @returns {JSX.Element} 질문 피드 카드 컴포넌트
+ */
+
+export default function QuestionsFeedCard({ question, name, imageSource }) {
+  const { content, like, dislike, answer, createdAt } = question;
 
   const elapsedTimeQuestion = getElapsedTime(createdAt);
 
@@ -19,7 +27,11 @@ export default function FeedCardItem({ questionData }) {
         <p>{content}</p>
       </QuestionBox>
       {answer && (
-        <QuestionPageUserAnswer createdAt={createdAt} answer={answer} />
+        <QuestionPageUserAnswer
+          answerData={answer}
+          name={name}
+          imageSource={imageSource}
+        />
       )}
       <ThumbsSection>
         <ThumbsUp count={like} />
@@ -28,23 +40,6 @@ export default function FeedCardItem({ questionData }) {
     </Wrapper>
   );
 }
-
-FeedCardItem.defaultProps = {
-  questionData: {
-    id: 41,
-    subjectId: 23,
-    content: '가장 좋아하는 동물이 궁금해요!',
-    like: 9,
-    dislike: 2,
-    createdAt: '2023-10-31T09:27:59.497667Z',
-    answer: {
-      id: 22,
-      content: '그들을 불러 귀는  ',
-      isRejected: false,
-      createdAt: '2023-11-01T00:43:56.863795Z',
-    },
-  },
-};
 
 const Wrapper = styled.div`
   display: flex;

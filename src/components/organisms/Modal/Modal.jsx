@@ -3,32 +3,48 @@ import styled from 'styled-components';
 import imageData from '../../../assets/imageData';
 import UserProfileImage from '../../atoms/UserProfileImage/UserProfileImage';
 import AnswerForm from '../AnswerForm/AnswerForm';
+import useResizeModal from './useResizeModal.hook';
 
-export default function Modal({ owner }) {
+/**
+ * 모달 컴포넌트
+ * @param {Object} props - 질문 대상자와 토글 함수
+ * @param {object} props.subject - 질문을 할 대상자에 대한 정보
+ * @param {function} props.toggleModal - 모달을 토글하는 함수
+ * @returns 모달 컴포넌트를 반환
+ */
+export default function Modal({ subject, toggleModal }) {
   const [inputQuestion, setInputQuestion] = useState('');
-  // TODO[이시열] : AnswerForm에 onClick prop 전달
+  // TODO[이시열] : AnswerForm에 질문보내기 api 요청 handler 전달, QuestionPage에서 질문 대상 객체 전달받기
+
+  const height = useResizeModal();
+
+  const handleWrapperClick = (event) => {
+    if (event.target === event.currentTarget) {
+      toggleModal();
+    }
+  };
   return (
-    <Wrapper>
+    <Wrapper onClick={handleWrapperClick}>
       <Container>
         <ModalHeader>
           <ModalHeaderBox>
             <Icon src={imageData.messageIcon} />
             <HeaderText>질문을 작성하세요</HeaderText>
           </ModalHeaderBox>
-          <Icon src={imageData.closeIcon} />
+          <Icon src={imageData.closeIcon} onClick={toggleModal} />
         </ModalHeader>
         <QuestionBox>
           <RecipientBox>
             <Text>To.</Text>
             <UserProfileImage type="questionModal" />
-            <Recipient>{owner.name}</Recipient>
+            <Recipient>{subject.name}</Recipient>
           </RecipientBox>
           <AnswerForm
             inputValue={inputQuestion}
             setInputValue={setInputQuestion}
             placeholder="질문을 입력해주세요"
             buttonText="질문 보내기"
-            inputAreaHeight="180px"
+            inputAreaHeight={height}
           />
         </QuestionBox>
       </Container>
@@ -36,7 +52,7 @@ export default function Modal({ owner }) {
   );
 }
 Modal.defaultProps = {
-  owner: { name: '아초는고양이' },
+  subject: { name: '아초는고양이' },
 };
 
 const Wrapper = styled.div`
@@ -46,6 +62,7 @@ const Wrapper = styled.div`
   position: fixed;
   inset: 0;
   background: var(--Dim, rgba(0, 0, 0, 0.56));
+  z-index: 2;
 `;
 const Container = styled.div`
   display: flex;
@@ -58,6 +75,11 @@ const Container = styled.div`
   width: 612px;
   height: 454px;
   padding: 40px 40px 70px;
+  @media (max-width: 767px) {
+    width: 327px;
+    height: 568px;
+    padding: 24px;
+  }
 `;
 const ModalHeader = styled.div`
   display: flex;
@@ -65,6 +87,9 @@ const ModalHeader = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-bottom: 40px;
+  @media (max-width: 767px) {
+    width: 279px;
+  }
 `;
 const ModalHeaderBox = styled.div`
   display: flex;
@@ -75,12 +100,13 @@ const ModalHeaderBox = styled.div`
 const Icon = styled.img`
   width: 28px;
   height: 28px;
+  cursor: pointer;
 `;
 const HeaderText = styled.h3``;
 const QuestionBox = styled.form`
   display: flex;
   flex-direction: column;
-  width: 532px;
+  width: 100%;
 `;
 const RecipientBox = styled.div`
   display: flex;

@@ -1,13 +1,13 @@
 import styled, { keyframes } from 'styled-components';
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
-import ShareButton from '../../atoms/Button/ShareButton';
 import {
   copyClipBoard,
   shareFacebook,
   shareKakao,
 } from '../../../utils/shares';
 import Toast from '../../atoms/Toast/Toast';
+import ShareButton from '../../atoms/Button/ShareButton/ShareButton';
 
 /**
  *

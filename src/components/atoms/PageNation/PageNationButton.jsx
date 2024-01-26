@@ -17,7 +17,7 @@ export default function PageNationButton({
 
   return (
     <PageButton
-      DefaultFontColor={DefaultFontColor}
+      $DefaultFontColor={DefaultFontColor}
       onClick={() => {
         onClick(page);
       }}
@@ -30,7 +30,7 @@ export default function PageNationButton({
 const PageButton = styled.div`
   width: 40px;
   height: 40px;
-  color: ${(props) => props.DefaultFontColor};
+  color: ${(props) => props.$DefaultFontColor};
   text-align: center;
   font-feature-settings:
     'clig' off,

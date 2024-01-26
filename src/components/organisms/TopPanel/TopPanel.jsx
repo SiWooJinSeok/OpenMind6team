@@ -9,7 +9,7 @@ import ShareButtonBox from '../ShareButtonBox/ShareButtonBox';
  * @param {object} owner : 질문 받는 주인
  * @returns
  */
-export default function TopPanel({ owner }) {
+export default function TopPanel({ name, imageSource }) {
   return (
     <>
       <Background bg={imageData.bgImg} />
@@ -18,8 +18,8 @@ export default function TopPanel({ owner }) {
           <Link to="/">
             <Logo src={imageData.logo} alt="로고" />
           </Link>
-          <UserProfileImage type="profile" imageSource={owner.imageSource} />
-          <UserName>{owner.name}</UserName>
+          <UserProfileImage type="profile" imageSource={imageSource} />
+          <UserName>{name}</UserName>
           <ShareButtonBox />
         </Container>
       </Wrapper>
@@ -28,7 +28,8 @@ export default function TopPanel({ owner }) {
 }
 
 TopPanel.defaultProps = {
-  owner: { name: '아초는고양이', imageSource: imageData.defaultProfile },
+  name: '아초는고양이',
+  imageSource: imageData.defaultProfile,
 };
 
 const Logo = styled.img`

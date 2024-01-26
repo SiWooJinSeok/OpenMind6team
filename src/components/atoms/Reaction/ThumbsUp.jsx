@@ -1,6 +1,6 @@
 import thumbsUpIcon from '../../../assets/img/thumbs-up.svg';
 import thumbsUpSelectedIcon from '../../../assets/img/thumbs-up-selected.svg';
-import { ThumbsButton, ThumbsIcon, ThumbsText } from './Share';
+import { ThumbsButton, ThumbsIcon, ThumbsText } from './Shared';
 
 /**
  *

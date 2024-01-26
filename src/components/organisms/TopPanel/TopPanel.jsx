@@ -8,15 +8,15 @@ import ShareButtonBox from '../ShareButtonBox/ShareButtonBox';
  * @param {object} owner : 질문 받는 주인
  * @returns
  */
-export default function TopPanel({ owner }) {
+export default function TopPanel({ name, imageSource }) {
   return (
     <>
       <Background bg={imageData.bgImg} />
       <Wrapper>
         <Container>
           <Logo src={imageData.logo} alt="로고" />
-          <UserProfileImage type="profile" imageSource={owner.imageSource} />
-          <UserName>{owner.name}</UserName>
+          <UserProfileImage type="profile" imageSource={imageSource} />
+          <UserName>{name}</UserName>
           <ShareButtonBox />
         </Container>
       </Wrapper>

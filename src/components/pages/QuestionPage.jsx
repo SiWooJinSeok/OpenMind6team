@@ -1,10 +1,11 @@
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
-import { useEffect, useState } from 'react';
+import useQuestionData from '../../hooks/useQuestionData';
 import useRequestApi from '../../hooks/useRequestApi';
 import FloatingButton from '../atoms/Button/FloatingButton/FloatingButton';
-import Modal from '../organisms/Modal/Modal';
 import FeedCardList from '../organisms/FeedCardList/FeedCardList';
+import Modal from '../organisms/Modal/Modal';
 import TopPanel from '../organisms/TopPanel/TopPanel';
 
 // Todo (송상훈) 좋아요 싫어요 로직구현, 무한스크롤 구현
@@ -15,12 +16,7 @@ export default function QuestionPage() {
   const imageSource = ownerData?.imageSource;
   const name = ownerData?.name;
 
-  const { data: questionsData } = useRequestApi(
-    `subjects/${id}/questions/?limit=5&offset=0`,
-    'get',
-  );
-  const count = questionsData?.count || 0;
-  const questions = questionsData?.results || [];
+  const { count, questions } = useQuestionData();
 
   const [isModalClicked, setIsModalClicked] = useState(false);
   const toggleModal = () => {

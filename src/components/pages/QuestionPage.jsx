@@ -1,9 +1,29 @@
 import styled from 'styled-components';
+import { useEffect, useState } from 'react';
 import TopPanel from '../organisms/TopPanel/TopPanel';
 import FeedCardList from '../organisms/FeedCardList/FeedCardList';
 import FloatingButton from '../atoms/Button/FloatingButton';
+import Modal from '../organisms/Modal/Modal';
 
 export default function QuestionPage() {
+  const [isModalClicked, setIsModalClicked] = useState(false);
+  const toggleModal = () => {
+    setIsModalClicked((prev) => !prev);
+  };
+
+  // 스크롤바 영역 보존
+  document.documentElement.style.scrollbarGutter = 'stable';
+
+  // 모달창이 띄워지면 스크롤 방지
+  useEffect(() => {
+    if (isModalClicked) {
+      document.body.style.overflow = 'hidden';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isModalClicked]);
+
   return (
     <>
       <TopPanel />
@@ -12,9 +32,12 @@ export default function QuestionPage() {
           <FeedCardList type="question" />
         </FeedCard>
         <ButtonSection>
-          <FloatingButton>질문 작성하기</FloatingButton>
+          <FloatingButton toggleModal={toggleModal}>
+            질문 작성하기
+          </FloatingButton>
         </ButtonSection>
       </Wrapper>
+      {isModalClicked ? <Modal toggleModal={toggleModal} /> : null}
     </>
   );
 }

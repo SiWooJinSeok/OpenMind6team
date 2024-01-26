@@ -1,12 +1,16 @@
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
+import { useEffect, useState } from 'react';
 import TopPanel from '../organisms/TopPanel/TopPanel';
 import FeedCardList from '../organisms/FeedCardList/FeedCardList';
 import FloatingButton from '../atoms/Button/FloatingButton';
 import useRequestApi from '../../hooks/useRequestApi';
+import Modal from '../organisms/Modal/Modal';
+
 
 // Todo (송상훈) if 아래 데이터 로딩중일때 로직 처리
 export default function QuestionPage() {
+
   const { id } = useParams();
 
   const { data: ownerData } = useRequestApi(`subjects/${id}/`, 'get');
@@ -19,6 +23,25 @@ export default function QuestionPage() {
   );
   const count = questionsData?.count || 0;
   const questions = questionsData?.results || [];
+
+  const [isModalClicked, setIsModalClicked] = useState(false);
+  const toggleModal = () => {
+    setIsModalClicked((prev) => !prev);
+  };
+
+  // 스크롤바 영역 보존
+  document.documentElement.style.scrollbarGutter = 'stable';
+
+  // 모달창이 띄워지면 스크롤 방지
+  useEffect(() => {
+    if (isModalClicked) {
+      document.body.style.overflow = 'hidden';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isModalClicked]);
+
 
   return (
     <>
@@ -34,9 +57,12 @@ export default function QuestionPage() {
           />
         </FeedCard>
         <ButtonSection>
-          <FloatingButton>질문 작성하기</FloatingButton>
+          <FloatingButton toggleModal={toggleModal}>
+            질문 작성하기
+          </FloatingButton>
         </ButtonSection>
       </Wrapper>
+      {isModalClicked ? <Modal toggleModal={toggleModal} /> : null}
     </>
   );
 }

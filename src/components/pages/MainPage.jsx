@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 import imageData from '../../assets/imageData';
-import GoToAnswerButton from '../atoms/Button/GoToAnswerButton';
+import GoToAnswerButton from '../atoms/Button/GoToAnswerButton/GoToAnswerButton';
 import GetQuestionBox from '../organisms/GetQuestionBox/GetQuestionBox';
 /**
  *

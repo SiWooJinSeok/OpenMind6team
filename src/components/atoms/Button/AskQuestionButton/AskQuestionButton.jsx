@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import { ButtonBox } from './Share';
+import { ButtonBox } from '../Shared';
 
 /**
  *

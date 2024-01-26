@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import AskQuestionButton from '../../atoms/Button/AskQuestionButton';
+import AskQuestionButton from '../../atoms/Button/AskQuestionButton/AskQuestionButton';
 import InputField from '../../atoms/Input/InputField';
 import createSubject from '../../../utils/createSubject';
 

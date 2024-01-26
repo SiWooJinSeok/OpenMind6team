@@ -5,11 +5,13 @@ import TopPanel from '../organisms/TopPanel/TopPanel';
 import FeedCardList from '../organisms/FeedCardList/FeedCardList';
 import FloatingButton from '../atoms/Button/FloatingButton';
 import useRequestApi from '../../hooks/useRequestApi';
+import FloatingButton from '../atoms/Button/FloatingButton/FloatingButton';
 import Modal from '../organisms/Modal/Modal';
 
 // Todo (송상훈) 좋아요 싫어요 로직 추가, 무한스크롤 구현
 export default function QuestionPage() {
   const { id } = useParams();
+  
   const { data: ownerData } = useRequestApi(`subjects/${id}/`, 'get');
   const imageSource = ownerData?.imageSource;
   const name = ownerData?.name;

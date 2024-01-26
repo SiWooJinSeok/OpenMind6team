@@ -65,7 +65,13 @@ const StyledGoToAnswerButton = styled(GoToAnswerButton)`
   }
 `;
 const MainPageImage = styled.img`
-  position: fixed;
+  position: absolute;
   width: 100%;
   top: 205px;
+  @media (max-width: 1199px) {
+    top: 375px;
+  }
+  @media (max-width: 767px) {
+    top: 431px;
+  }
 `;

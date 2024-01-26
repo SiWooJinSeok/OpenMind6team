@@ -8,7 +8,7 @@ import ShareButtonBox from '../ShareButtonBox/ShareButtonBox';
  * @param {object} owner : 질문 받는 주인
  * @returns
  */
-export default function Header({ owner }) {
+export default function TopPanel({ owner }) {
   return (
     <>
       <Background bg={imageData.bgImg} />
@@ -24,7 +24,7 @@ export default function Header({ owner }) {
   );
 }
 
-Header.defaultProps = {
+TopPanel.defaultProps = {
   owner: { name: '아초는고양이', imageSource: imageData.defaultProfile },
 };
 
@@ -59,6 +59,7 @@ const Container = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 12px;
+  z-index: 2;
   @media screen and (max-width: 768px) {
     margin-top: 40px;
   }
@@ -71,7 +72,7 @@ const Background = styled.div`
   background-position: center;
   background-repeat: no-repeat;
   mix-blend-mode: hard-light;
-  z-index: -1;
+  z-index: 1;
   width: 100%;
   height: 234px;
   @media screen and (max-width: 768px) {

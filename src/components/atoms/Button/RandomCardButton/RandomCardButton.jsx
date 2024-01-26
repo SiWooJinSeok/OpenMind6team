@@ -9,6 +9,7 @@ export default function RandomCardButton({ onClick }) {
 }
 
 const Button = styled.button`
+  font-family: pretendard;
   display: flex;
   flex-direction: column;
   align-items: center;

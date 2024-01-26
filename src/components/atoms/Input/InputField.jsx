@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import imageData from '../../../assets/imageData';
-import RowFlexCenter from './Share';
+import RowFlexCenter from './Shared';
 /**
  *
  * @param {string} placeholder : input placeholder

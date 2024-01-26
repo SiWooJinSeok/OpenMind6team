@@ -1,5 +1,10 @@
 import useRequestApi from '../../../hooks/useRequestApi';
 
+/**
+ *
+ * @returns randomCard : object
+ */
+
 export default function useRandomQuestionCard() {
   const { data } = useRequestApi('subjects/?limit=100&offset=0', 'get');
 

@@ -3,35 +3,39 @@ import styled from 'styled-components';
 import imageData from '../../../assets/imageData';
 import useRandomQuestionCard from './useRandomQuestionCard.hook';
 
+/**
+ *
+ * @param {onModalCloseButtonClick : event handler} param0
+ * @returns RandomQuestionCard Component
+ */
+
 export default function RandomQuestionCard({ onModalCloseButtonClick }) {
   const { randomCard } = useRandomQuestionCard();
 
   return (
-    <RandomCardWrapper onClick={onModalCloseButtonClick}>
-      <RandomCardFlip to={`/post/${randomCard?.id}`}>
-        <RandomCard>
-          <RandomCardFront>마우스를 올려보세요</RandomCardFront>
-          <RandomCardBack>
-            <RanDomCardImgBox>
+    <Wrapper onClick={onModalCloseButtonClick}>
+      <CardFlip to={`/post/${randomCard?.id}`}>
+        <Card>
+          <CardFront>마우스를 올려보세요</CardFront>
+          <CardBack>
+            <ImgBox>
               <img src={randomCard?.imageSource} alt="랜덤카드 이미지" />
-            </RanDomCardImgBox>
-            <RanDomCardContentBox>
-              <RanDomCardContentUserName>
-                {randomCard?.name}
-              </RanDomCardContentUserName>
-              <RanDomCardContentUserQuestionCount>
+            </ImgBox>
+            <ContentBox>
+              <UserName>{randomCard?.name}</UserName>
+              <UserQuestionCount>
                 <img src={imageData.messageIcon} alt="메시지 아이콘" />
                 <div>{randomCard?.questionCount}</div>
-              </RanDomCardContentUserQuestionCount>
-            </RanDomCardContentBox>
-          </RandomCardBack>
-        </RandomCard>
-      </RandomCardFlip>
-    </RandomCardWrapper>
+              </UserQuestionCount>
+            </ContentBox>
+          </CardBack>
+        </Card>
+      </CardFlip>
+    </Wrapper>
   );
 }
 
-const RandomCardWrapper = styled.div`
+const Wrapper = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
@@ -41,7 +45,7 @@ const RandomCardWrapper = styled.div`
   position: fixed;
 `;
 
-const RandomCardFlip = styled(Link)`
+const CardFlip = styled(Link)`
   font-family: Pretendard;
   padding: 0;
   width: 210px;
@@ -49,7 +53,7 @@ const RandomCardFlip = styled(Link)`
   perspective: 1100px;
 `;
 
-const RandomCardFront = styled.div`
+const CardFront = styled.div`
   border: 1px solid var(--Grayscale-30);
   width: 100%;
   height: 100%;
@@ -64,7 +68,7 @@ const RandomCardFront = styled.div`
   backface-visibility: hidden;
 `;
 
-const RanDomCardContentBox = styled.div`
+const ContentBox = styled.div`
   padding: 24px;
   width: 100%;
   height: 50%;
@@ -75,7 +79,7 @@ const RanDomCardContentBox = styled.div`
   border-radius: 22px;
 `;
 
-const RanDomCardImgBox = styled.div`
+const ImgBox = styled.div`
   width: 120px;
   height: 120px;
   border-radius: 50%;
@@ -89,7 +93,7 @@ const RanDomCardImgBox = styled.div`
   }
 `;
 
-const RandomCard = styled.div`
+const Card = styled.div`
   width: 100%;
   height: 100%;
   position: relative;
@@ -100,16 +104,16 @@ const RandomCard = styled.div`
     transform: rotateY(180deg);
   }
 
-  &:hover ${RanDomCardImgBox} {
+  &:hover ${ImgBox} {
     transform: translateY(-50%);
   }
 
-  &:hover ${RanDomCardContentBox} {
+  &:hover ${ContentBox} {
     transform: translateY(66%);
   }
 `;
 
-const RandomCardBack = styled.div`
+const CardBack = styled.div`
   border: 2px solid var(--Grayscale-60);
   width: 100%;
   height: 100%;
@@ -126,7 +130,7 @@ const RandomCardBack = styled.div`
   transform: rotateY(180deg);
 `;
 
-const RanDomCardContentUserName = styled.p`
+const UserName = styled.p`
   text-align: center;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -136,7 +140,7 @@ const RanDomCardContentUserName = styled.p`
   margin-bottom: 12px;
 `;
 
-const RanDomCardContentUserQuestionCount = styled.p`
+const UserQuestionCount = styled.p`
   font-size: 16px;
   font-weight: 400;
   display: flex;

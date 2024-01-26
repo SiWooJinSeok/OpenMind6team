@@ -51,9 +51,11 @@ export default function CardSortDropdown({
 
 const Wrapper = styled.div`
   display: inline-block;
+  position: relative;
 `;
 
 const DropdownHeader = styled.div`
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -82,13 +84,12 @@ const DropdownIcon = styled.div`
 const DropdownContent = styled.div`
   border: 1px solid var(--Grayscale-40);
   border-radius: 0.8rem;
+  width: 100%;
   padding: 0.6rem 1.6rem;
   background: var(--Grayscale-10, #fff);
   box-shadow: 0px 4px 4px 0px rgba(140, 140, 140, 0.25);
   margin-top: 0.5rem;
   position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
   z-index: 9999;
 `;
 

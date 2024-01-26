@@ -65,7 +65,7 @@ const StyledGoToAnswerButton = styled(GoToAnswerButton)`
   }
 `;
 const MainPageImage = styled.img`
-  position: absolute;
+  position: fixed;
   width: 100%;
   top: 205px;
   @media (max-width: 1199px) {

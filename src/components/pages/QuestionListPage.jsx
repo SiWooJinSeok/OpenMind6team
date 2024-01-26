@@ -1,10 +1,13 @@
+import { useState } from 'react';
 import styled from 'styled-components';
 import QuestionListNavbar from '../organisms/QuestionListNavbar/QuestionListNavbar';
 import CardSortDropdown from '../atoms/Dropdown/CardSortDropdown';
 import UserCardList from '../organisms/UserCardList/UserCardList';
 import useGetQuestionPageData from '../../hooks/useGetQuestionPageData';
-import PageNationNumbers from '../organisms/QuestionPageNationNumbers/PageNationNumbers';
+import PageNationNumbers from '../organisms/PageNationNumbers/PageNationNumbers';
 import PageNationButton from '../atoms/PageNation/PageNationButton';
+import RandomCardButton from '../atoms/Button/RandomCardButton/RandomCardButton';
+import RandomQuestionCard from '../organisms/RandomQuestionCard/RandomQuestionCard';
 
 export default function QuestionListPage() {
   const {
@@ -19,11 +22,22 @@ export default function QuestionListPage() {
     isLoading: isLoadingUserCardListData,
   } = useGetQuestionPageData();
 
+  const [showRandomCard, setShowRandomCard] = useState(false);
+
+  const handleShowRandomCardButtonClick = () => {
+    setShowRandomCard(!showRandomCard);
+  };
+
+  const handleModalCloseButtonClick = () => {
+    setShowRandomCard(false);
+  };
+
   return (
     <Wrapper>
       <QuestionListNavbar />
       <TitleWrapper>
         <Title>누구에게 질문할까요?</Title>
+        <RandomCardButton onClick={handleShowRandomCardButtonClick} />
         <CardSortDropdown
           CardSort={sort}
           onSortButtonClick={handleSortButtonClick}
@@ -54,6 +68,12 @@ export default function QuestionListPage() {
           onClick={handleRightArrowClick}
         />
       </PageNationButtonContainer>
+
+      {showRandomCard ? (
+        <RandomQuestionCard
+          onModalCloseButtonClick={handleModalCloseButtonClick}
+        />
+      ) : null}
     </Wrapper>
   );
 }

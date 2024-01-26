@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
-import arrowRight from '../../../assets/img/arrow-right-brown-disabled.svg';
+import { ArrowImg, ButtonBox } from '../Shared';
 
-import { ArrowImg, ButtonBox } from './Share';
+import imageData from '../../../../assets/imageData';
 
 /**
  *
@@ -13,7 +13,7 @@ export default function DisabledGoToAnswerButton({ text, width }) {
   return (
     <Button width={width} disabled>
       {text}
-      <ArrowImg src={arrowRight} />
+      <ArrowImg src={imageData.arrowRightBrownDisabled} />
     </Button>
   );
 }

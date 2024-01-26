@@ -12,7 +12,7 @@ import useResizeModal from './useResizeModal.hook';
  * @param {function} props.toggleModal - 모달을 토글하는 함수
  * @returns 모달 컴포넌트를 반환
  */
-export default function Modal({ subject, toggleModal }) {
+export default function Modal({ toggleModal, imageSource, name }) {
   const [inputQuestion, setInputQuestion] = useState('');
   // TODO[이시열] : AnswerForm에 질문보내기 api 요청 handler 전달, QuestionPage에서 질문 대상 객체 전달받기
 
@@ -36,8 +36,8 @@ export default function Modal({ subject, toggleModal }) {
         <QuestionBox>
           <RecipientBox>
             <Text>To.</Text>
-            <UserProfileImage type="questionModal" />
-            <Recipient>{subject.name}</Recipient>
+            <UserProfileImage type="questionModal" imageSource={imageSource} />
+            <Recipient>{name}</Recipient>
           </RecipientBox>
           <AnswerForm
             inputValue={inputQuestion}

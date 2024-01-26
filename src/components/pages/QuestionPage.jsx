@@ -59,7 +59,13 @@ export default function QuestionPage() {
           </FloatingButton>
         </ButtonSection>
       </Wrapper>
-      {isModalClicked ? <Modal toggleModal={toggleModal} /> : null}
+      {isModalClicked ? (
+        <Modal
+          toggleModal={toggleModal}
+          imageSource={imageSource}
+          name={name}
+        />
+      ) : null}
     </>
   );
 }

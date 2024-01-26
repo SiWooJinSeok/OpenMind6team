@@ -12,7 +12,7 @@ const getAnswerType = ({ type, handleType, answer, setAnswer }) => {
         />
       );
     case 'Answer':
-      if (answer === '답변거절') {
+      if (answer.replaceAll(' ', '') === '답변거절') {
         return <NoAnswer>답변거절</NoAnswer>;
       }
       return <Paragraph>{answer}</Paragraph>;

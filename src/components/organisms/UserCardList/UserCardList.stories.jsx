@@ -8,7 +8,7 @@ export default {
   },
   tags: ['autodocs'],
   argTypes: {
-    userName: { control: 'text' },
+    UserCardListData: { control: 'text' },
     questionCount: { console: 'number' },
   },
 };

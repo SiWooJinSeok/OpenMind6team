@@ -10,7 +10,7 @@ export default function RandomQuestionCard({ onModalCloseButtonClick }) {
     <RandomCardWrapper onClick={onModalCloseButtonClick}>
       <RandomCardFlip to={`/post/${randomCard?.id}`}>
         <RandomCard>
-          <RandomCardFront />
+          <RandomCardFront>마우스를 올려보세요</RandomCardFront>
           <RandomCardBack>
             <RanDomCardImgBox>
               <img src={randomCard?.imageSource} alt="랜덤카드 이미지" />
@@ -42,6 +42,7 @@ const RandomCardWrapper = styled.div`
 `;
 
 const RandomCardFlip = styled(Link)`
+  font-family: Pretendard;
   padding: 0;
   width: 210px;
   height: 270px;
@@ -52,7 +53,12 @@ const RandomCardFront = styled.div`
   border: 1px solid var(--Grayscale-30);
   width: 100%;
   height: 100%;
-  background-color: black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.8rem;
+  background-color: var(--Grayscale-60);
+  color: var(--Grayscale-10);
   border-radius: 22px;
   position: absolute;
   backface-visibility: hidden;
@@ -107,6 +113,7 @@ const RandomCardBack = styled.div`
   border: 2px solid var(--Grayscale-60);
   width: 100%;
   height: 100%;
+  color: black;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -127,13 +134,11 @@ const RanDomCardContentUserName = styled.p`
   font-size: 20px;
   font-weight: 500;
   margin-bottom: 12px;
-  font-family: Pretendard;
 `;
 
 const RanDomCardContentUserQuestionCount = styled.p`
   font-size: 16px;
   font-weight: 400;
-  font-family: Pretendard;
   display: flex;
   justify-content: center;
   gap: 12px;

@@ -8,7 +8,6 @@ import useRequestApi from '../../hooks/useRequestApi';
 // Todo (송상훈) if 아래 데이터 로딩중일때 로직 처리
 export default function QuestionPage() {
   const { id } = useParams();
-
   const { data: ownerData } = useRequestApi(`subjects/${id}/`, 'get');
   const imageSource = ownerData?.imageSource;
   const name = ownerData?.name;

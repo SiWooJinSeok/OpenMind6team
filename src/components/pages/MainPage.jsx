@@ -1,19 +1,28 @@
 import styled from 'styled-components';
+import { useNavigate } from 'react-router-dom';
 import imageData from '../../assets/imageData';
 import GoToAnswerButton from '../atoms/Button/GoToAnswerButton/GoToAnswerButton';
 import GetQuestionBox from '../organisms/GetQuestionBox/GetQuestionBox';
 /**
  *
- * @returns MainPage "/"
+ * @returns MainPage
  */
 
 export default function MainPage() {
   // TODO: MainPageImage top 위치 동적으로 지정
+  const navigate = useNavigate();
+
+  const handleButtonClick = () => {
+    navigate('/list');
+  };
   return (
     <Wrapper>
       <Container>
         <MainLogo src={imageData.logo} />
-        <StyledGoToAnswerButton text="질문하러 가기" />
+        <StyledGoToAnswerButton
+          text="질문하러 가기"
+          onClick={handleButtonClick}
+        />
         <GetQuestionBox />
       </Container>
       <MainPageImage src={imageData.mainPageImage} />

@@ -1,7 +1,15 @@
 import styled from 'styled-components';
 
-export default function FloatingButton({ children, width = '208px' }) {
-  return <Button width={width}>{children}</Button>;
+export default function FloatingButton({
+  children,
+  width = '208px',
+  toggleModal,
+}) {
+  return (
+    <Button width={width} onClick={toggleModal}>
+      {children}
+    </Button>
+  );
 }
 
 const Button = styled.button`

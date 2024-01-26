@@ -1,21 +1,15 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import useQuestionData from '../../hooks/useQuestionData';
-import useRequestApi from '../../hooks/useRequestApi';
 import FloatingButton from '../atoms/Button/FloatingButton/FloatingButton';
 import FeedCardList from '../organisms/FeedCardList/FeedCardList';
 import Modal from '../organisms/Modal/Modal';
 import TopPanel from '../organisms/TopPanel/TopPanel';
+import useQuestionOwnerData from '../../hooks/useQuestionOwnerData';
 
 // Todo (송상훈) 좋아요 싫어요 로직구현, 무한스크롤 구현
 export default function QuestionPage() {
-  const { id } = useParams();
-
-  const { data: ownerData } = useRequestApi(`subjects/${id}/`, 'get');
-  const imageSource = ownerData?.imageSource;
-  const name = ownerData?.name;
-
+  const { imageSource, name, id } = useQuestionOwnerData();
   const { count, questions } = useQuestionData();
 
   const [isModalClicked, setIsModalClicked] = useState(false);

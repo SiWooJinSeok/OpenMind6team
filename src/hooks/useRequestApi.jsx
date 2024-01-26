@@ -13,7 +13,7 @@ const useRequestApi = (path, method, postData = {}) => {
   const [data, setData] = useState(null);
 
   useEffect(() => {
-    (async () => {
+    const requestData = async () => {
       setIsLoading(true);
       try {
         const result = await requestApi(path, method, postData);
@@ -23,8 +23,9 @@ const useRequestApi = (path, method, postData = {}) => {
       } finally {
         setIsLoading(false);
       }
-    })();
-  }, [path]);
+    };
+    requestData();
+  }, []);
 
   return { data, isLoading, errorMessage };
 };

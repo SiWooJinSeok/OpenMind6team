@@ -64,6 +64,7 @@ export default function QuestionPage() {
           toggleModal={toggleModal}
           imageSource={imageSource}
           name={name}
+          id={id}
         />
       ) : null}
     </>

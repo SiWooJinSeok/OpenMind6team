@@ -1,17 +1,10 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import useRequestApi from '../../../hooks/useRequestApi';
 import imageData from '../../../assets/imageData';
+import useRandomQuestionCard from './useRandomQuestionCard.hook';
 
 export default function RandomQuestionCard({ onModalCloseButtonClick }) {
-  const { data, isLoading } = useRequestApi(
-    'subjects/?limit=100&offset=0',
-    'get',
-  );
-  const randomIndex = isLoading
-    ? null
-    : Math.floor(Math.random() * data.results.length);
-  const randomCard = data?.results[randomIndex];
+  const { randomCard } = useRandomQuestionCard();
 
   return (
     <RandomCardWrapper onClick={onModalCloseButtonClick}>

@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import imageData from '../../assets/imageData';
 import GoToAnswerButton from '../atoms/Button/GoToAnswerButton/GoToAnswerButton';
 import GetQuestionBox from '../organisms/GetQuestionBox/GetQuestionBox';
+
 /**
  *
  * @returns MainPage

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import UserProfileImage from '../../atoms/UserProfileImage/UserProfileImage';
 import imageData from '../../../assets/imageData';
 import ShareButtonBox from '../ShareButtonBox/ShareButtonBox';
@@ -14,7 +15,9 @@ export default function TopPanel({ name, imageSource }) {
       <Background bg={imageData.bgImg} />
       <Wrapper>
         <Container>
-          <Logo src={imageData.logo} alt="로고" />
+          <Link to="/">
+            <Logo src={imageData.logo} alt="로고" />
+          </Link>
           <UserProfileImage type="profile" imageSource={imageSource} />
           <UserName>{name}</UserName>
           <ShareButtonBox />
@@ -25,7 +28,8 @@ export default function TopPanel({ name, imageSource }) {
 }
 
 TopPanel.defaultProps = {
-  owner: { name: '아초는고양이', imageSource: imageData.defaultProfile },
+  name: '아초는고양이',
+  imageSource: imageData.defaultProfile,
 };
 
 const Logo = styled.img`

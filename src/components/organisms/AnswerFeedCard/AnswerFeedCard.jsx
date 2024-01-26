@@ -16,6 +16,8 @@ import { getCurrentType } from './getAnswerType';
 // TODO(노진석) : 기능 구현하기
 export default function AnswerFeedCard({ questionData }) {
   const { content, like, dislike, answer } = questionData;
+  const liked = like > 0;
+  const disLiked = dislike > 0;
   const [currentType, setCurrentType] = useState(
     getCurrentType(answer.content, answer.isRejected),
   );
@@ -38,8 +40,8 @@ export default function AnswerFeedCard({ questionData }) {
       />
       <Hr />
       <ReactionBox>
-        <ThumbsUp count={like} />
-        <ThumbsDown count={dislike} />
+        <ThumbsUp isLiked={liked} count={like} />
+        <ThumbsDown isDisliked={disLiked} count={dislike} />
       </ReactionBox>
     </Wrapper>
   );

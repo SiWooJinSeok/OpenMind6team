@@ -1,19 +1,39 @@
 import styled from 'styled-components';
-import TopPanel from '../organisms/TopPanel/TopPanel';
+import { useNavigate, useParams } from 'react-router-dom';
+
 import DeleteButton from '../atoms/Button/DeleteButton/DeleteButton';
+
+import useSubjectData from '../../hooks/useSubjectData';
+import requestApi from '../../utils/requestApi';
+import TopPanel from '../organisms/TopPanel/TopPanel';
 import FeedCardList from '../organisms/FeedCardList/FeedCardList';
 
 // TODO(노진석) : 나중에 로직 만들 때 수정
 export default function AnswerPage() {
+  const subjectId = useParams();
+  const currentSubjectId = localStorage.getItem('subjectId');
+  const navigate = useNavigate();
+  const SUBJECT_URL = `subjects/${subjectId.id}/`;
+  if (subjectId.id !== currentSubjectId) {
+    navigate('/list');
+  }
+  const deleteSubject = () => {
+    requestApi(SUBJECT_URL, 'delete');
+    localStorage.removeItem('subjectId');
+    navigate('/');
+  };
+  const { data } = useSubjectData(SUBJECT_URL);
+  const owner = { name: data?.name, imageSource: data?.imageSource };
+
   return (
     <>
-      <TopPanel />
+      <TopPanel name={owner.name} imageSource={owner.imageSource} />
       <Wrapper>
         <Container>
           <DeleteButtonBox>
-            <DeleteButton />
+            <DeleteButton onClick={deleteSubject} />
           </DeleteButtonBox>
-          <FeedCardList type="answer" />
+          <FeedCardList type="answer" questionCount={data?.questionCount} />
         </Container>
       </Wrapper>
     </>

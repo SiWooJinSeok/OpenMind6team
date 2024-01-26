@@ -1,17 +1,20 @@
+import { useState } from 'react';
 import styled from 'styled-components';
 import useQuestionData from '../../hooks/useQuestionData';
+import useQuestionOwnerData from '../../hooks/useQuestionOwnerData';
+import useToggle from '../../hooks/useToggle';
 import FloatingButton from '../atoms/Button/FloatingButton/FloatingButton';
 import FeedCardList from '../organisms/FeedCardList/FeedCardList';
 import Modal from '../organisms/Modal/Modal';
 import TopPanel from '../organisms/TopPanel/TopPanel';
-import useQuestionOwnerData from '../../hooks/useQuestionOwnerData';
-import useToggle from '../../hooks/useToggle';
 
 // Todo (송상훈) 좋아요 싫어요 로직구현, 무한스크롤 구현
 export default function QuestionPage() {
+  const [isModalClicked, setIsModalClicked] = useState(false);
   const { imageSource, name, id } = useQuestionOwnerData();
-  const { count, questions } = useQuestionData();
-  const [isModalClicked, toggleModal] = useToggle();
+  const { count, questions } = useQuestionData(isModalClicked);
+
+  const toggleModal = useToggle(isModalClicked, setIsModalClicked);
 
   return (
     <>

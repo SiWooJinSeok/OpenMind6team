@@ -15,18 +15,14 @@ import requestApi from '../../../utils/requestApi';
  */
 export default function Modal({ toggleModal, imageSource, name, id }) {
   const [inputQuestion, setInputQuestion] = useState('');
-  // TODO[이시열] : AnswerForm에 질문보내기 api 요청 handler 전달, QuestionPage에서 질문 대상 객체 전달받기
+
   const questionContent = {
     content: inputQuestion,
   };
 
-  const handleQuestionSubmit = () => {
-    const result = requestApi(
-      `subjects/${id}/questions/`,
-      'post',
-      questionContent,
-    );
-    console.log(result);
+  const handleQuestionSubmit = async () => {
+    await requestApi(`subjects/${id}/questions/`, 'post', questionContent);
+    toggleModal();
   };
 
   const height = useResizeModal();

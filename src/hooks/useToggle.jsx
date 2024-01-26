@@ -1,11 +1,15 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
-const useToggle = () => {
-  const [isModalClicked, setIsModalClicked] = useState(false);
+/**
+ * 모달창이 띄워지면 스크롤 방지, 토글 함수 반환
+ * @param {boolean} isModalClicked 모달창이 띄워져 있는지 여부
+ * @param {function} setIsModalClicked isModalClicked 상태 변경 함수
+ * @returns {function} toggleModal
+ */
+const useToggle = (isModalClicked, setIsModalClicked) => {
   const toggleModal = () => {
     setIsModalClicked((prev) => !prev);
   };
-
   // 스크롤바 영역 보존
   document.documentElement.style.scrollbarGutter = 'stable';
 
@@ -19,7 +23,7 @@ const useToggle = () => {
     };
   }, [isModalClicked]);
 
-  return [isModalClicked, toggleModal];
+  return toggleModal;
 };
 
 export default useToggle;

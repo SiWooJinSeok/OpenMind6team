@@ -31,7 +31,7 @@ export default function Modal({ subject, toggleModal }) {
             <Icon src={imageData.messageIcon} />
             <HeaderText>질문을 작성하세요</HeaderText>
           </ModalHeaderBox>
-          <Icon src={imageData.closeIcon} onClick={toggleModal} />
+          <CloseIcon src={imageData.closeIcon} onClick={toggleModal} />
         </ModalHeader>
         <QuestionBox>
           <RecipientBox>
@@ -100,6 +100,8 @@ const ModalHeaderBox = styled.div`
 const Icon = styled.img`
   width: 28px;
   height: 28px;
+`;
+const CloseIcon = styled(Icon)`
   cursor: pointer;
 `;
 const HeaderText = styled.h3``;

@@ -23,17 +23,28 @@ export default function AnswerPage() {
     navigate('/');
   };
   const { data } = useRequestApi(SUBJECT_URL, 'get');
-  const owner = { name: data?.name, imageSource: data?.imageSource };
+  const name = data?.name;
+  const imageSource = data?.imageSource;
+  const { data: questionsData } = useRequestApi(
+    `${SUBJECT_URL}questions/`,
+    'get',
+  );
 
   return (
     <>
-      <TopPanel name={owner.name} imageSource={owner.imageSource} />
+      <TopPanel name={name} imageSource={imageSource} />
       <Wrapper>
         <Container>
           <DeleteButtonBox>
             <DeleteButton onClick={deleteSubject} />
           </DeleteButtonBox>
-          <FeedCardList type="answer" questionCount={data?.questionCount} />
+          <FeedCardList
+            type="answer"
+            questionCount={data?.questionCount}
+            name={name}
+            imageSource={imageSource}
+            questionsData={questionsData}
+          />
         </Container>
       </Wrapper>
     </>

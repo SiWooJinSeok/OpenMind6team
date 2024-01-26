@@ -2,19 +2,15 @@ import AnswerFeedCard from '../AnswerFeedCard/AnswerFeedCard';
 import QuestionsFeedCard from '../QuestionsFeedCard/QuestionsFeedCard';
 
 const getFeedCardType = (questionsData, name, imageSource, type = 'answer') => {
-  const mockData = [
-    {
-      id: 1,
-    },
-    {
-      id: 2,
-    },
-    {
-      id: 3,
-    },
-  ];
   if (type === 'answer') {
-    return mockData.map((it) => <AnswerFeedCard key={it.id} />);
+    return questionsData?.results.map((it) => (
+      <AnswerFeedCard
+        key={it.id}
+        questionsData={it}
+        name={name}
+        imageSource={imageSource}
+      />
+    ));
   }
   return questionsData
     .sort((a, b) => b.createdAt - a.createdAt)

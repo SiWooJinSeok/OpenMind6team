@@ -1,0 +1,1 @@
+export const PAGE_NATION_NUMBER_COUNT = 5;

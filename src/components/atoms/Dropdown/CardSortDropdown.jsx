@@ -4,7 +4,7 @@ import {
   SORT_NAME,
   SORT_TIME_KOREAN,
   SORT_NAME_KOREAN,
-} from '../../../constants/constants';
+} from '../../../constants/question_list_page_sort';
 import useCardSortDropdown from './useCardSortDropdown.hook';
 
 /**

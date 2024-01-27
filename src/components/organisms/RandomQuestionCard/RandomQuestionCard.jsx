@@ -4,8 +4,8 @@ import imageData from '../../../assets/imageData';
 import useRandomQuestionCard from './useRandomQuestionCard.hook';
 
 /**
- *
- * @param {onModalCloseButtonClick : event handler} param0
+ * 실험적인 기능입니다!!
+ * @param {onModalCloseButtonClick : event handler, 클릭하면 랜덤 카드가 닫힙니다.} param0
  * @returns RandomQuestionCard Component
  */
 

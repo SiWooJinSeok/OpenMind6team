@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 import AnswerForm from '../AnswerForm/AnswerForm';
 
-const getAnswerType = ({ type, handleType, answer, setAnswer }) => {
+const getAnswerType = ({ type, onClick, answer, setAnswer }) => {
   switch (type) {
     case 'Edit':
       return (
         <AnswerForm
-          onClick={handleType}
+          onClick={onClick}
           inputValue={answer}
           setInputValue={setAnswer}
         />

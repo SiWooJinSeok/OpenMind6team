@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import UserProfileImage from '../../atoms/UserProfileImage/UserProfileImage';
 import getAnswerType from './getAnswerType';
 import getElapsedTime from '../../../utils/getElapsedTime';
+import requestApi from '../../../utils/requestApi';
 
 /**
  * @param {object} item : id, content
@@ -13,6 +14,7 @@ import getElapsedTime from '../../../utils/getElapsedTime';
  */
 // TODO(노진석): 나중에 추가 로직만들면서 변경 될 가능성 있음!
 export default function AnswerPageUserAnswer({
+  questionId,
   item,
   name,
   imageSource,
@@ -24,8 +26,15 @@ export default function AnswerPageUserAnswer({
   const { createdAt } = item || new Date();
   const elapsedTimeQuestion = getElapsedTime(createdAt);
 
-  const handleType = () => {
+  const createAnswer = () => {
     setCurrentType('Answer');
+    const isRejected = answer.replaceAll(' ', '') === '답변거절';
+    const postData = {
+      questionId,
+      content: answer,
+      isRejected,
+    };
+    requestApi(`questions/${questionId}/answers/`, 'post', postData);
   };
   return (
     <Wrapper>
@@ -41,7 +50,7 @@ export default function AnswerPageUserAnswer({
         </UserNameBox>
         {getAnswerType({
           type: currentType,
-          handleType,
+          onClick: createAnswer,
           answer,
           setAnswer,
         })}

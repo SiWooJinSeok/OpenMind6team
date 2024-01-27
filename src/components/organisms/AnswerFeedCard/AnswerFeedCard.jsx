@@ -7,6 +7,7 @@ import ThumbsUp from '../../atoms/Reaction/ThumbsUp';
 import ThumbsDown from '../../atoms/Reaction/ThumbsDown';
 import { getCurrentType } from './getAnswerType';
 import getElapsedTime from '../../../utils/getElapsedTime';
+import requestApi from '../../../utils/requestApi';
 
 /**
  *
@@ -15,8 +16,13 @@ import getElapsedTime from '../../../utils/getElapsedTime';
  */
 
 // TODO(노진석) : 기능 구현하기
-export default function AnswerFeedCard({ questionsData, name, imageSource }) {
-  const { content, like, dislike, createdAt, answer } = questionsData;
+export default function AnswerFeedCard({
+  questionsData,
+  name,
+  imageSource,
+  setData,
+}) {
+  const { content, like, dislike, createdAt, answer, id } = questionsData;
   const liked = like > 0;
   const disLiked = dislike > 0;
   const [currentType, setCurrentType] = useState(
@@ -24,18 +30,43 @@ export default function AnswerFeedCard({ questionsData, name, imageSource }) {
   );
   const isAnswered = currentType !== 'Edit';
   const elapsedTimeQuestion = getElapsedTime(createdAt);
-
+  const [isClicked, setIsClicked] = useState();
+  const deleteQuestion = async () => {
+    if (isClicked) {
+      return;
+    }
+    setIsClicked(true);
+    await requestApi(`questions/${id}/`, 'delete');
+    setIsClicked(false);
+    setData((preData) => {
+      const currentData = preData.results.filter(
+        (it) => it.id !== questionsData.id,
+      );
+      return {
+        ...preData,
+        results: currentData,
+        count: preData.count - 1,
+      };
+    });
+  };
+  const updateClick = () => {
+    setCurrentType('Edit');
+  };
   return (
     <Wrapper>
       <StateBox>
         <Badge isAnswered={isAnswered} />
-        <EditableDropdown />
+        <EditableDropdown
+          deleteClick={deleteQuestion}
+          updateClick={updateClick}
+        />
       </StateBox>
       <QuestionBox>
         질문 · {elapsedTimeQuestion}
         <QuestionContent>{content}</QuestionContent>
       </QuestionBox>
       <UserAnswerCard
+        questionId={id}
         item={answer}
         currentType={currentType}
         setCurrentType={setCurrentType}

@@ -16,14 +16,15 @@ export default function GetQuestionBox() {
   const navigate = useNavigate();
 
   const handleInputName = (value) => {
+    if (value.length > 30) {
+      return;
+    }
     setInputName(value);
   };
-
   const handleButtonClick = async () => {
     const { id } = await createSubject(inputName);
     navigate(`/post/${id}/answer`);
   };
-
   return (
     <Wrapper>
       <Container>

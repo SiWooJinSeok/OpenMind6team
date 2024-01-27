@@ -10,7 +10,6 @@ import GetQuestionBox from '../organisms/GetQuestionBox/GetQuestionBox';
  */
 
 export default function MainPage() {
-  // TODO: MainPageImage top 위치 동적으로 지정
   const navigate = useNavigate();
 
   const handleButtonClick = () => {

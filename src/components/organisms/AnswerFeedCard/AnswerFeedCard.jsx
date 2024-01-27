@@ -8,7 +8,7 @@ import ThumbsDown from '../../atoms/Reaction/ThumbsDown';
 import { getCurrentType } from './getAnswerType';
 import getElapsedTime from '../../../utils/getElapsedTime';
 import requestApi from '../../../utils/requestApi';
-import updateReactionData from '../../../hooks/updateReactionData';
+import useReactionData from '../../../hooks/useReactionData';
 
 /**
  *
@@ -28,25 +28,15 @@ export default function AnswerFeedCard({
 }) {
   const { content, like, dislike, createdAt, answer, id } = questionsData;
   const [item, setItem] = useState(answer);
-  const [countLike, setCountLike] = useState(like);
-  const [countDisLike, setCountDisLike] = useState(dislike);
   const [currentType, setCurrentType] = useState(
     getCurrentType(answer ? content : '', answer?.isRejected),
   );
   const [isClicked, setIsClicked] = useState();
   const isAnswered = currentType !== 'Edit';
   const elapsedTimeQuestion = getElapsedTime(createdAt);
-  const handleClickLike = async () => {
-    const data = await updateReactionData(id, 'like');
-    const newLike = data?.like;
-    setCountLike(newLike);
-  };
+  const { countLike, countDisLike, handleClickLike, handleClickDisLike } =
+    useReactionData(like, dislike, id);
 
-  const handleClickDisLike = async () => {
-    const data = await updateReactionData(id, 'dislike');
-    const newDisLike = data?.dislike;
-    setCountDisLike(newDisLike);
-  };
   const deleteQuestion = async () => {
     if (isClicked) {
       return;

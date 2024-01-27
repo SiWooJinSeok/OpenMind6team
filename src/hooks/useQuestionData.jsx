@@ -16,7 +16,7 @@ const useQuestionData = (isModalClicked) => {
   useEffect(() => {
     const getData = async () => {
       const questionsData = await requestApi(
-        `subjects/${id}/questions/?limit=5&offset=0`,
+        `subjects/${id}/questions/?limit=8&offset=0`,
         'get',
       );
       setCount(questionsData?.count || 0);

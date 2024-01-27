@@ -1,6 +1,6 @@
 import requestApi from '../utils/requestApi';
 
-const useReactionData = async (questionId, typeData) => {
+const updateReactionData = async (questionId, typeData) => {
   const postData = {
     type: typeData === 'like' ? 'like' : 'dislike',
   };
@@ -14,4 +14,4 @@ const useReactionData = async (questionId, typeData) => {
   return data;
 };
 
-export default useReactionData;
+export default updateReactionData;

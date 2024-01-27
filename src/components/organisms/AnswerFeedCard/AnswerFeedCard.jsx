@@ -16,7 +16,7 @@ import getElapsedTime from '../../../utils/getElapsedTime';
 
 // TODO(노진석) : 기능 구현하기
 export default function AnswerFeedCard({ questionsData, name, imageSource }) {
-  const { content, like, dislike, createdAt, answer } = questionsData;
+  const { content, like, dislike, createdAt, answer, id } = questionsData;
   const liked = like > 0;
   const disLiked = dislike > 0;
   const [currentType, setCurrentType] = useState(
@@ -36,6 +36,7 @@ export default function AnswerFeedCard({ questionsData, name, imageSource }) {
         <QuestionContent>{content}</QuestionContent>
       </QuestionBox>
       <UserAnswerCard
+        questionId={id}
         item={answer}
         currentType={currentType}
         setCurrentType={setCurrentType}

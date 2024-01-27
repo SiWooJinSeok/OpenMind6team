@@ -23,14 +23,16 @@ export default function AnswerFeedCard({
   setData,
 }) {
   const { content, like, dislike, createdAt, answer, id } = questionsData;
+  const [item, setItem] = useState(answer);
   const liked = like > 0;
   const disLiked = dislike > 0;
   const [currentType, setCurrentType] = useState(
     getCurrentType(answer ? content : '', answer?.isRejected),
   );
+  const [isClicked, setIsClicked] = useState();
   const isAnswered = currentType !== 'Edit';
   const elapsedTimeQuestion = getElapsedTime(createdAt);
-  const [isClicked, setIsClicked] = useState();
+
   const deleteQuestion = async () => {
     if (isClicked) {
       return;
@@ -67,7 +69,8 @@ export default function AnswerFeedCard({
       </QuestionBox>
       <UserAnswerCard
         questionId={id}
-        item={answer}
+        item={item}
+        setItem={setItem}
         currentType={currentType}
         setCurrentType={setCurrentType}
         name={name}

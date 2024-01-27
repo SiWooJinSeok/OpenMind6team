@@ -16,6 +16,7 @@ import requestApi from '../../../utils/requestApi';
 export default function AnswerPageUserAnswer({
   questionId,
   item,
+  setItem,
   name,
   imageSource,
   currentType,
@@ -25,17 +26,23 @@ export default function AnswerPageUserAnswer({
   const [answer, setAnswer] = useState(content);
   const { createdAt } = item || new Date();
   const elapsedTimeQuestion = getElapsedTime(createdAt);
-
-  const createAnswer = () => {
+  const updateAnswer = () => {
     setCurrentType('Answer');
     const isRejected = answer.replaceAll(' ', '') === '답변거절';
     const postData = {
-      questionId,
       content: answer,
       isRejected,
     };
-    requestApi(`questions/${questionId}/answers/`, 'post', postData);
+    if (!item) {
+      postData.questionId = questionId;
+      requestApi(`questions/${questionId}/answers/`, 'post', postData).then(
+        (result) => setItem(result),
+      );
+      return;
+    }
+    requestApi(`answers/${item.id}/`, 'put', postData);
   };
+
   return (
     <Wrapper>
       <div>
@@ -49,8 +56,9 @@ export default function AnswerPageUserAnswer({
           ) : null}
         </UserNameBox>
         {getAnswerType({
+          item,
           type: currentType,
-          onClick: createAnswer,
+          onClick: updateAnswer,
           answer,
           setAnswer,
         })}

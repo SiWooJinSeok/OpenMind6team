@@ -7,6 +7,7 @@ import requestApi from '../../utils/requestApi';
 import TopPanel from '../organisms/TopPanel/TopPanel';
 import FeedCardList from '../organisms/FeedCardList/FeedCardList';
 import useRequestApi from '../../hooks/useRequestApi';
+import useQuestionOwnerData from '../../hooks/useQuestionOwnerData';
 
 // TODO(노진석) : 나중에 로직 만들 때 수정
 export default function AnswerPage() {
@@ -22,13 +23,8 @@ export default function AnswerPage() {
     localStorage.removeItem('subjectId');
     navigate('/');
   };
-  const { data } = useRequestApi(SUBJECT_URL, 'get');
-  const name = data?.name;
-  const imageSource = data?.imageSource;
-  const { data: questionsData } = useRequestApi(
-    `${SUBJECT_URL}questions/`,
-    'get',
-  );
+  const { data, setData } = useRequestApi(`${SUBJECT_URL}questions/`, 'get');
+  const { name, imageSource } = useQuestionOwnerData();
 
   return (
     <>
@@ -40,10 +36,11 @@ export default function AnswerPage() {
           </DeleteButtonBox>
           <FeedCardList
             type="answer"
-            questionCount={data?.questionCount}
+            questionCount={data?.count}
             name={name}
             imageSource={imageSource}
-            questionsData={questionsData}
+            questionsData={data}
+            setData={setData}
           />
         </Container>
       </Wrapper>

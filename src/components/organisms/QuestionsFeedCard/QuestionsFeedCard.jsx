@@ -1,9 +1,11 @@
+import { useState } from 'react';
 import styled from 'styled-components';
 import getElapsedTime from '../../../utils/getElapsedTime';
 import Badge from '../../atoms/Badge/Badge';
 import ThumbsDown from '../../atoms/Reaction/ThumbsDown';
 import ThumbsUp from '../../atoms/Reaction/ThumbsUp';
 import QuestionPageUserAnswer from './QuestionPageUserAnswer';
+import useReactionData from '../../../hooks/useReactionData';
 
 /**
  * (송상훈)
@@ -15,9 +17,26 @@ import QuestionPageUserAnswer from './QuestionPageUserAnswer';
  */
 
 export default function QuestionsFeedCard({ question, name, imageSource }) {
-  const { content, like, dislike, answer, createdAt } = question;
+  const { id, content, like, dislike, answer, createdAt } = question;
 
   const elapsedTimeQuestion = getElapsedTime(createdAt);
+
+  const [countLike, setCountLike] = useState(like);
+  const [countDisLike, setCountDisLike] = useState(dislike);
+
+  const handleClickLike = async () => {
+    const data = await useReactionData(id, 'like');
+    const newLike = data?.like;
+
+    setCountLike(newLike);
+  };
+
+  const handleClickDisLike = async () => {
+    const data = await useReactionData(id, 'dislike');
+    const newDisLike = data?.dislike;
+
+    setCountDisLike(newDisLike);
+  };
 
   return (
     <Wrapper>
@@ -34,8 +53,11 @@ export default function QuestionsFeedCard({ question, name, imageSource }) {
         />
       )}
       <ThumbsSection>
-        <ThumbsUp count={like} />
-        <ThumbsDown count={dislike} />
+        <ThumbsUp count={countLike} handleClickLike={handleClickLike} />
+        <ThumbsDown
+          count={countDisLike}
+          handleClickDisLike={handleClickDisLike}
+        />
       </ThumbsSection>
     </Wrapper>
   );

@@ -6,10 +6,12 @@ import getElapsedTime from '../../../utils/getElapsedTime';
 import requestApi from '../../../utils/requestApi';
 
 /**
+ * @param {string} questionId : 질문 Id
  * @param {object} item : id, content
- * @param {object} owner : name
+ * @param {function} setItem : setState
  * @param {state} currentType : 'Edit' or 'Answer' or 'NoAnswer'
  * @param {callback} setCurrentType : setState
+ * @param {string} imageSource : url
  * @returns currentType ? Edit : Answer
  */
 // TODO(노진석): 나중에 추가 로직만들면서 변경 될 가능성 있음!

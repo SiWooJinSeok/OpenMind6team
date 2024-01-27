@@ -7,6 +7,7 @@ import ThumbsUp from '../../atoms/Reaction/ThumbsUp';
 import ThumbsDown from '../../atoms/Reaction/ThumbsDown';
 import { getCurrentType } from './getAnswerType';
 import getElapsedTime from '../../../utils/getElapsedTime';
+import requestApi from '../../../utils/requestApi';
 
 /**
  *
@@ -24,12 +25,22 @@ export default function AnswerFeedCard({ questionsData, name, imageSource }) {
   );
   const isAnswered = currentType !== 'Edit';
   const elapsedTimeQuestion = getElapsedTime(createdAt);
+  const [isClicked, setIsClicked] = useState();
+  const deleteQuestion = async () => {
+    if (isClicked) {
+      return;
+    }
+    setIsClicked(true);
+    await requestApi(`questions/${id}/`, 'delete');
+    setIsClicked(false);
+    window.location.reload();
+  };
 
   return (
     <Wrapper>
       <StateBox>
         <Badge isAnswered={isAnswered} />
-        <EditableDropdown />
+        <EditableDropdown deleteClick={deleteQuestion} />
       </StateBox>
       <QuestionBox>
         질문 · {elapsedTimeQuestion}

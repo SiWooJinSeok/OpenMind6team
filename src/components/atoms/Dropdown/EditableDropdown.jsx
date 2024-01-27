@@ -5,7 +5,7 @@ import EditImg from '../../../assets/img/Edit.svg';
 import EditBlack from '../../../assets/img/EditBlack.svg';
 import EditBlue from '../../../assets/img/EditBlue.svg';
 
-export default function EditableDropdown() {
+export default function EditableDropdown({ deleteClick, updateClick }) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const handleDropdownToggle = () => {
@@ -21,11 +21,11 @@ export default function EditableDropdown() {
       />
       {isDropdownOpen ? (
         <DropdownMenu>
-          <MenuItemButton type="button">
+          <MenuItemButton onClick={updateClick} type="button">
             <Image src={EditImg} alt="수정하기" />
             수정하기
           </MenuItemButton>
-          <MenuItemButton type="button">
+          <MenuItemButton onClick={deleteClick} type="button">
             <Image src={EditImg} alt="삭제하기" />
             삭제하기
           </MenuItemButton>

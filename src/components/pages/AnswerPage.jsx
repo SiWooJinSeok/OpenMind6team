@@ -1,19 +1,50 @@
 import styled from 'styled-components';
-import TopPanel from '../organisms/TopPanel/TopPanel';
+import { useNavigate, useParams } from 'react-router-dom';
+
 import DeleteButton from '../atoms/Button/DeleteButton/DeleteButton';
+
+import requestApi from '../../utils/requestApi';
+import TopPanel from '../organisms/TopPanel/TopPanel';
 import FeedCardList from '../organisms/FeedCardList/FeedCardList';
+import useRequestApi from '../../hooks/useRequestApi';
 
 // TODO(노진석) : 나중에 로직 만들 때 수정
 export default function AnswerPage() {
+  const subjectId = useParams();
+  const currentSubjectId = localStorage.getItem('subjectId');
+  const navigate = useNavigate();
+  const SUBJECT_URL = `subjects/${subjectId.id}/`;
+  if (subjectId.id !== currentSubjectId) {
+    navigate('/list');
+  }
+  const deleteSubject = () => {
+    requestApi(SUBJECT_URL, 'delete');
+    localStorage.removeItem('subjectId');
+    navigate('/');
+  };
+  const { data } = useRequestApi(SUBJECT_URL, 'get');
+  const name = data?.name;
+  const imageSource = data?.imageSource;
+  const { data: questionsData } = useRequestApi(
+    `${SUBJECT_URL}questions/`,
+    'get',
+  );
+
   return (
     <>
-      <TopPanel />
+      <TopPanel name={name} imageSource={imageSource} />
       <Wrapper>
         <Container>
           <DeleteButtonBox>
-            <DeleteButton />
+            <DeleteButton onClick={deleteSubject} />
           </DeleteButtonBox>
-          <FeedCardList type="answer" />
+          <FeedCardList
+            type="answer"
+            questionCount={data?.questionCount}
+            name={name}
+            imageSource={imageSource}
+            questionsData={questionsData}
+          />
         </Container>
       </Wrapper>
     </>

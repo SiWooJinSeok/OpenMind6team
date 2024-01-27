@@ -2,6 +2,7 @@ import { useState } from 'react';
 import styled from 'styled-components';
 import UserProfileImage from '../../atoms/UserProfileImage/UserProfileImage';
 import getAnswerType from './getAnswerType';
+import getElapsedTime from '../../../utils/getElapsedTime';
 
 /**
  * @param {object} item : id, content
@@ -13,12 +14,15 @@ import getAnswerType from './getAnswerType';
 // TODO(노진석): 나중에 추가 로직만들면서 변경 될 가능성 있음!
 export default function AnswerPageUserAnswer({
   item,
-  owner,
+  name,
+  imageSource,
   currentType,
   setCurrentType,
 }) {
-  const { content } = item;
+  const { content } = item || '';
   const [answer, setAnswer] = useState(content);
+  const { createdAt } = item || new Date();
+  const elapsedTimeQuestion = getElapsedTime(createdAt);
 
   const handleType = () => {
     setCurrentType('Answer');
@@ -26,12 +30,14 @@ export default function AnswerPageUserAnswer({
   return (
     <Wrapper>
       <div>
-        <UserProfileImage />
+        <UserProfileImage imageSource={imageSource} />
       </div>
       <AnswerContainer>
         <UserNameBox>
-          {owner.name}
-          {currentType !== 'Edit' ? <CreatedAtSpan>2주전</CreatedAtSpan> : null}
+          {name}
+          {currentType !== 'Edit' ? (
+            <CreatedAtSpan>{elapsedTimeQuestion}</CreatedAtSpan>
+          ) : null}
         </UserNameBox>
         {getAnswerType({
           type: currentType,
@@ -46,7 +52,7 @@ export default function AnswerPageUserAnswer({
 
 AnswerPageUserAnswer.defaultProps = {
   item: { content: '' },
-  owner: { name: '아초는고양이' },
+  name: '아초는고양이',
   currentType: 'Edit',
 };
 const CreatedAtSpan = styled.span`

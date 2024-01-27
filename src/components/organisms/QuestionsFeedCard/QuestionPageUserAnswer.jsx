@@ -2,17 +2,28 @@ import styled from 'styled-components';
 import UserProfileImage from '../../atoms/UserProfileImage/UserProfileImage';
 import getElapsedTime from '../../../utils/getElapsedTime';
 
-export default function FeedCardAnswer({ answer, createdAt }) {
+/**
+ * (송상훈)
+ * FeedCardAnswer 컴포넌트는 피드 카드 안에서 답변을 나타내는 컴포넌트입니다.
+ * @param {Object} props.answerData - 답변 데이터 객체
+ * @param {string} props.name - 사용자 이름
+ * @param {string} props.imageSource - 이미지 소스
+ * @returns {JSX.Element} 답변 컴포넌트
+ */
+
+export default function FeedCardAnswer({ answerData, name, imageSource }) {
+  const { content, createdAt } = answerData;
+
   const elapsedTimeAnswer = getElapsedTime(createdAt);
   return (
     <AnswerSection>
-      <UserProfileImage type="feedCard" />
+      <UserProfileImage type="feedCard" imageSource={imageSource} />
       <AnswerDetail>
         <div>
-          <span>답변유저아이디</span>
+          <span>{name}</span>
           <span>{elapsedTimeAnswer}</span>
         </div>
-        <p>{answer.content}</p>
+        <p>{content}</p>
       </AnswerDetail>
     </AnswerSection>
   );

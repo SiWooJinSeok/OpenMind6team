@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import imageData from '../../assets/imageData';
 import GoToAnswerButton from '../atoms/Button/GoToAnswerButton/GoToAnswerButton';
 import GetQuestionBox from '../organisms/GetQuestionBox/GetQuestionBox';
+
 /**
  *
  * @returns MainPage
@@ -64,7 +65,13 @@ const StyledGoToAnswerButton = styled(GoToAnswerButton)`
   }
 `;
 const MainPageImage = styled.img`
-  position: fixed;
+  position: absolute;
   width: 100%;
   top: 205px;
+  @media (max-width: 1199px) {
+    top: 375px;
+  }
+  @media (max-width: 767px) {
+    top: 431px;
+  }
 `;

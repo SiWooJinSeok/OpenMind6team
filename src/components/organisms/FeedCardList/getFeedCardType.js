@@ -1,22 +1,27 @@
 import AnswerFeedCard from '../AnswerFeedCard/AnswerFeedCard';
-import QuestionFeedCard from '../QuestionsFeedCard/QuestionsFeedCard';
+import QuestionsFeedCard from '../QuestionsFeedCard/QuestionsFeedCard';
 
-const getFeedCardType = (type = 'answer') => {
-  const mockData = [
-    {
-      id: 1,
-    },
-    {
-      id: 2,
-    },
-    {
-      id: 3,
-    },
-  ];
+const getFeedCardType = (questionsData, name, imageSource, type = 'answer') => {
   if (type === 'answer') {
-    return mockData.map((it) => <AnswerFeedCard key={it.id} />);
+    return questionsData?.results.map((it) => (
+      <AnswerFeedCard
+        key={it.id}
+        questionsData={it}
+        name={name}
+        imageSource={imageSource}
+      />
+    ));
   }
-  return mockData.map((it) => <QuestionFeedCard key={it.id} />);
+  return questionsData
+    .sort((a, b) => b.createdAt - a.createdAt)
+    .map((question) => (
+      <QuestionsFeedCard
+        key={question.id}
+        question={question}
+        name={name}
+        imageSource={imageSource}
+      />
+    ));
 };
 
 export default getFeedCardType;

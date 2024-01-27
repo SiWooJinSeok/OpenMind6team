@@ -3,8 +3,13 @@ import getFeedCardType from './getFeedCardType';
 import EmptyBox from '../../atoms/EmptyBox/EmptyBox';
 import imageData from '../../../assets/imageData';
 
-export default function FeedCardList({ type }) {
-  const questionCount = 3;
+export default function FeedCardList({
+  questionCount,
+  questionsData,
+  name,
+  imageSource,
+  type,
+}) {
   return (
     <Container>
       <MessageBox>
@@ -13,7 +18,11 @@ export default function FeedCardList({ type }) {
           ? `${questionCount}개의 질문이 있습니다.`
           : '아직 질문이 없습니다'}
       </MessageBox>
-      {questionCount > 0 ? getFeedCardType(type) : <EmptyBox />}
+      {questionCount > 0 ? (
+        getFeedCardType(questionsData, name, imageSource, type)
+      ) : (
+        <EmptyBox />
+      )}
     </Container>
   );
 }

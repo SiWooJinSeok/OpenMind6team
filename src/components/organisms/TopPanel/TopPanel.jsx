@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import UserProfileImage from '../../atoms/UserProfileImage/UserProfileImage';
 import imageData from '../../../assets/imageData';
 import ShareButtonBox from '../ShareButtonBox/ShareButtonBox';
@@ -8,15 +9,17 @@ import ShareButtonBox from '../ShareButtonBox/ShareButtonBox';
  * @param {object} owner : 질문 받는 주인
  * @returns
  */
-export default function TopPanel({ owner }) {
+export default function TopPanel({ name, imageSource }) {
   return (
     <>
       <Background bg={imageData.bgImg} />
       <Wrapper>
         <Container>
-          <Logo src={imageData.logo} alt="로고" />
-          <UserProfileImage type="profile" imageSource={owner.imageSource} />
-          <UserName>{owner.name}</UserName>
+          <Link to="/">
+            <Logo src={imageData.logo} alt="로고" />
+          </Link>
+          <UserProfileImage type="profile" imageSource={imageSource} />
+          <UserName>{name}</UserName>
           <ShareButtonBox />
         </Container>
       </Wrapper>
@@ -25,7 +28,8 @@ export default function TopPanel({ owner }) {
 }
 
 TopPanel.defaultProps = {
-  owner: { name: '아초는고양이', imageSource: imageData.defaultProfile },
+  name: '아초는고양이',
+  imageSource: imageData.defaultProfile,
 };
 
 const Logo = styled.img`

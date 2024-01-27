@@ -8,12 +8,16 @@ import { ThumbsButton, ThumbsIcon, ThumbsText } from './Shared';
  * @returns ThumbsDown Component
  */
 
-export default function ThumbsDown({ isDisliked = true, count = 0 }) {
+export default function ThumbsDown({
+  handleClickDisLike,
+  isDisliked = true,
+  count = 0,
+}) {
   const thumbImg = isDisliked ? thumbsDownSelectedIcon : thumbsDownIcon;
   const textColor = isDisliked ? 'var(--Grayscale-60)' : 'var(--Grayscale-40)';
 
   return (
-    <ThumbsButton>
+    <ThumbsButton onClick={handleClickDisLike}>
       <ThumbsIcon
         src={thumbImg}
         $isDisliked={isDisliked}

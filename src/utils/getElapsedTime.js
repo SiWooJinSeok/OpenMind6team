@@ -32,7 +32,7 @@ const getElapsedTime = (createdAt) => {
     return `1시간 전`;
   }
   if (minute * 2 <= elapsedTime) {
-    return `${Math.floor(elapsedTime / minute)} minute ago`;
+    return `${Math.floor(elapsedTime / minute)}분 전`;
   }
   return `1분 전`;
 };

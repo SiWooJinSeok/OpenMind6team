@@ -8,10 +8,14 @@ import ThumbsDown from '../../atoms/Reaction/ThumbsDown';
 import { getCurrentType } from './getAnswerType';
 import getElapsedTime from '../../../utils/getElapsedTime';
 import requestApi from '../../../utils/requestApi';
+import useReactionData from '../../../hooks/useReactionData';
 
 /**
  *
+ * @param {string} name : 답변 하는 사람 이름
+ * @param {string} imageSource : url
  * @param {object} questionData : content, like, dislike, answer : {}
+ * @param {function} setData : setState
  * @returns FeedCard (Answer, NoAnswer, Edit)
  */
 
@@ -23,21 +27,22 @@ export default function AnswerFeedCard({
   setData,
 }) {
   const { content, like, dislike, createdAt, answer, id } = questionsData;
-  const liked = like > 0;
-  const disLiked = dislike > 0;
+  const [item, setItem] = useState(answer);
   const [currentType, setCurrentType] = useState(
     getCurrentType(answer ? content : '', answer?.isRejected),
   );
+  const [isClicked, setIsClicked] = useState();
   const isAnswered = currentType !== 'Edit';
   const elapsedTimeQuestion = getElapsedTime(createdAt);
-  const [isClicked, setIsClicked] = useState();
+  const { countLike, countDisLike, handleClickLike, handleClickDisLike } =
+    useReactionData(like, dislike, id);
+
   const deleteQuestion = async () => {
     if (isClicked) {
       return;
     }
     setIsClicked(true);
     await requestApi(`questions/${id}/`, 'delete');
-    setIsClicked(false);
     setData((preData) => {
       const currentData = preData.results.filter(
         (it) => it.id !== questionsData.id,
@@ -48,6 +53,7 @@ export default function AnswerFeedCard({
         count: preData.count - 1,
       };
     });
+    setIsClicked(false);
   };
   const updateClick = () => {
     setCurrentType('Edit');
@@ -67,7 +73,8 @@ export default function AnswerFeedCard({
       </QuestionBox>
       <UserAnswerCard
         questionId={id}
-        item={answer}
+        item={item}
+        setItem={setItem}
         currentType={currentType}
         setCurrentType={setCurrentType}
         name={name}
@@ -75,8 +82,16 @@ export default function AnswerFeedCard({
       />
       <Hr />
       <ReactionBox>
-        <ThumbsUp isLiked={liked} count={like} />
-        <ThumbsDown isDisliked={disLiked} count={dislike} />
+        <ThumbsUp
+          isLiked={countLike > 0}
+          count={countLike}
+          handleClickLike={handleClickLike}
+        />
+        <ThumbsDown
+          isDisliked={countDisLike > 0}
+          count={countDisLike}
+          handleClickDisLike={handleClickDisLike}
+        />
       </ReactionBox>
     </Wrapper>
   );

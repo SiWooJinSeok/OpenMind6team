@@ -1,11 +1,10 @@
-import { useState } from 'react';
 import styled from 'styled-components';
 import getElapsedTime from '../../../utils/getElapsedTime';
 import Badge from '../../atoms/Badge/Badge';
 import ThumbsDown from '../../atoms/Reaction/ThumbsDown';
 import ThumbsUp from '../../atoms/Reaction/ThumbsUp';
 import QuestionPageUserAnswer from './QuestionPageUserAnswer';
-import updateReactionData from '../../../hooks/updateReactionData';
+import useReactionData from '../../../hooks/useReactionData';
 
 /**
  * (송상훈)
@@ -21,22 +20,8 @@ export default function QuestionsFeedCard({ question, name, imageSource }) {
 
   const elapsedTimeQuestion = getElapsedTime(createdAt);
 
-  const [countLike, setCountLike] = useState(like);
-  const [countDisLike, setCountDisLike] = useState(dislike);
-
-  const handleClickLike = async () => {
-    const data = await updateReactionData(id, 'like');
-    const newLike = data?.like;
-
-    setCountLike(newLike);
-  };
-
-  const handleClickDisLike = async () => {
-    const data = await updateReactionData(id, 'dislike');
-    const newDisLike = data?.dislike;
-
-    setCountDisLike(newDisLike);
-  };
+  const { countLike, countDisLike, handleClickLike, handleClickDisLike } =
+    useReactionData(like, dislike, id);
 
   return (
     <Wrapper>

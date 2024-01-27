@@ -11,7 +11,11 @@ import getElapsedTime from '../../../utils/getElapsedTime';
  * @returns {JSX.Element} 답변 컴포넌트
  */
 
-export default function FeedCardAnswer({ answerData, name, imageSource }) {
+export default function QuestionPageUserAnswer({
+  answerData,
+  name,
+  imageSource,
+}) {
   const { content, createdAt } = answerData;
 
   const elapsedTimeAnswer = getElapsedTime(createdAt);

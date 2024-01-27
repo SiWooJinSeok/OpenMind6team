@@ -4,7 +4,11 @@ import QuestionListNextPageButton from '../QuestionListNextPageButton/QuestionLi
 
 /**
  *
- * @param {UserCardListData : object | isLoadingUserCardListData : boolean } param0
+ * @param {object} UserCardListData : 유저 카드 리스트 데이터
+ * @param {boolean} isLoadingUserCardListData : 유저 카드 리스트 데이터 로딩 상태
+ * @param {function} onNextPageButtonClick : 다음 페이지 버튼 클릭 시 실행되는 함수
+ * @param {number} currentPage : 현재 페이지
+ * @param {number} totalPage : 총 페이지 수
  * @returns 유저 카드 리스트 그리드
  */
 
@@ -16,21 +20,23 @@ export default function UserCardList({
   totalPage,
 }) {
   const { results: cardList } = UserCardListData;
+
+  if (isLoadingUserCardListData === true) {
+    return null;
+  }
   return (
     <Container>
-      {isLoadingUserCardListData
-        ? null
-        : cardList?.map((card) => {
-            return (
-              <UserCard
-                key={card.id}
-                id={card.id}
-                userName={card.name}
-                questionCount={card.questionCount}
-                ProfileImageSource={card.imageSource}
-              />
-            );
-          })}
+      {cardList?.map((card) => {
+        return (
+          <UserCard
+            key={card.id}
+            id={card.id}
+            userName={card.name}
+            questionCount={card.questionCount}
+            ProfileImageSource={card.imageSource}
+          />
+        );
+      })}
       {currentPage === totalPage ? null : (
         <QuestionListNextPageButton
           onNextPageButtonClick={onNextPageButtonClick}

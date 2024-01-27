@@ -28,6 +28,7 @@
         "unnamedComponents": ["function-expression", "arrow-function"],
       },
     ],
+    "import/prefer-default-export": "off",
   },
   "env": {
     "browser": true,

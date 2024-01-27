@@ -2,8 +2,11 @@ import styled from 'styled-components';
 
 /**
  *
- * @param {arrowText : string | page : number | isSelected : boolean | onClick : eventHandlerFunction} param0
- * @returns 페이지네이션 숫자 버튼
+ * @param {string} arrowText : 페이지네이션 버튼에 들어갈 화살표 텍스트
+ * @param {number} page : 페이지네이션 버튼에 들어갈 숫자
+ * @param {boolean} isSelected : 페이지네이션 버튼이 선택되었는지 여부
+ * @param {function} onClick : 페이지네이션 버튼 클릭 시 실행되는 함수
+ * @returns 페이지네이션 버튼
  */
 export default function PageNationButton({
   arrowText,

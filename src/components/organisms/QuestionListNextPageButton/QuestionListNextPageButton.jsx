@@ -5,12 +5,12 @@ import imageData from '../../../assets/imageData';
 
 export default function QuestionListNextPageButton({ onNextPageButtonClick }) {
   return (
-    <NextPageButton onClick={onNextPageButtonClick} bg={NEXT_ARROW_BACKGROUND}>
+    <Button onClick={onNextPageButtonClick} bg={NEXT_ARROW_BACKGROUND}>
       <InnerWrapper>
         <p>NEXT PAGE</p>
         <img src={imageData.arrowRight} alt="다음 페이지 버튼 이미지" />
       </InnerWrapper>
-    </NextPageButton>
+    </Button>
   );
 }
 
@@ -21,7 +21,7 @@ const InnerWrapper = styled.div`
   align-items: center;
 `;
 
-const NextPageButton = styled.button`
+const Button = styled.button`
   width: 100%;
   height: 100%;
   background-position-y: 0px;

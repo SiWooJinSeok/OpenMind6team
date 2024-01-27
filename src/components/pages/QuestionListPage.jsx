@@ -4,7 +4,7 @@ import CardSortDropdown from '../atoms/Dropdown/CardSortDropdown';
 import UserCardList from '../organisms/UserCardList/UserCardList';
 import useQuestionListPageData from '../../hooks/useQuestionListPageData';
 import PageNationNumbersContainer from '../organisms/PageNationNumbersContainer/PageNationNumbersContainer';
-import PageNationButton from '../atoms/Button/PageNationButton/PageNationButton';
+import PageNationButton from '../organisms/PageNationButton/PageNationButton';
 import RandomCardButton from '../atoms/Button/RandomCardButton/RandomCardButton';
 import RandomQuestionCard from '../organisms/RandomQuestionCard/RandomQuestionCard';
 import useShowRandomCard from '../../hooks/useShowRandomCard';
@@ -64,12 +64,11 @@ export default function QuestionListPage() {
           onClick={handleRightArrowClick}
         />
       </PageNationButtonContainer>
-
-      {showRandomCard ? (
-        <RandomQuestionCard
-          onModalCloseButtonClick={handleModalCloseButtonClick}
-        />
-      ) : null}
+      {/* 랜덤 질문 카드가 보이는 실험적인 기능입니다! */}
+      <RandomQuestionCard
+        onModalCloseButtonClick={handleModalCloseButtonClick}
+        showRandomCard={showRandomCard}
+      />
     </Wrapper>
   );
 }

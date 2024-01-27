@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import requestApi from '../utils/requestApi';
 import { SORT_TIME } from '../constants/question_list_page_sort';
-
+import { limit } from '../constants/page_nation';
 /**
  *
  * @returns data, isLoading, error, totalPage, currentPage, handleLeftArrowClick, handleRightArrowClick, handleSortButtonClick, handlePageClick
@@ -9,7 +9,6 @@ import { SORT_TIME } from '../constants/question_list_page_sort';
 
 const useQuestionListPageData = () => {
   const [currentPage, setCurrentPage] = useState(1);
-  const limit = 8;
   const offset = (currentPage - 1) * limit;
   const [sort, setSort] = useState(SORT_TIME);
 

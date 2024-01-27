@@ -23,11 +23,8 @@ export default function AnswerPage() {
     localStorage.removeItem('subjectId');
     navigate('/');
   };
+  const { data, setData } = useRequestApi(`${SUBJECT_URL}questions/`, 'get');
   const { name, imageSource } = useQuestionOwnerData();
-  const { data: questionsData } = useRequestApi(
-    `${SUBJECT_URL}questions/`,
-    'get',
-  );
 
   return (
     <>
@@ -39,10 +36,11 @@ export default function AnswerPage() {
           </DeleteButtonBox>
           <FeedCardList
             type="answer"
-            questionCount={questionsData?.count}
+            questionCount={data?.count}
             name={name}
             imageSource={imageSource}
-            questionsData={questionsData}
+            questionsData={data}
+            setData={setData}
           />
         </Container>
       </Wrapper>

@@ -16,7 +16,12 @@ import requestApi from '../../../utils/requestApi';
  */
 
 // TODO(노진석) : 기능 구현하기
-export default function AnswerFeedCard({ questionsData, name, imageSource }) {
+export default function AnswerFeedCard({
+  questionsData,
+  name,
+  imageSource,
+  setData,
+}) {
   const { content, like, dislike, createdAt, answer, id } = questionsData;
   const liked = like > 0;
   const disLiked = dislike > 0;
@@ -33,14 +38,28 @@ export default function AnswerFeedCard({ questionsData, name, imageSource }) {
     setIsClicked(true);
     await requestApi(`questions/${id}/`, 'delete');
     setIsClicked(false);
-    window.location.reload();
+    setData((preData) => {
+      const currentData = preData.results.filter(
+        (it) => it.id !== questionsData.id,
+      );
+      return {
+        ...preData,
+        results: currentData,
+        count: preData.count - 1,
+      };
+    });
   };
-
+  const updateClick = () => {
+    setCurrentType('Edit');
+  };
   return (
     <Wrapper>
       <StateBox>
         <Badge isAnswered={isAnswered} />
-        <EditableDropdown deleteClick={deleteQuestion} />
+        <EditableDropdown
+          deleteClick={deleteQuestion}
+          updateClick={updateClick}
+        />
       </StateBox>
       <QuestionBox>
         질문 · {elapsedTimeQuestion}

@@ -1,13 +1,13 @@
-import { useState } from 'react';
 import styled from 'styled-components';
 import QuestionListNavbar from '../organisms/QuestionListNavbar/QuestionListNavbar';
 import CardSortDropdown from '../atoms/Dropdown/CardSortDropdown';
 import UserCardList from '../organisms/UserCardList/UserCardList';
-import useGetQuestionPageData from '../../hooks/useGetQuestionPageData';
-import PageNationNumbers from '../organisms/PageNationNumbers/PageNationNumbers';
-import PageNationButton from '../atoms/PageNation/PageNationButton';
+import useQuestionListPageData from '../../hooks/useQuestionListPageData';
+import PageNationNumbersContainer from '../organisms/PageNationNumbersContainer/PageNationNumbersContainer';
+import PageNationButton from '../organisms/PageNationButton/PageNationButton';
 import RandomCardButton from '../atoms/Button/RandomCardButton/RandomCardButton';
 import RandomQuestionCard from '../organisms/RandomQuestionCard/RandomQuestionCard';
+import useShowRandomCard from '../../hooks/useShowRandomCard';
 
 export default function QuestionListPage() {
   const {
@@ -20,17 +20,13 @@ export default function QuestionListPage() {
     handleSortButtonClick,
     handlePageClick,
     isLoading: isLoadingUserCardListData,
-  } = useGetQuestionPageData();
+  } = useQuestionListPageData();
 
-  const [showRandomCard, setShowRandomCard] = useState(false);
-
-  const handleShowRandomCardButtonClick = () => {
-    setShowRandomCard(!showRandomCard);
-  };
-
-  const handleModalCloseButtonClick = () => {
-    setShowRandomCard(false);
-  };
+  const {
+    showRandomCard,
+    handleShowRandomCardButtonClick,
+    handleModalCloseButtonClick,
+  } = useShowRandomCard();
 
   return (
     <Wrapper>
@@ -56,7 +52,7 @@ export default function QuestionListPage() {
           isSelected={false}
           onClick={handleLeftArrowClick}
         />
-        <PageNationNumbers
+        <PageNationNumbersContainer
           totalPage={totalPage}
           isLoadingUserCardListData={isLoadingUserCardListData}
           onPageClick={handlePageClick}
@@ -68,12 +64,11 @@ export default function QuestionListPage() {
           onClick={handleRightArrowClick}
         />
       </PageNationButtonContainer>
-
-      {showRandomCard ? (
-        <RandomQuestionCard
-          onModalCloseButtonClick={handleModalCloseButtonClick}
-        />
-      ) : null}
+      {/* 랜덤 질문 카드가 보이는 실험적인 기능입니다! */}
+      <RandomQuestionCard
+        onModalCloseButtonClick={handleModalCloseButtonClick}
+        showRandomCard={showRandomCard}
+      />
     </Wrapper>
   );
 }

@@ -1,98 +1,33 @@
 import styled from 'styled-components';
-import PageNationButton from '../../atoms/PageNation/PageNationButton';
+import PageNationButton from '../PageNationButton/PageNationButton';
+import { PAGE_NATION_NUMBER_COUNT } from '../../../constants/page_nation';
 
 /**
  *
- * @param {totalPage : number |  isLoadingUserCardListData : object | onPageClick : eventHandlerFunction |  currentPage : number} param0
- * @returns 페이지네이션 숫자 목록
+ * @param {number} start : 페이지네이션 버튼 시작 숫자
+ * @param {number} currentPage : 현재 페이지
+ * @param {function} onClick : 페이지네이션 버튼 클릭 시 실행되는 함수
+ * @returns
  */
-
-export default function PageNationNumbers({
-  totalPage,
-  isLoadingUserCardListData,
-  onPageClick,
-  currentPage,
-}) {
-  if (isLoadingUserCardListData === false) {
-    if (currentPage <= 3) {
+const PageNationNumbers = ({ start, currentPage, onClick }) =>
+  Array(PAGE_NATION_NUMBER_COUNT)
+    .fill()
+    .map((_, i) => {
+      const page = start + i;
       return (
         <Container>
-          {Array(5)
-            .fill()
-            .map((_, i) => {
-              if (currentPage === i + 1) {
-                return (
-                  <PageNationButton
-                    page={i + 1}
-                    isSelected
-                    onClick={onPageClick}
-                  />
-                );
-              }
-              return (
-                <PageNationButton
-                  page={i + 1}
-                  isSelected={false}
-                  onClick={onPageClick}
-                />
-              );
-            })}
+          <PageNationButton
+            key={page}
+            page={page}
+            isSelected={page === currentPage}
+            onClick={onClick}
+          />
         </Container>
       );
-    }
-    if (currentPage > totalPage - 3) {
-      return (
-        <Container>
-          {Array(5)
-            .fill()
-            .map((_, i) => {
-              if (totalPage - 4 + i === currentPage) {
-                return (
-                  <PageNationButton
-                    page={totalPage - 4 + i}
-                    isSelected
-                    onClick={onPageClick}
-                  />
-                );
-              }
-              return (
-                <PageNationButton
-                  page={totalPage - 4 + i}
-                  isSelected={false}
-                  onClick={onPageClick}
-                />
-              );
-            })}
-        </Container>
-      );
-    }
-    return (
-      <Container>
-        {Array(5)
-          .fill()
-          .map((_, i) => {
-            if (currentPage - (2 - i) === currentPage) {
-              return (
-                <PageNationButton
-                  page={currentPage - (2 - i)}
-                  isSelected
-                  onClick={onPageClick}
-                />
-              );
-            }
-            return (
-              <PageNationButton
-                page={currentPage - (2 - i)}
-                isSelected={false}
-                onClick={onPageClick}
-              />
-            );
-          })}
-      </Container>
-    );
-  }
-}
+    });
 
 const Container = styled.div`
   display: flex;
 `;
+
+export default PageNationNumbers;

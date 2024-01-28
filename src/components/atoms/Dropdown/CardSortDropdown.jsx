@@ -4,12 +4,13 @@ import {
   SORT_NAME,
   SORT_TIME_KOREAN,
   SORT_NAME_KOREAN,
-} from '../../../constants/constants';
+} from '../../../constants/question_list_page_sort';
 import useCardSortDropdown from './useCardSortDropdown.hook';
 
 /**
  *
- * @param {CardSort : string | onSortButtonClick : eventHandlerFunction} param0
+ * @param {string} CardSort : 카드 정렬 기준
+ * @param {function} onSortButtonClick : 카드 정렬 기준 변경 시 실행되는 함수
  * @returns
  */
 export default function CardSortDropdown({

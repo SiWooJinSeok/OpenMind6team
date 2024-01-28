@@ -1,15 +1,22 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import imageData from '../../../assets/imageData';
 import GoToAnswerButton from '../../atoms/Button/GoToAnswerButton/GoToAnswerButton';
-import useGoToAnswerButtonClick from './useGoToAnswerButtonClick.hook';
 
 /**
  *
  * @returns QuestionListNavbar Component
  */
 export default function QuestionListNavbar() {
-  const { handleGoToAnswerButtonClick } = useGoToAnswerButtonClick();
+  const navigate = useNavigate();
+
+  const handleGoToAnswerButtonClick = () => {
+    const subjectId = localStorage.getItem('subjectId');
+    if (subjectId === null) {
+      return navigate('/');
+    }
+    return navigate(`/post/${subjectId}/answer`);
+  };
 
   return (
     <Navbar>

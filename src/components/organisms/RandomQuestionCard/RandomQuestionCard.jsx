@@ -4,14 +4,21 @@ import imageData from '../../../assets/imageData';
 import useRandomQuestionCard from './useRandomQuestionCard.hook';
 
 /**
- *
- * @param {onModalCloseButtonClick : event handler} param0
+ * 실험적인 기능입니다!!
+ * @param {onModalCloseButtonClick : event handler, 클릭하면 랜덤 카드가 닫힙니다.} param0
+ * @param {showRandomCard : boolean, 랜덤 카드가 보이는지 안보이는지 여부를 결정합니다.} param1
  * @returns RandomQuestionCard Component
  */
 
-export default function RandomQuestionCard({ onModalCloseButtonClick }) {
+export default function RandomQuestionCard({
+  onModalCloseButtonClick,
+  showRandomCard,
+}) {
   const { randomCard } = useRandomQuestionCard();
 
+  if (!showRandomCard) {
+    return null;
+  }
   return (
     <Wrapper onClick={onModalCloseButtonClick}>
       <CardFlip to={`/post/${randomCard?.id}`}>

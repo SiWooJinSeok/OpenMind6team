@@ -2,7 +2,7 @@ import UserProfileImage from './UserProfileImage';
 import imageData from '../../../assets/imageData';
 
 export default {
-  title: 'Profile',
+  title: 'Atoms/UserProfile/UserProfileImage',
   component: UserProfileImage,
   parameters: {
     layout: 'centered',

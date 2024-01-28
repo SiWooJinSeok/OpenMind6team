@@ -12,7 +12,7 @@ import ShareButtonBox from '../ShareButtonBox/ShareButtonBox';
 export default function TopPanel({ name, imageSource }) {
   return (
     <>
-      <Background bg={imageData.bgImg} />
+      <Background $bgImg={imageData.bgImg} />
       <Wrapper>
         <Container>
           <Link to="/">
@@ -71,7 +71,7 @@ const Container = styled.div`
 
 const Background = styled.div`
   position: absolute;
-  background: url(${(props) => props.bg});
+  background: url(${(props) => props.$bgImg});
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

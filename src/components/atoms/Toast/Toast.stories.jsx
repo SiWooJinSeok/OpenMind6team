@@ -2,7 +2,7 @@ import GlobalStyle from '../../../GlobalStyle';
 import Toast from './Toast';
 
 export default {
-  title: 'Toast/Toast',
+  title: 'Atoms/Toast/Toast',
   component: Toast,
   decorators: [
     (Story) => (

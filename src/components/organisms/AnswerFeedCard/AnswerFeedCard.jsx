@@ -85,7 +85,7 @@ export default function AnswerFeedCard({
 }
 
 AnswerFeedCard.defaultProps = {
-  questionData: {
+  questionsData: {
     id: 41,
     subjectId: 23,
     content: '가장 좋아하는 동물이 궁금해요!',

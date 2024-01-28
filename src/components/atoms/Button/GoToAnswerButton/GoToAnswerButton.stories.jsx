@@ -1,7 +1,7 @@
 import GoToAnswerButton from './GoToAnswerButton';
 
 export default {
-  title: 'Button/GoToAnswerButton',
+  title: 'Atoms/Button/GoToAnswerButton',
   component: GoToAnswerButton,
   parameters: {
     layout: 'centered',

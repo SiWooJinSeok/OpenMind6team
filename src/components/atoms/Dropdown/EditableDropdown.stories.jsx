@@ -1,7 +1,7 @@
 import EditableDropdown from './EditableDropdown';
 
 export default {
-  title: 'Dropdown/EditableDropdown',
+  title: 'Atoms/Dropdown/EditableDropdown',
   component: EditableDropdown,
 };
 

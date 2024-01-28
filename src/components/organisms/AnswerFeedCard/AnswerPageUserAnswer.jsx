@@ -1,9 +1,8 @@
-import { useState } from 'react';
 import styled from 'styled-components';
 import UserProfileImage from '../../atoms/UserProfileImage/UserProfileImage';
 import getAnswerType from './getAnswerType';
 import getElapsedTime from '../../../utils/getElapsedTime';
-import requestApi from '../../../utils/requestApi';
+import useRespondAnswer from '../../../hooks/useRespondAnswer';
 
 /**
  * @param {string} questionId : 질문 Id
@@ -25,25 +24,15 @@ export default function AnswerPageUserAnswer({
   setCurrentType,
 }) {
   const { content } = item || '';
-  const [answer, setAnswer] = useState(content);
   const { createdAt } = item || new Date();
   const elapsedTimeQuestion = getElapsedTime(createdAt);
-  const updateAnswer = () => {
-    setCurrentType('Answer');
-    const isRejected = answer.replaceAll(' ', '') === '답변거절';
-    const postData = {
-      content: answer,
-      isRejected,
-    };
-    if (!item) {
-      postData.questionId = questionId;
-      requestApi(`questions/${questionId}/answers/`, 'post', postData).then(
-        (result) => setItem(result),
-      );
-      return;
-    }
-    requestApi(`answers/${item.id}/`, 'put', postData);
-  };
+  const { respondAnswer, answer, setAnswer } = useRespondAnswer({
+    questionId,
+    item,
+    setItem,
+    setCurrentType,
+    content,
+  });
 
   return (
     <Wrapper>
@@ -60,7 +49,7 @@ export default function AnswerPageUserAnswer({
         {getAnswerType({
           item,
           type: currentType,
-          onClick: updateAnswer,
+          onClick: respondAnswer,
           answer,
           setAnswer,
         })}

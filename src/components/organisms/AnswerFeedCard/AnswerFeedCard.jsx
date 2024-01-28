@@ -7,8 +7,8 @@ import ThumbsUp from '../../atoms/Reaction/ThumbsUp';
 import ThumbsDown from '../../atoms/Reaction/ThumbsDown';
 import { getCurrentType } from './getAnswerType';
 import getElapsedTime from '../../../utils/getElapsedTime';
-import requestApi from '../../../utils/requestApi';
 import useReactionData from '../../../hooks/useReactionData';
+import useDeleteQuestion from '../../../hooks/useDeleteQuestion';
 
 /**
  *
@@ -31,33 +31,20 @@ export default function AnswerFeedCard({
   const [currentType, setCurrentType] = useState(
     getCurrentType(answer ? content : '', answer?.isRejected),
   );
-  const [isClicked, setIsClicked] = useState();
+
   const isAnswered = currentType !== 'Edit';
   const elapsedTimeQuestion = getElapsedTime(createdAt);
   const { countLike, countDisLike, handleClickLike, handleClickDisLike } =
     useReactionData(like, dislike, id);
-
-  const deleteQuestion = async () => {
-    if (isClicked) {
-      return;
-    }
-    setIsClicked(true);
-    await requestApi(`questions/${id}/`, 'delete');
-    setData((preData) => {
-      const currentData = preData.results.filter(
-        (it) => it.id !== questionsData.id,
-      );
-      return {
-        ...preData,
-        results: currentData,
-        count: preData.count - 1,
-      };
-    });
-    setIsClicked(false);
-  };
+  const { deleteQuestion } = useDeleteQuestion({
+    setData,
+    questionsData,
+    id,
+  });
   const updateClick = () => {
     setCurrentType('Edit');
   };
+
   return (
     <Wrapper>
       <StateBox>

@@ -14,8 +14,8 @@ const getAnswerType = ({ type, onClick, answer, setAnswer, item }) => {
         />
       );
     case 'Answer':
-      if (answer.replaceAll(' ', '') === '답변거절') {
-        return <NoAnswer>답변거절</NoAnswer>;
+      if (answer.replaceAll(/[\n\s]/g, '').includes('답변거절')) {
+        return <NoAnswer>{answer}</NoAnswer>;
       }
       return <Paragraph>{answer}</Paragraph>;
     case 'NoAnswer':

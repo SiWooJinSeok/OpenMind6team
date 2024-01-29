@@ -22,6 +22,33 @@
  
 ## 기술 스택
 - 우리 노션페이지 맨 위에서 가져오면 됨
+- # CSS
+
+[Javascript](https://www.notion.so/Javascript-6e2d240264b2450ab0426eacf5db9808?pvs=21)
+
+[npm](https://www.notion.so/npm-66cb5011a082466793cc79533112562d?pvs=21)
+
+[React](https://www.notion.so/React-d64ac95e9f8f4449932a3dfa96ae7dbc?pvs=21)
+
+[Figma](https://www.notion.so/Figma-a84c0d55ecec4fbf9bf3ac5b71a91693?pvs=21)
+
+[Github](https://www.notion.so/Github-3b922c4a806743af8e08ec9d1e0b54c9?pvs=21)
+
+[Axios](https://www.notion.so/Axios-48ef579a2f6e47edb3f7124172692e54?pvs=21)
+
+[ReactRouterDom](https://www.notion.so/ReactRouterDom-c5259c5fb6b74fbda575119f3b755778?pvs=21)
+
+[StyledComponents](https://www.notion.so/StyledComponents-65f9d84792164f7a833ee9932f8ed11f?pvs=21)
+
+[Prettier](https://www.notion.so/Prettier-1cf524e442a749728c6b8b9c7d2a4b90?pvs=21)
+
+[Eslint](https://www.notion.so/Eslint-6a53b05b5392400cba479a021d389413?pvs=21)
+
+[Storybook](https://www.notion.so/Storybook-49899466e0c142e4ac59151bfbe4ed14?pvs=21)
+
+[Discord](https://www.notion.so/Discord-0818645e555a438b966ee5dab07ae503?pvs=21)
+
+[Slack](https://www.notion.so/Slack-f663c9d8755c42889ac562913c5cb50d?pvs=21)
 
 ## 화면 구성
 - 개바한 화면의 내용을 적는다

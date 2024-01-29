@@ -1,7 +1,7 @@
 import EmptyBox from './EmptyBox';
 
 export default {
-  title: 'FeedCard/EmptyBox',
+  title: 'Atoms/FeedCard/EmptyBox',
   component: EmptyBox,
 };
 

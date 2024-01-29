@@ -1,7 +1,7 @@
 import TopPanel from './TopPanel';
 
 export default {
-  title: 'AnswerPage/Header',
+  title: 'Organisms/AnswerPage/Header',
   component: TopPanel,
 };
 

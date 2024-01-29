@@ -7,8 +7,9 @@ import ThumbsUp from '../../atoms/Reaction/ThumbsUp';
 import ThumbsDown from '../../atoms/Reaction/ThumbsDown';
 import { getCurrentType } from './getAnswerType';
 import getElapsedTime from '../../../utils/getElapsedTime';
-import requestApi from '../../../utils/requestApi';
 import useReactionData from '../../../hooks/useReactionData';
+import useDeleteQuestion from '../../../hooks/useDeleteQuestion';
+import useResponseModify from '../../../hooks/useResponseModify';
 
 /**
  *
@@ -31,40 +32,30 @@ export default function AnswerFeedCard({
   const [currentType, setCurrentType] = useState(
     getCurrentType(answer ? content : '', answer?.isRejected),
   );
-  const [isClicked, setIsClicked] = useState();
+
   const isAnswered = currentType !== 'Edit';
   const elapsedTimeQuestion = getElapsedTime(createdAt);
   const { countLike, countDisLike, handleClickLike, handleClickDisLike } =
     useReactionData(like, dislike, id);
+  const { deleteButtons } = useDeleteQuestion({
+    setData,
+    questionsData,
+    id,
+  });
+  const { updateAnswer, rejectAnswer } = useResponseModify({
+    setCurrentType,
+    item,
+    setItem,
+    questionId: id,
+  });
 
-  const deleteQuestion = async () => {
-    if (isClicked) {
-      return;
-    }
-    setIsClicked(true);
-    await requestApi(`questions/${id}/`, 'delete');
-    setData((preData) => {
-      const currentData = preData.results.filter(
-        (it) => it.id !== questionsData.id,
-      );
-      return {
-        ...preData,
-        results: currentData,
-        count: preData.count - 1,
-      };
-    });
-    setIsClicked(false);
-  };
-  const updateClick = () => {
-    setCurrentType('Edit');
-  };
   return (
     <Wrapper>
       <StateBox>
         <Badge isAnswered={isAnswered} />
         <EditableDropdown
-          deleteClick={deleteQuestion}
-          updateClick={updateClick}
+          firstChildren={deleteButtons}
+          secondChildren={currentType === 'Edit' ? rejectAnswer : updateAnswer}
         />
       </StateBox>
       <QuestionBox>
@@ -80,7 +71,6 @@ export default function AnswerFeedCard({
         name={name}
         imageSource={imageSource}
       />
-      <Hr />
       <ReactionBox>
         <ThumbsUp
           isLiked={countLike > 0}
@@ -98,7 +88,7 @@ export default function AnswerFeedCard({
 }
 
 AnswerFeedCard.defaultProps = {
-  questionData: {
+  questionsData: {
     id: 41,
     subjectId: 23,
     content: '가장 좋아하는 동물이 궁금해요!',
@@ -123,6 +113,10 @@ const Wrapper = styled.div`
   flex-direction: column;
   align-items: flex-start;
   gap: 32px;
+  @media screen and (max-width: 758px) {
+    gap: 24px;
+    padding: 24px;
+  }
 `;
 
 const StateBox = styled.div`
@@ -147,13 +141,10 @@ const QuestionContent = styled.span`
   font-weight: 400;
   line-height: 24px;
 `;
-const Hr = styled.hr`
-  width: 100%;
-  height: 1px;
-  background: var(--Grayscale-30);
-`;
 
 const ReactionBox = styled.div`
+  width: 100%;
+  border-top: 1px solid var(--Grayscale-30);
   padding-top: 24px;
   display: flex;
   gap: 32px;

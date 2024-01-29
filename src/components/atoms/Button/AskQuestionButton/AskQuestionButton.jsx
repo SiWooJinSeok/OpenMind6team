@@ -29,7 +29,7 @@ const Button = styled(ButtonBox)`
 
   &:hover {
     gap: 1rem;
-    border: 0.2rem solid var(--Brown-50);
+    outline: 0.2rem solid var(--Brown-50);
   }
 
   &:active {

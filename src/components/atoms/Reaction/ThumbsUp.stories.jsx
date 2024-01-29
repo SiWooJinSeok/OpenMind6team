@@ -1,7 +1,7 @@
 import ThumbsUp from './ThumbsUp';
 
 export default {
-  title: 'ThumbsUp',
+  title: 'Atoms/Reaction/ThumbsUp',
   component: ThumbsUp,
   parameters: {
     layout: 'centered',

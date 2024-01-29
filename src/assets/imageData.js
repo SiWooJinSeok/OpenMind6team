@@ -11,6 +11,8 @@ import mainPageImage from './img/mainPageImage.jfif';
 import closeIcon from './img/icon-close.svg';
 import arrowRightBrownDisabled from './img/arrow-right-brown-disabled.svg';
 import arrowRightBrown from './img/arrow-right-brown.svg';
+import rejectionIcon from './img/Rejection.svg';
+import editIcon from './img/Edit.svg';
 
 const imageData = {
   PersonIcon,
@@ -26,6 +28,8 @@ const imageData = {
   closeIcon,
   arrowRightBrownDisabled,
   arrowRightBrown,
+  rejectionIcon,
+  editIcon,
 };
 
 export default imageData;

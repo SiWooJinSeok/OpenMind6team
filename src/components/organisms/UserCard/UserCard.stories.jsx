@@ -1,7 +1,8 @@
+import imageData from '../../../assets/imageData';
 import UserCard from './UserCard';
 
 export default {
-  title: 'UserCard',
+  title: 'Organisms/UserCard/UserCard',
   component: UserCard,
   parameters: {
     layout: 'centered',
@@ -20,4 +21,6 @@ export const Default = Template.bind({});
 Default.args = {
   userName: '아초는고양이',
   questionCount: 9,
+  id: 1,
+  ProfileImageSource: imageData.defaultProfile,
 };

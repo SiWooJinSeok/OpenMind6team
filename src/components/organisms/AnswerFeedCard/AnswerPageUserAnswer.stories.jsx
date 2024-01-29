@@ -2,7 +2,7 @@ import { useState } from 'react';
 import AnswerPageUserAnswer from './AnswerPageUserAnswer';
 
 export default {
-  title: 'FeedCard/FeedCardAnswer',
+  title: 'Organisms/FeedCard/FeedCardAnswer',
   component: AnswerPageUserAnswer,
   parameters: {
     layout: 'centered',

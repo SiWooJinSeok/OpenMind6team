@@ -2,7 +2,7 @@ import GlobalStyle from '../../../GlobalStyle';
 import GetQuestionBox from './GetQuestionBox';
 
 export default {
-  title: 'Organism/GetQuestionBox',
+  title: 'Organisms/GetQuestionBox',
   component: GetQuestionBox,
   decorators: [
     (Story) => (

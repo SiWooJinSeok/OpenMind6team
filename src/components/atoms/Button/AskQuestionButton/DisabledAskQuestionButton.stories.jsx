@@ -1,7 +1,7 @@
 import DisabledAskQuestionButton from './DisabledAskQuestionButton';
 
 export default {
-  title: 'Button/DisabledAskQuestionButton',
+  title: 'Atoms/Button/DisabledAskQuestionButton',
   component: DisabledAskQuestionButton,
   parameters: {
     layout: 'centered',

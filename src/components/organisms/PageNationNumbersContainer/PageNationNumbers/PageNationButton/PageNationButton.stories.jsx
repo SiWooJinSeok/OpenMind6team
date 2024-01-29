@@ -1,7 +1,7 @@
 import PageNationButton from './PageNationButton';
 
 export default {
-  title: 'PageNationButton',
+  title: 'Atoms/PageNation/PageNationButton',
   component: PageNationButton,
   parameters: {
     layout: 'centered',

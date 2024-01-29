@@ -5,6 +5,7 @@ import AskQuestionButton from '../../atoms/Button/AskQuestionButton/AskQuestionB
 
 import createSubject from '../../../utils/createSubject';
 import InputField from '../../atoms/InputField/InputField';
+import DisabledAskQuestionButton from '../../atoms/Button/AskQuestionButton/DisabledAskQuestionButton';
 
 /** 이름 입력후 질문 받기 버튼 클릭 시 API 호출 후 로컬 스토리지에 subjectId 저장.
  *  /post/{subjectId}/answer 로 페이지 이동.
@@ -29,11 +30,15 @@ export default function GetQuestionBox() {
     <Wrapper>
       <Container>
         <InputField value={inputName} handler={handleInputName} />
-        <AskQuestionButton
-          text="질문 받기"
-          width="100%"
-          handleButtonClick={handleButtonClick}
-        />
+        {inputName.length > 0 ? (
+          <AskQuestionButton
+            text="질문 받기"
+            width="100%"
+            handleButtonClick={handleButtonClick}
+          />
+        ) : (
+          <DisabledAskQuestionButton text="질문 받기" width="100%" />
+        )}
       </Container>
     </Wrapper>
   );

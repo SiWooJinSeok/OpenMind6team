@@ -8,11 +8,14 @@
 - (목적)
 - (개발 기간)
 
-## 배포 주소
-
-> 주소칸
-
 ## 팀 소개
+
+
+## 배포 주소
+https://img.shields.io/badge/Netlify-00C7B7?style=for-the-badge&logo=netlify&logoColor=white
+
+> Netlify : https://tourmaline-lebkuchen-4fc027.netlify.app
+> 
 
 ## 프로젝트 소개
 
@@ -25,13 +28,17 @@
   - clone 이후 패키지, 환경변수, 실행과정 등을 코드로 적는다
 
 ## 기술 스택
+https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=JavaScript&logoColor=white
+https://img.shields.io/badge/npm-CB3837?style=for-the-badge&logo=npm&logoColor=white
+https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB
+https://img.shields.io/badge/React_Router-CA4245?style=for-the-badge&logo=react-router&logoColor=white
 
-- 우리 노션페이지 맨 위에서 가져오면 됨
 - # CSS
+https://img.shields.io/badge/styled--components-DB7093?style=for-the-badge&logo=styled-components&logoColor=white
 
 ## 화면 구성
 
-- 개바한 화면의 내용을 적는다
+- 개발한 화면의 내용을 적는다
 
 ## 주요 기능
 
@@ -43,3 +50,6 @@
 - 프론트엔드와 백엔드가 어떻게 소통하는지 그림을 넣는다(tree구조)
 
 ## 개발 일지 및 회고록
+
+
+## QNA

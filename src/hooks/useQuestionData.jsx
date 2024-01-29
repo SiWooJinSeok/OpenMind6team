@@ -40,8 +40,6 @@ const useQuestionData = (offset, setCount, setQuestions) => {
 
     getData();
   }, [offset]);
-
-  return { setCount, setQuestions };
 };
 
 export default useQuestionData;

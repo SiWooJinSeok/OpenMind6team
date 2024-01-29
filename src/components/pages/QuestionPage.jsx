@@ -44,6 +44,11 @@ export default function QuestionPage() {
     <>
       <TopPanel name={name} imageSource={imageSource} />
       <Wrapper>
+        <ButtonSection>
+          <FloatingButton toggleModal={toggleModal}>
+            질문 작성하기
+          </FloatingButton>
+        </ButtonSection>
         <FeedCard>
           <FeedCardList
             type="question"
@@ -53,11 +58,6 @@ export default function QuestionPage() {
             imageSource={imageSource}
           />
         </FeedCard>
-        <ButtonSection>
-          <FloatingButton toggleModal={toggleModal}>
-            질문 작성하기
-          </FloatingButton>
-        </ButtonSection>
       </Wrapper>
       {isModalClicked ? (
         <Modal
@@ -86,9 +86,10 @@ const FeedCard = styled.div`
   flex-direction: column;
   align-items: center;
 
-  margin: 54px 32px 0;
+  margin: 9px 32px 0;
 `;
 
 const ButtonSection = styled.div`
-  position: absolute;
+  margin-left: auto;
+  margin-right: 32px;
 `;

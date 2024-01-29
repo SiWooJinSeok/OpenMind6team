@@ -15,10 +15,13 @@ import TopPanel from '../organisms/TopPanel/TopPanel';
 export default function QuestionPage() {
   const [isModalClicked, setIsModalClicked] = useState(false);
   const [offset, setOffset] = useState(0);
+  const [count, setCount] = useState(0);
+  const [questions, setQuestions] = useState([]);
   const { imageSource, name, id } = useQuestionOwnerData();
-  const { count, questions } = useQuestionData(isModalClicked, offset);
 
   const toggleModal = useToggle(isModalClicked, setIsModalClicked);
+
+  useQuestionData(offset, setCount, setQuestions);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -62,6 +65,8 @@ export default function QuestionPage() {
           imageSource={imageSource}
           name={name}
           id={id}
+          setCount={setCount}
+          setQuestions={setQuestions}
         />
       ) : null}
     </>
@@ -85,5 +90,5 @@ const FeedCard = styled.div`
 `;
 
 const ButtonSection = styled.div`
-  margin: 54px 32px 32px auto;
+  position: absolute;
 `;

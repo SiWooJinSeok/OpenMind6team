@@ -1,4 +1,4 @@
-import PageNationNumbers from '../PageNationNumbers/PageNationNumbers';
+import PageNationNumbers from './PageNationNumbers/PageNationNumbers';
 
 /**
  *

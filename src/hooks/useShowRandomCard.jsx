@@ -7,13 +7,13 @@ export default function useShowRandomCard() {
     setShowRandomCard(!showRandomCard);
   };
 
-  const handleModalCloseButtonClick = () => {
+  const handleRandomCardCloseClick = () => {
     setShowRandomCard(false);
   };
 
   return {
     showRandomCard,
     handleShowRandomCardButtonClick,
-    handleModalCloseButtonClick,
+    handleRandomCardCloseClick,
   };
 }

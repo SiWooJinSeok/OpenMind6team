@@ -19,14 +19,14 @@ export default function GoToAnswerButton({ className, text, width, onClick }) {
 }
 
 const Button = styled(ButtonBox)`
-  border: 0.1rem solid var(--Brown-40);
+  outline: 0.1rem solid var(--Brown-40);
   background: var(--Brown-10);
   color: var(--Brown-40);
 
   width: ${(props) => (props.width ? props.width : 'auto')};
 
   &:hover {
-    border-width: 0.2rem;
+    outline: 0.2rem solid var(--Brown-40);
   }
 
   &:active {

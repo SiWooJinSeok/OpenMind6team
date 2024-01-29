@@ -31,6 +31,13 @@ const Textarea = styled.textarea`
   border-radius: 0.8rem;
   background-color: var(--Grayscale-20);
   resize: none;
+  font-feature-settings:
+    'clig' off,
+    'liga' off;
+  font-family: Pretendard;
+  font-style: normal;
+  line-height: normal;
+  font-size: 1.6rem;
 
   &:focus {
     outline: 1px solid #542f1a;

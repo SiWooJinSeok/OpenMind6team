@@ -8,25 +8,38 @@ import requestApi from '../utils/requestApi';
  * @param {boolean} isModalClicked 모달창이 띄워져 있는지 여부
  * @returns count, questions
  */
-const useQuestionData = (isModalClicked) => {
+const useQuestionData = (offset, setCount, setQuestions) => {
+  const limit = 8;
+
   const { id } = useParams();
-  const [count, setCount] = useState(0);
-  const [questions, setQuestions] = useState([]);
+
+  const [hasNext, setHasNext] = useState(true);
 
   useEffect(() => {
+    if (!hasNext) return;
+
     const getData = async () => {
       const questionsData = await requestApi(
-        `subjects/${id}/questions/?limit=8&offset=0`,
+        `subjects/${id}/questions/?limit=${limit}&offset=${offset}`,
         'get',
       );
       setCount(questionsData?.count || 0);
-      setQuestions(questionsData?.results || []);
+      if (offset === 0) {
+        setQuestions(questionsData?.results || []);
+      } else {
+        setQuestions((prevQuestions) => [
+          ...prevQuestions,
+          ...(questionsData?.results || []),
+        ]);
+
+        if (!questionsData?.next) {
+          setHasNext(false);
+        }
+      }
     };
 
     getData();
-  }, [isModalClicked]);
-
-  return { count, questions };
+  }, [offset]);
 };
 
 export default useQuestionData;

@@ -13,7 +13,14 @@ import requestApi from '../../../utils/requestApi';
  * @param {function} props.toggleModal - 모달을 토글하는 함수
  * @returns 모달 컴포넌트를 반환
  */
-export default function Modal({ toggleModal, imageSource, name, id }) {
+export default function Modal({
+  toggleModal,
+  imageSource,
+  name,
+  id,
+  setCount,
+  setQuestions,
+}) {
   const [inputQuestion, setInputQuestion] = useState('');
 
   const questionContent = {
@@ -21,7 +28,20 @@ export default function Modal({ toggleModal, imageSource, name, id }) {
   };
 
   const handleQuestionSubmit = async () => {
-    await requestApi(`subjects/${id}/questions/`, 'post', questionContent);
+    const newQuestion = await requestApi(
+      `subjects/${id}/questions/`,
+      'post',
+      questionContent,
+    );
+    setCount((prevCount) => prevCount + 1);
+
+    setQuestions((prevQuestions) => {
+      if (prevQuestions.length === 0) {
+        return [newQuestion];
+      }
+      return [newQuestion, ...prevQuestions];
+    });
+
     toggleModal();
   };
 

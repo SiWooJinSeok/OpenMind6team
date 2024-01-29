@@ -1,7 +1,7 @@
 import CardSortDropdown from './CardSortDropdown';
 
 export default {
-  title: 'Dropdown/CardSortDropdown',
+  title: 'Atoms/Dropdown/CardSortDropdown',
   component: CardSortDropdown,
 };
 

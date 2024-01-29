@@ -1,7 +1,7 @@
 import AskQuestionButton from './AskQuestionButton';
 
 export default {
-  title: 'Button/AskQuestionButton',
+  title: 'Atoms/Button/AskQuestionButton',
   component: AskQuestionButton,
   parameters: {
     layout: 'centered',

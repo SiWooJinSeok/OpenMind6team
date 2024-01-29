@@ -1,7 +1,7 @@
 import ThumbsDown from './ThumbsDown';
 
 export default {
-  title: 'ThumbsDown',
+  title: 'Atoms/Reaction/ThumbsDown',
   component: ThumbsDown,
   parameters: {
     layout: 'centered',

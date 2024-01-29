@@ -1,7 +1,7 @@
 import QuestionListNavbar from './QuestionListNavbar';
 
 export default {
-  title: 'QuestionListNavbar',
+  title: 'Organisms/QuestionListNavbar',
   component: QuestionListNavbar,
   parameters: {
     layout: 'centered',

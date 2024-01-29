@@ -1,7 +1,7 @@
 import RandomCardButton from './RandomCardButton';
 
 export default {
-  title: 'Button/RandomCardButton',
+  title: 'Atoms/Button/RandomCardButton',
   component: RandomCardButton,
   parameters: {
     layout: 'centered',

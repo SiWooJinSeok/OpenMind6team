@@ -1,7 +1,7 @@
 import DisabledGoToAnswerButton from './DisabledGoToAnswerButton';
 
 export default {
-  title: 'Button/DisabledGoToAnswerButton',
+  title: 'Atoms/Button/DisabledGoToAnswerButton',
   component: DisabledGoToAnswerButton,
   parameters: {
     layout: 'centered',

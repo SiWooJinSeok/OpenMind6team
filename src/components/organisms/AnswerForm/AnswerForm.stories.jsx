@@ -1,7 +1,7 @@
 import AnswerForm from './AnswerForm';
 
 export default {
-  title: 'FeedCard/AnswerFrom',
+  title: 'Organisms/FeedCard/AnswerFrom',
   component: AnswerForm,
   parameters: {
     layout: 'centered',

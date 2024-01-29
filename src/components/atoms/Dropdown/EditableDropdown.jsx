@@ -1,11 +1,8 @@
 import { useState } from 'react';
 import styled from 'styled-components';
 import MoreImg from '../../../assets/img/More.svg';
-import EditImg from '../../../assets/img/Edit.svg';
-import EditBlack from '../../../assets/img/EditBlack.svg';
-import EditBlue from '../../../assets/img/EditBlue.svg';
 
-export default function EditableDropdown({ deleteClick, updateClick }) {
+export default function EditableDropdown({ firstChildren, secondChildren }) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const handleDropdownToggle = () => {
@@ -21,13 +18,13 @@ export default function EditableDropdown({ deleteClick, updateClick }) {
       />
       {isDropdownOpen ? (
         <DropdownMenu>
-          <MenuItemButton onClick={updateClick} type="button">
-            <Image src={EditImg} alt="수정하기" />
-            수정하기
+          <MenuItemButton onClick={firstChildren.onClick} type="button">
+            <Image src={firstChildren.imageSource} alt="수정하기" />
+            {firstChildren.text}
           </MenuItemButton>
-          <MenuItemButton onClick={deleteClick} type="button">
-            <Image src={EditImg} alt="삭제하기" />
-            삭제하기
+          <MenuItemButton onClick={secondChildren.onClick} type="button">
+            <Image src={secondChildren.imageSource} alt="삭제하기" />
+            {secondChildren.text}
           </MenuItemButton>
         </DropdownMenu>
       ) : null}
@@ -81,7 +78,7 @@ const MenuItemButton = styled.button`
     color: black;
 
     ${Image} {
-      content: url(${EditBlack});
+      content: url(${(props) => props.src});
     }
   }
 
@@ -89,7 +86,7 @@ const MenuItemButton = styled.button`
     color: #1877f2;
 
     ${Image} {
-      content: url(${EditBlue});
+      content: url(${(props) => props.src});
     }
   }
 `;

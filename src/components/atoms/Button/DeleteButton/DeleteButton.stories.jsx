@@ -1,7 +1,7 @@
 import DeleteButton from './DeleteButton';
 
 export default {
-  title: 'Button/DeleteButton',
+  title: 'Atoms/Button/DeleteButton',
   component: DeleteButton,
   parameters: {
     layout: 'centered',

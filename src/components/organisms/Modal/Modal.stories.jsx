@@ -2,7 +2,7 @@ import Modal from './Modal';
 import GlobalStyle from '../../../GlobalStyle';
 
 export default {
-  title: 'Modal/Modal',
+  title: 'Organisms/Modal/Modal',
   component: Modal,
   decorators: [
     (Story) => (

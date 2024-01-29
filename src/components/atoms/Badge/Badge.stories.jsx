@@ -2,7 +2,7 @@ import GlobalStyle from '../../../GlobalStyle';
 import Badge from './Badge';
 
 export default {
-  title: 'Badge/Badge',
+  title: 'Atoms/Badge/Badge',
   component: Badge,
   decorators: [
     (Story) => (

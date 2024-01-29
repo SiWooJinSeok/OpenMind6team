@@ -5,13 +5,13 @@ import useRandomQuestionCard from './useRandomQuestionCard.hook';
 
 /**
  * 실험적인 기능입니다!!
- * @param {handleRandomCardCloseClick : event handler, 클릭하면 랜덤 카드가 닫힙니다.} param0
+ * @param {onRandomCardCloseClick : event handler, 클릭하면 랜덤 카드가 닫힙니다.} param0
  * @param {showRandomCard : boolean, 랜덤 카드가 보이는지 안보이는지 여부를 결정합니다.} param1
  * @returns RandomQuestionCard Component
  */
 
 export default function RandomQuestionCard({
-  handleRandomCardCloseClick,
+  onRandomCardCloseClick,
   showRandomCard,
 }) {
   const { randomCardData } = useRandomQuestionCard();
@@ -20,7 +20,7 @@ export default function RandomQuestionCard({
     return null;
   }
   return (
-    <Wrapper onClick={handleRandomCardCloseClick}>
+    <Wrapper onClick={onRandomCardCloseClick}>
       <CardFlip to={`/post/${randomCardData?.id}`}>
         <Card>
           <CardFront>마우스를 올려보세요</CardFront>

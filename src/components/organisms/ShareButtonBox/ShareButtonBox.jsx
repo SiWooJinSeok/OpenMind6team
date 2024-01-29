@@ -15,7 +15,6 @@ import ShareButton from '../../atoms/Button/ShareButton/ShareButton';
  */
 
 export default function ShareButtonBox() {
-  // TODO(이시열) : 공유 기능 handler 구현
   const [isToast, setIsToast] = useState(false);
   const subjectId = useParams();
   const url = `${window.location.origin}/post/${subjectId.id}`;
@@ -60,14 +59,10 @@ const ToastFade = keyframes`
 `;
 const ToastBox = styled.div`
   display: ${(props) => (props.$isToast ? 'block' : 'none')};
-  position: absolute;
-  top: 380px;
+  position: fixed;
+  left: 50%;
+  transform: translate(-50%, 0);
+  top: auto;
+  bottom: 15%;
   animation: ${ToastFade} 5s 0.01s 1 linear;
-  @media screen and (max-width: 768px) {
-    position: fixed;
-    left: 50%;
-    transform: translate(-50%, 0);
-    top: auto;
-    bottom: 10%;
-  }
 `;

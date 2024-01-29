@@ -27,7 +27,7 @@ const useRequestApi = (path, method, postData = {}) => {
     requestData();
   }, []);
 
-  return { data, isLoading, errorMessage };
+  return { data, isLoading, errorMessage, setData };
 };
 
 export default useRequestApi;

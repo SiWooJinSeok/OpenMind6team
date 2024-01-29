@@ -1,4 +1,3 @@
-import { action } from '@storybook/addon-actions';
 import PageNationButton from './PageNationButton';
 
 export default {
@@ -15,14 +14,11 @@ export default {
   },
 };
 
-const Template = (args) => (
-  <PageNationButton {...args} onClick={() => console.log(args.page)} />
-);
+const Template = (args) => <PageNationButton {...args} />;
 
 export const Default = Template.bind({});
 
 Default.args = {
   page: 1,
   isSelected: false,
-  onClick: action('button-click'),
 };

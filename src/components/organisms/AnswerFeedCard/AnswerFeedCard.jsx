@@ -7,36 +7,74 @@ import ThumbsUp from '../../atoms/Reaction/ThumbsUp';
 import ThumbsDown from '../../atoms/Reaction/ThumbsDown';
 import { getCurrentType } from './getAnswerType';
 import getElapsedTime from '../../../utils/getElapsedTime';
+import requestApi from '../../../utils/requestApi';
+import useReactionData from '../../../hooks/useReactionData';
 
 /**
  *
+ * @param {string} name : 답변 하는 사람 이름
+ * @param {string} imageSource : url
  * @param {object} questionData : content, like, dislike, answer : {}
+ * @param {function} setData : setState
  * @returns FeedCard (Answer, NoAnswer, Edit)
  */
 
 // TODO(노진석) : 기능 구현하기
-export default function AnswerFeedCard({ questionsData, name, imageSource }) {
-  const { content, like, dislike, createdAt, answer } = questionsData;
-  const liked = like > 0;
-  const disLiked = dislike > 0;
+export default function AnswerFeedCard({
+  questionsData,
+  name,
+  imageSource,
+  setData,
+}) {
+  const { content, like, dislike, createdAt, answer, id } = questionsData;
+  const [item, setItem] = useState(answer);
   const [currentType, setCurrentType] = useState(
     getCurrentType(answer ? content : '', answer?.isRejected),
   );
+  const [isClicked, setIsClicked] = useState();
   const isAnswered = currentType !== 'Edit';
   const elapsedTimeQuestion = getElapsedTime(createdAt);
+  const { countLike, countDisLike, handleClickLike, handleClickDisLike } =
+    useReactionData(like, dislike, id);
 
+  const deleteQuestion = async () => {
+    if (isClicked) {
+      return;
+    }
+    setIsClicked(true);
+    await requestApi(`questions/${id}/`, 'delete');
+    setData((preData) => {
+      const currentData = preData.results.filter(
+        (it) => it.id !== questionsData.id,
+      );
+      return {
+        ...preData,
+        results: currentData,
+        count: preData.count - 1,
+      };
+    });
+    setIsClicked(false);
+  };
+  const updateClick = () => {
+    setCurrentType('Edit');
+  };
   return (
     <Wrapper>
       <StateBox>
         <Badge isAnswered={isAnswered} />
-        <EditableDropdown />
+        <EditableDropdown
+          deleteClick={deleteQuestion}
+          updateClick={updateClick}
+        />
       </StateBox>
       <QuestionBox>
         질문 · {elapsedTimeQuestion}
         <QuestionContent>{content}</QuestionContent>
       </QuestionBox>
       <UserAnswerCard
-        item={answer}
+        questionId={id}
+        item={item}
+        setItem={setItem}
         currentType={currentType}
         setCurrentType={setCurrentType}
         name={name}
@@ -44,8 +82,16 @@ export default function AnswerFeedCard({ questionsData, name, imageSource }) {
       />
       <Hr />
       <ReactionBox>
-        <ThumbsUp isLiked={liked} count={like} />
-        <ThumbsDown isDisliked={disLiked} count={dislike} />
+        <ThumbsUp
+          isLiked={countLike > 0}
+          count={countLike}
+          handleClickLike={handleClickLike}
+        />
+        <ThumbsDown
+          isDisliked={countDisLike > 0}
+          count={countDisLike}
+          handleClickDisLike={handleClickDisLike}
+        />
       </ReactionBox>
     </Wrapper>
   );

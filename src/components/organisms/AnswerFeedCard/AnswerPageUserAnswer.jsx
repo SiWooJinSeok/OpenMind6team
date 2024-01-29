@@ -3,17 +3,22 @@ import styled from 'styled-components';
 import UserProfileImage from '../../atoms/UserProfileImage/UserProfileImage';
 import getAnswerType from './getAnswerType';
 import getElapsedTime from '../../../utils/getElapsedTime';
+import requestApi from '../../../utils/requestApi';
 
 /**
+ * @param {string} questionId : 질문 Id
  * @param {object} item : id, content
- * @param {object} owner : name
+ * @param {function} setItem : setState
  * @param {state} currentType : 'Edit' or 'Answer' or 'NoAnswer'
  * @param {callback} setCurrentType : setState
+ * @param {string} imageSource : url
  * @returns currentType ? Edit : Answer
  */
 // TODO(노진석): 나중에 추가 로직만들면서 변경 될 가능성 있음!
 export default function AnswerPageUserAnswer({
+  questionId,
   item,
+  setItem,
   name,
   imageSource,
   currentType,
@@ -23,10 +28,23 @@ export default function AnswerPageUserAnswer({
   const [answer, setAnswer] = useState(content);
   const { createdAt } = item || new Date();
   const elapsedTimeQuestion = getElapsedTime(createdAt);
-
-  const handleType = () => {
+  const updateAnswer = () => {
     setCurrentType('Answer');
+    const isRejected = answer.replaceAll(' ', '') === '답변거절';
+    const postData = {
+      content: answer,
+      isRejected,
+    };
+    if (!item) {
+      postData.questionId = questionId;
+      requestApi(`questions/${questionId}/answers/`, 'post', postData).then(
+        (result) => setItem(result),
+      );
+      return;
+    }
+    requestApi(`answers/${item.id}/`, 'put', postData);
   };
+
   return (
     <Wrapper>
       <div>
@@ -40,8 +58,9 @@ export default function AnswerPageUserAnswer({
           ) : null}
         </UserNameBox>
         {getAnswerType({
+          item,
           type: currentType,
-          handleType,
+          onClick: updateAnswer,
           answer,
           setAnswer,
         })}

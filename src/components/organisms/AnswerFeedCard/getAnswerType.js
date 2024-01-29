@@ -1,14 +1,16 @@
 import styled from 'styled-components';
 import AnswerForm from '../AnswerForm/AnswerForm';
 
-const getAnswerType = ({ type, handleType, answer, setAnswer }) => {
+const getAnswerType = ({ type, onClick, answer, setAnswer, item }) => {
+  const buttonText = item ? '수정하기' : '답변완료';
   switch (type) {
     case 'Edit':
       return (
         <AnswerForm
-          onClick={handleType}
+          onClick={onClick}
           inputValue={answer}
           setInputValue={setAnswer}
+          buttonText={buttonText}
         />
       );
     case 'Answer':

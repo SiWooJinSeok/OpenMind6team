@@ -9,6 +9,7 @@ export default function FeedCardList({
   name,
   imageSource,
   type,
+  setData,
 }) {
   return (
     <Container>
@@ -19,7 +20,7 @@ export default function FeedCardList({
           : '아직 질문이 없습니다'}
       </MessageBox>
       {questionCount > 0 ? (
-        getFeedCardType(questionsData, name, imageSource, type)
+        getFeedCardType(questionsData, name, imageSource, type, setData)
       ) : (
         <EmptyBox />
       )}

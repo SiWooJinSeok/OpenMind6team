@@ -5,7 +5,10 @@ import imageData from '../../../assets/imageData';
 
 /**
  *
- * @param {userName : string, questionCount : number} param0
+ * @param {number} id : 유저 아이디
+ * @param {string} userName : 유저 이름
+ * @param {number} questionCount : 받은 질문 개수
+ * @param {string} ProfileImageSource : 프로필 이미지 경로
  * @returns UserCard
  */
 export default function UserCard({

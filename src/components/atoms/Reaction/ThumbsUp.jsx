@@ -8,12 +8,16 @@ import { ThumbsButton, ThumbsIcon, ThumbsText } from './Shared';
  * @returns ThumbsUp Component
  */
 
-export default function ThumbsUp({ isLiked = true, count = 0 }) {
+export default function ThumbsUp({
+  handleClickLike,
+  isLiked = true,
+  count = 0,
+}) {
   const thumbImg = isLiked ? thumbsUpSelectedIcon : thumbsUpIcon;
   const textColor = isLiked ? 'var(--Blue-50)}' : 'var(--Grayscale-40)';
 
   return (
-    <ThumbsButton>
+    <ThumbsButton onClick={handleClickLike}>
       <ThumbsIcon src={thumbImg} $isLiked={isLiked} alt="좋아요 버튼 이미지" />
       <ThumbsText $textColor={textColor}>
         좋아요 {count !== 0 ? count : null}

@@ -14,7 +14,7 @@ const requestApi = async (path, method, postData = {}) => {
     url: `https://${API_BASE_HOST}/${path}`,
   };
 
-  if (method === 'post' || method === 'delete') {
+  if (method === 'post' || method === 'delete' || method === 'put') {
     config.headers = {
       'Content-Type': 'application/json',
     };

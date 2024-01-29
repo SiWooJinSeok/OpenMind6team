@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-import NEXT_ARROW_BACKGROUND from '../../../constants/svg_img_url';
+import NEXT_ARROW_BACKGROUND from '../../../constants/svg_Img_Url';
 import imageData from '../../../assets/imageData';
 
 export default function QuestionListNextPageButton({ onNextPageButtonClick }) {

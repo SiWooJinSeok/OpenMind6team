@@ -1,6 +1,6 @@
 import styled from 'styled-components';
-import PageNationButton from './PageNationButton/PageNationButton';
-import { PAGE_NATION_NUMBER_COUNT } from '../../../../constants/page_nation';
+import PageNationButton from '../PageNationButton/PageNationButton';
+import { PAGE_NATION_NUMBER_COUNT } from '../../../constants/page_nation';
 
 /**
  *

@@ -5,34 +5,34 @@ import useRandomQuestionCard from './useRandomQuestionCard.hook';
 
 /**
  * 실험적인 기능입니다!!
- * @param {handleRandomCardCloseClick : event handler, 클릭하면 랜덤 카드가 닫힙니다.} param0
+ * @param {onModalCloseButtonClick : event handler, 클릭하면 랜덤 카드가 닫힙니다.} param0
  * @param {showRandomCard : boolean, 랜덤 카드가 보이는지 안보이는지 여부를 결정합니다.} param1
  * @returns RandomQuestionCard Component
  */
 
 export default function RandomQuestionCard({
-  handleRandomCardCloseClick,
+  onModalCloseButtonClick,
   showRandomCard,
 }) {
-  const { randomCardData } = useRandomQuestionCard();
+  const { randomCard } = useRandomQuestionCard();
 
   if (!showRandomCard) {
     return null;
   }
   return (
-    <Wrapper onClick={handleRandomCardCloseClick}>
-      <CardFlip to={`/post/${randomCardData?.id}`}>
+    <Wrapper onClick={onModalCloseButtonClick}>
+      <CardFlip to={`/post/${randomCard?.id}`}>
         <Card>
           <CardFront>마우스를 올려보세요</CardFront>
           <CardBack>
             <ImgBox>
-              <img src={randomCardData?.imageSource} alt="랜덤카드 이미지" />
+              <img src={randomCard?.imageSource} alt="랜덤카드 이미지" />
             </ImgBox>
             <ContentBox>
-              <UserName>{randomCardData?.name}</UserName>
+              <UserName>{randomCard?.name}</UserName>
               <UserQuestionCount>
                 <img src={imageData.messageIcon} alt="메시지 아이콘" />
-                <div>{randomCardData?.questionCount}</div>
+                <div>{randomCard?.questionCount}</div>
               </UserQuestionCount>
             </ContentBox>
           </CardBack>

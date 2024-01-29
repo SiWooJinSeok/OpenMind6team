@@ -71,7 +71,6 @@ export default function AnswerFeedCard({
         name={name}
         imageSource={imageSource}
       />
-      <Hr />
       <ReactionBox>
         <ThumbsUp
           isLiked={countLike > 0}
@@ -114,6 +113,10 @@ const Wrapper = styled.div`
   flex-direction: column;
   align-items: flex-start;
   gap: 32px;
+  @media screen and (max-width: 758px) {
+    gap: 24px;
+    padding: 24px;
+  }
 `;
 
 const StateBox = styled.div`
@@ -138,13 +141,10 @@ const QuestionContent = styled.span`
   font-weight: 400;
   line-height: 24px;
 `;
-const Hr = styled.hr`
-  width: 100%;
-  height: 1px;
-  background: var(--Grayscale-30);
-`;
 
 const ReactionBox = styled.div`
+  width: 100%;
+  border-top: 1px solid var(--Grayscale-30);
   padding-top: 24px;
   display: flex;
   gap: 32px;

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import useQuestionData from '../../hooks/useQuestionData';
 import useQuestionOwnerData from '../../hooks/useQuestionOwnerData';
@@ -8,18 +8,47 @@ import FeedCardList from '../organisms/FeedCardList/FeedCardList';
 import Modal from '../organisms/Modal/Modal';
 import TopPanel from '../organisms/TopPanel/TopPanel';
 
-// Todo (송상훈) 좋아요 싫어요 로직구현, 무한스크롤 구현
+/**
+ * @returns QuestionPage
+ */
+
 export default function QuestionPage() {
   const [isModalClicked, setIsModalClicked] = useState(false);
+  const [offset, setOffset] = useState(0);
+  const [count, setCount] = useState(0);
+  const [questions, setQuestions] = useState([]);
   const { imageSource, name, id } = useQuestionOwnerData();
-  const { count, questions } = useQuestionData(isModalClicked);
 
   const toggleModal = useToggle(isModalClicked, setIsModalClicked);
+
+  useQuestionData(offset, setCount, setQuestions);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const { scrollTop, scrollHeight, clientHeight } =
+        document.documentElement;
+
+      if (scrollTop + clientHeight >= scrollHeight - 1) {
+        setOffset((prevOffset) => prevOffset + 8);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   return (
     <>
       <TopPanel name={name} imageSource={imageSource} />
       <Wrapper>
+        <ButtonSection>
+          <FloatingButton toggleModal={toggleModal}>
+            질문 작성하기
+          </FloatingButton>
+        </ButtonSection>
         <FeedCard>
           <FeedCardList
             type="question"
@@ -29,11 +58,6 @@ export default function QuestionPage() {
             imageSource={imageSource}
           />
         </FeedCard>
-        <ButtonSection>
-          <FloatingButton toggleModal={toggleModal}>
-            질문 작성하기
-          </FloatingButton>
-        </ButtonSection>
       </Wrapper>
       {isModalClicked ? (
         <Modal
@@ -41,6 +65,8 @@ export default function QuestionPage() {
           imageSource={imageSource}
           name={name}
           id={id}
+          setCount={setCount}
+          setQuestions={setQuestions}
         />
       ) : null}
     </>
@@ -60,9 +86,10 @@ const FeedCard = styled.div`
   flex-direction: column;
   align-items: center;
 
-  margin: 54px 32px 0;
+  margin: 9px 32px 0;
 `;
 
 const ButtonSection = styled.div`
-  margin: 54px 32px 32px auto;
+  margin-left: auto;
+  margin-right: 32px;
 `;

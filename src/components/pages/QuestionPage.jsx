@@ -74,7 +74,7 @@ export default function QuestionPage() {
 }
 
 const Wrapper = styled.div`
-  margin: 0 auto;
+  margin: 0 auto 100px;
   max-width: 780px;
   width: 100%;
   display: flex;

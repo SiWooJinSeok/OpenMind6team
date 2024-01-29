@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import requestApi from '../utils/requestApi';
+import imageData from '../assets/imageData';
 
 const useDeleteQuestion = ({ setData, id, questionsData }) => {
   const [isClicked, setIsClicked] = useState();
@@ -22,7 +23,13 @@ const useDeleteQuestion = ({ setData, id, questionsData }) => {
     setIsClicked(false);
   };
 
-  return { deleteQuestion };
+  const deleteButtons = {
+    onClick: deleteQuestion,
+    text: '삭제하기',
+    imageSource: imageData.closeIcon,
+  };
+
+  return { deleteButtons };
 };
 
 export default useDeleteQuestion;

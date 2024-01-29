@@ -9,6 +9,7 @@ import { getCurrentType } from './getAnswerType';
 import getElapsedTime from '../../../utils/getElapsedTime';
 import useReactionData from '../../../hooks/useReactionData';
 import useDeleteQuestion from '../../../hooks/useDeleteQuestion';
+import useResponseModify from '../../../hooks/useResponseModify';
 
 /**
  *
@@ -36,22 +37,25 @@ export default function AnswerFeedCard({
   const elapsedTimeQuestion = getElapsedTime(createdAt);
   const { countLike, countDisLike, handleClickLike, handleClickDisLike } =
     useReactionData(like, dislike, id);
-  const { deleteQuestion } = useDeleteQuestion({
+  const { deleteButtons } = useDeleteQuestion({
     setData,
     questionsData,
     id,
   });
-  const updateClick = () => {
-    setCurrentType('Edit');
-  };
+  const { updateAnswer, rejectAnswer } = useResponseModify({
+    setCurrentType,
+    item,
+    setItem,
+    questionId: id,
+  });
 
   return (
     <Wrapper>
       <StateBox>
         <Badge isAnswered={isAnswered} />
         <EditableDropdown
-          deleteClick={deleteQuestion}
-          updateClick={updateClick}
+          firstChildren={deleteButtons}
+          secondChildren={currentType === 'Edit' ? rejectAnswer : updateAnswer}
         />
       </StateBox>
       <QuestionBox>

@@ -11,10 +11,9 @@ const useRespondAnswer = ({
   const [answer, setAnswer] = useState(content);
   const respondAnswer = () => {
     setCurrentType('Answer');
-    const isRejected = answer.replaceAll(/[\n\s]/g, '') === '답변거절';
     const postData = {
       content: answer,
-      isRejected,
+      isRejected: false,
     };
     if (!item) {
       postData.questionId = questionId;

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import requestApi from '../utils/requestApi';
-import { SORT_TIME } from '../constants/question_list_page_sort';
-import { limit } from '../constants/page_nation';
+import { SORT_TIME } from '../constants/questionListPageSort';
+import { limit } from '../constants/pageNation';
 /**
  *
  * @returns data, isLoading, error, totalPage, currentPage, handleLeftArrowClick, handleRightArrowClick, handleSortButtonClick, handlePageClick

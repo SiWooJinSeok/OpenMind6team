@@ -1,4 +1,4 @@
-import TIME_IN_MILLISECONDS from '../constants/time_in_milliseconds';
+import TIME_IN_MILLISECONDS from '../constants/timeInMilliseconds';
 
 const getElapsedTime = (createdAt) => {
   const now = new Date();

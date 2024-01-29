@@ -140,6 +140,7 @@ const QuestionContent = styled.span`
   color: var(--Grayscale-60);
   font-weight: 400;
   line-height: 24px;
+  font-family: Actor;
 `;
 
 const ReactionBox = styled.div`

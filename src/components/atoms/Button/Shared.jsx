@@ -10,7 +10,6 @@ export const ButtonBox = styled.button`
   font-feature-settings:
     'clig' off,
     'liga' off;
-  font-family: Pretendard;
   font-size: 1.6rem;
   font-style: normal;
   font-weight: 400;

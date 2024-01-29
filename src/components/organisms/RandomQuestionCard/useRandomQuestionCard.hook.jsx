@@ -2,17 +2,17 @@ import useRequestApi from '../../../hooks/useRequestApi';
 
 /**
  *
- * @returns randomCard : object
+ * @returns randomCardData : object
  */
 
 export default function useRandomQuestionCard() {
   const { data } = useRequestApi('subjects/?limit=100&offset=0', 'get');
 
-  let randomCard;
+  let randomCardData;
   if (data?.results?.length) {
     const randomIndex = Math.floor(Math.random() * data.results.length);
-    randomCard = data.results[randomIndex];
+    randomCardData = data.results[randomIndex];
   }
 
-  return { randomCard };
+  return { randomCardData };
 }

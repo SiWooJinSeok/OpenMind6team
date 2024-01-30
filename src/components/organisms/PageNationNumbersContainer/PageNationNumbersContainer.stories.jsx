@@ -1,7 +1,7 @@
 import PageNationNumbersContainer from './PageNationNumbersContainer';
 
 export default {
-  title: 'PageNationNumbersContainer',
+  title: 'organisms/PageNationNumbersContainer',
   component: PageNationNumbersContainer,
   parameters: {
     layout: 'centered',

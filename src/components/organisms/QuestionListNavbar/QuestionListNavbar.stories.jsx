@@ -9,6 +9,6 @@ export default {
   tags: ['autodocs'],
 };
 
-const Template = (args) => <QuestionListNavbar {...args} />;
-
-export const Default = Template.bind({});
+export function QuestionListNavbarStory(args) {
+  return <QuestionListNavbar {...args} />;
+}

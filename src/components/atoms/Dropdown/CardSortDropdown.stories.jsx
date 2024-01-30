@@ -57,6 +57,8 @@ export function Time(args) {
 }
 
 // 각 스토리의 인자를 넣는데 사용한다.
+// argTypes와 args의 차이는 argTypes는 스토리북에서 인자의 행동을 제어하는데 사용하고 args는 스토리의 인자를 넣는데 사용한다(오버라이드 가능)
+// 따라서 argTypes는 공통된 인자를 넣는데 사용하고 args는 각 스토리의 인자를 넣는데 사용한다.
 Name.args = {
   CardSort: SORT_NAME,
 };

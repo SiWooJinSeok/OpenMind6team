@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import UserProfileImage from '../../atoms/UserProfileImage/UserProfileImage';
 import getElapsedTime from '../../../utils/getElapsedTime';
 
@@ -27,7 +27,9 @@ export default function QuestionPageUserAnswer({
           <span>{name}</span>
           <span>{elapsedTimeAnswer}</span>
         </div>
-        <p>{content}</p>
+        <AnswerContent specialText={content === '답변거절'}>
+          {content}
+        </AnswerContent>
       </AnswerDetail>
     </AnswerSection>
   );
@@ -62,11 +64,16 @@ const AnswerDetail = styled.div`
     line-height: 18px;
     margin-left: 8px;
   }
+`;
+const AnswerContent = styled.p`
+  color: var(--Grayscale-60);
+  font-size: 1.6rem;
+  font-weight: 400;
+  line-height: 22px;
 
-  p {
-    color: var(--Grayscale-60);
-    font-size: 1.6rem;
-    font-weight: 400;
-    line-height: 22px;
-  }
+  ${(props) =>
+    props.specialText &&
+    css`
+      color: var(--Red-50);
+    `}
 `;

@@ -16,7 +16,7 @@ const Button = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: ${(props) => props.width};
+  width: 150px;
   height: 54px;
   padding: 12px 24px;
   border: none;
@@ -28,7 +28,7 @@ const Button = styled.button`
     'clig' off,
     'liga' off;
   font-family: Pretendard;
-  font-size: 20px;
+  font-size: 15px;
   font-style: normal;
   font-weight: 400;
   line-height: 25px;

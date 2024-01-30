@@ -7,31 +7,27 @@ export default {
   component: EditableDropdown,
 };
 
-export function Default() {
+export function Default(args) {
+  // state와 해당 handler 함수는 직접 선언해줘야한다.
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const handleDropdownToggle = () => {
     setIsDropdownOpen(!isDropdownOpen);
   };
 
-  const firstChildren = {
+  return <EditableDropdown {...args} onClick={handleDropdownToggle} />;
+}
+
+// mock데이터 느낌으로 만들어서 넣어준다
+Default.args = {
+  firstChildren: {
     onClick: () => {},
     imageSource: imageData.editIcon,
     text: '수정하기',
-  };
-
-  const secondChildren = {
+  },
+  secondChildren: {
     onClick: () => {},
     imageSource: imageData.closeIcon,
     text: '삭제하기',
-  };
-
-  return (
-    <EditableDropdown
-      onClick={handleDropdownToggle}
-      isOpen={isDropdownOpen}
-      firstChildren={firstChildren}
-      secondChildren={secondChildren}
-    />
-  );
-}
+  },
+};

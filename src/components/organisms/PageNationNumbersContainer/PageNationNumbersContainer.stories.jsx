@@ -16,5 +16,9 @@ export default {
 };
 
 export function PageNationNumbersContainerStory(args) {
-  return <PageNationNumbersContainer {...args} />;
+  return (
+    <div style={{ display: 'flex' }}>
+      <PageNationNumbersContainer {...args} />
+    </div>
+  );
 }

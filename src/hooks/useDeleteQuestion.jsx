@@ -2,7 +2,7 @@ import { useState } from 'react';
 import requestApi from '../utils/requestApi';
 import imageData from '../assets/imageData';
 
-const useDeleteQuestion = ({ setData, id, questionsData }) => {
+const useDeleteQuestion = ({ setData, id, questionsData, setCount }) => {
   const [isClicked, setIsClicked] = useState();
   const deleteQuestion = async () => {
     if (isClicked) {
@@ -11,15 +11,10 @@ const useDeleteQuestion = ({ setData, id, questionsData }) => {
     setIsClicked(true);
     await requestApi(`questions/${id}/`, 'delete');
     setData((preData) => {
-      const currentData = preData.results.filter(
-        (it) => it.id !== questionsData.id,
-      );
-      return {
-        ...preData,
-        results: currentData,
-        count: preData.count - 1,
-      };
+      const currentData = preData.filter((it) => it.id !== questionsData.id);
+      return currentData;
     });
+    setCount((prevCount) => prevCount - 1);
     setIsClicked(false);
   };
 

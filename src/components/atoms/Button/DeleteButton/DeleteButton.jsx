@@ -19,7 +19,8 @@ const Button = styled.button`
   font-weight: 400;
   line-height: 25px;
   cursor: pointer;
+
   @media screen and (max-width: 768px) {
-    font-size: 1rem;
+    font-size: 1.3rem;
   }
 `;

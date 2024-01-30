@@ -9,6 +9,7 @@ export default {
   tags: ['autodocs'],
   argTypes: {
     inputValue: { control: 'text', defaultValue: '초기값' },
+    onClick: () => {},
     setInputValue: { action: 'setState' },
   },
 };

@@ -20,4 +20,5 @@ export const Default = Template.bind({});
 Default.args = {
   text: '질문하기',
   width: '300px',
+  handleButtonClick: () => {},
 };

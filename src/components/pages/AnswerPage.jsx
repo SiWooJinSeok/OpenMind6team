@@ -63,6 +63,7 @@ export default function AnswerPage() {
             imageSource={imageSource}
             questionsData={questions}
             setData={setQuestions}
+            setCount={setCount}
           />
         </Container>
       </Wrapper>

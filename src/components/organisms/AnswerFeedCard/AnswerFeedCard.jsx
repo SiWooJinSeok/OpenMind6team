@@ -26,6 +26,7 @@ export default function AnswerFeedCard({
   name,
   imageSource,
   setData,
+  setCount,
 }) {
   const { content, like, dislike, createdAt, answer, id } = questionsData;
   const [item, setItem] = useState(answer);
@@ -41,6 +42,7 @@ export default function AnswerFeedCard({
     setData,
     questionsData,
     id,
+    setCount,
   });
   const { updateAnswer, rejectAnswer } = useResponseModify({
     setCurrentType,

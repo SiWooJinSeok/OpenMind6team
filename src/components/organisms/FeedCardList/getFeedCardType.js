@@ -7,6 +7,7 @@ const getFeedCardType = (
   imageSource,
   type,
   setData = null,
+  setCount = null,
 ) => {
   if (type === 'answer') {
     return questionsData?.map((it) => (
@@ -16,6 +17,7 @@ const getFeedCardType = (
         name={name}
         imageSource={imageSource}
         setData={setData}
+        setCount={setCount}
       />
     ));
   }

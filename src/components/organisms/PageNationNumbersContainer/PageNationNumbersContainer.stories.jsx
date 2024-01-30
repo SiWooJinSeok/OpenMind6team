@@ -1,8 +1,8 @@
-import PageNationNumbers from './PageNationNumbersContainer';
+import PageNationNumbersContainer from './PageNationNumbersContainer';
 
 export default {
-  title: 'PageNationNumbers',
-  component: PageNationNumbers,
+  title: 'organisms/PageNationNumbersContainer',
+  component: PageNationNumbersContainer,
   parameters: {
     layout: 'centered',
   },
@@ -15,8 +15,6 @@ export default {
   },
 };
 
-const Template = (args) => <PageNationNumbers {...args} />;
-
-export const Default = Template.bind({});
-
-Default.args = {};
+export function PageNationNumbersContainerStory(args) {
+  return <PageNationNumbersContainer {...args} />;
+}

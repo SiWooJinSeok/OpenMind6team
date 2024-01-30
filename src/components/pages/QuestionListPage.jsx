@@ -18,7 +18,7 @@ export default function QuestionListPage() {
     currentPage,
     sort,
     totalPage,
-    UserCardListData,
+    userCardListData,
     handleLeftArrowClick,
     handleRightArrowClick,
     handleSortButtonClick,
@@ -44,7 +44,7 @@ export default function QuestionListPage() {
         />
       </TitleWrapper>
       <UserCardList
-        UserCardListData={UserCardListData}
+        userCardListData={userCardListData}
         isLoadingUserCardListData={isLoadingUserCardListData}
         onNextPageButtonClick={handleRightArrowClick}
         currentPage={currentPage}

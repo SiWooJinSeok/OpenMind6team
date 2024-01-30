@@ -9,7 +9,7 @@ const getFeedCardType = (
   setData = null,
 ) => {
   if (type === 'answer') {
-    return questionsData?.results.map((it) => (
+    return questionsData?.map((it) => (
       <AnswerFeedCard
         key={it.id}
         questionsData={it}

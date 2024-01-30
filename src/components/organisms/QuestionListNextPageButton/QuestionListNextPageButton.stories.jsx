@@ -14,5 +14,9 @@ export default {
 };
 
 export function Default(args) {
-  return <QuestionListNextPageButton {...args} />;
+  return (
+    <div style={{ width: '200px', height: '200px' }}>
+      <QuestionListNextPageButton {...args} />
+    </div>
+  );
 }

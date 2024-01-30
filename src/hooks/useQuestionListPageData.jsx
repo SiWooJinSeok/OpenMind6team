@@ -12,7 +12,7 @@ const useQuestionListPageData = () => {
   const offset = (currentPage - 1) * limit;
   const [sort, setSort] = useState(SORT_TIME);
 
-  const [UserCardListData, setUserCardListData] = useState({});
+  const [userCardListData, setUserCardListData] = useState({});
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
   const [totalPage, setTotalPage] = useState(0);
@@ -67,7 +67,7 @@ const useQuestionListPageData = () => {
   return {
     currentPage,
     sort,
-    UserCardListData,
+    userCardListData,
     totalPage,
     isLoading,
     error,

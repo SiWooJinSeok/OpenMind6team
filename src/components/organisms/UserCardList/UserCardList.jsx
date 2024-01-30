@@ -4,7 +4,7 @@ import QuestionListNextPageButton from '../QuestionListNextPageButton/QuestionLi
 
 /**
  *
- * @param {object} UserCardListData : 유저 카드 리스트 데이터
+ * @param {object} userCardListData : 유저 카드 리스트 데이터
  * @param {boolean} isLoadingUserCardListData : 유저 카드 리스트 데이터 로딩 상태
  * @param {function} onNextPageButtonClick : 다음 페이지 버튼 클릭 시 실행되는 함수
  * @param {number} currentPage : 현재 페이지
@@ -13,13 +13,13 @@ import QuestionListNextPageButton from '../QuestionListNextPageButton/QuestionLi
  */
 
 export default function UserCardList({
-  UserCardListData,
+  userCardListData,
   isLoadingUserCardListData,
   onNextPageButtonClick,
   currentPage,
   totalPage,
 }) {
-  const { results: cardList } = UserCardListData;
+  const { results: cardList } = userCardListData;
 
   if (isLoadingUserCardListData === true) {
     return null;

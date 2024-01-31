@@ -70,6 +70,7 @@ const QuestionBox = styled.section`
   gap: 4px;
 
   span {
+    font-family: Actor;
     color: var(--Grayscale-40);
     font-size: 1.4rem;
     font-weight: 500;

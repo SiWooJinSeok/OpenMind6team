@@ -37,7 +37,7 @@ export default function AnswerPageUserAnswer({
   return (
     <Wrapper>
       <div>
-        <UserProfileImage imageSource={imageSource} />
+        <UserProfileImage type="feedCard" imageSource={imageSource} />
       </div>
       <AnswerContainer>
         <UserNameBox>
@@ -81,12 +81,14 @@ const UserNameBox = styled.div`
   display: flex;
   align-items: center;
   gap: 8px;
+  font-weight: 400;
   font-size: 1.8rem;
 `;
 
 const AnswerContainer = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 4px;
   width: 100%;
+  gap: 4px;
+  font-family: Actor;
 `;

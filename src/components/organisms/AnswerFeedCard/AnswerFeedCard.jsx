@@ -61,7 +61,7 @@ export default function AnswerFeedCard({
         />
       </StateBox>
       <QuestionBox>
-        질문 · {elapsedTimeQuestion}
+        질문•{elapsedTimeQuestion}
         <QuestionContent>{content}</QuestionContent>
       </QuestionBox>
       <UserAnswerCard
@@ -109,6 +109,7 @@ AnswerFeedCard.defaultProps = {
 const Wrapper = styled.div`
   border-radius: 16px;
   background: var(--Grayscale-10);
+  box-shadow: 0px 4px 4px 0px rgba(140, 140, 140, 0.25);
   padding: 32px;
   width: 100%;
   display: flex;
@@ -135,6 +136,7 @@ const QuestionBox = styled.div`
   color: var(--Grayscale-40);
   font-weight: 500;
   line-height: 18px;
+  font-family: Actor;
 `;
 
 const QuestionContent = styled.span`
@@ -142,7 +144,6 @@ const QuestionContent = styled.span`
   color: var(--Grayscale-60);
   font-weight: 400;
   line-height: 24px;
-  font-family: Actor;
 `;
 
 const ReactionBox = styled.div`

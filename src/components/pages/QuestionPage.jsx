@@ -75,7 +75,7 @@ export default function QuestionPage() {
 
 const Wrapper = styled.div`
   margin: 0 auto 100px;
-  max-width: 780px;
+  max-width: 716px;
   width: 100%;
   display: flex;
   flex-direction: column;

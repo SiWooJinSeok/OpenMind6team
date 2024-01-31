@@ -35,7 +35,7 @@
 
 ## 🚢 Deploy
 
-<a href='https://tourmaline-lebkuchen-4fc027.netlify.app'><img src="https://img.shields.io/badge/Netlify-00C7B7?style=for-the-badge&logo=Netlify&logoColor=white"></a>
+<a href='https://tourmaline-lebkuchen-4fc027.netlify.app'><img src="https://img.shields.io/badge/Netlify-00C7B7?style=for-the-badge&logo=Netlify&logoColor=white"></a> <a href='https://65b8ddb9cef6e3d48fbf66d9-filttgsnsz.chromatic.com/?path=/docs/atoms-button-disabledaskquestionbutton--docs'><img src="https://img.shields.io/badge/storybook-FF4785?style=for-the-badge&logo=storybook&logoColor=white"></a>
 
 <br/>
 
@@ -202,3 +202,8 @@ npm install --save-dev @babel/eslint-parser @babel/core
 - 프론트엔드 마스터가 되자!!
 
 <br/>
+
+# 🙏QnA
+
+![종이질감템플릿-002](https://github.com/SiWooJinSeok/OpenMind6team/assets/59861974/5fcd4e1e-3d1c-4559-b36a-30797132417d)
+

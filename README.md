@@ -206,4 +206,3 @@ npm install --save-dev @babel/eslint-parser @babel/core
 # 🙏QnA
 
 ![종이질감템플릿-002](https://github.com/SiWooJinSeok/OpenMind6team/assets/59861974/5fcd4e1e-3d1c-4559-b36a-30797132417d)
-
